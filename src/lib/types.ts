@@ -1,4 +1,4 @@
 import { ReactNode } from 'react';
 
-export type WindowProps = { children?: ReactNode; width: string; height: string } & WindowTitleProps;
+export type WindowProps = { children?: ReactNode } & WindowTitleProps;
 export type WindowTitleProps = { English: string; Japanese: string };

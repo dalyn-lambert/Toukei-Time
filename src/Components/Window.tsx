@@ -1,13 +1,11 @@
-import { WindowTitleProps } from '@/lib/types';
+import { WindowProps } from '@/lib/types';
 import WindowTitle from './WindowTitle';
 
-function Window(props: WindowTitleProps) {
+function Window(props: WindowProps) {
   return (
-    <div
-      className={`${props.width} ${props.height} group drop-shadow-lg bg-base-gray p-2 rounded-sm flex flex-col gap-2 border-2 border-dark-gray shadow-inner shadow-white`}
-    >
+    <div className='group bg-gray p-4'>
       <WindowTitle English={props.English} Japanese={props.Japanese} />
-      {props.children}
+      <div className='p-4'>{props.children}</div>
     </div>
   );
 }
