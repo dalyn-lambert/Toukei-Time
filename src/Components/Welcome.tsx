@@ -1,11 +1,11 @@
 import Window from './Window';
 
-const WelcomeAlert = async () => {
+const Welcome = async () => {
   return (
     <Window English='Today is...' Japanese='今日は。。。'>
-      こんにちは Cinder!
+      こんにちは、Cinder!
     </Window>
   );
 };
 
-export default WelcomeAlert;
+export default Welcome;
