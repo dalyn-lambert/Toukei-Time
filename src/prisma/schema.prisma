@@ -12,6 +12,7 @@ model StudyLog {
   id        String     @default(cuid()) @id
   title     String
   time      Int
-  xategory  String
-  Date      DateTime
+  category  String
+  resource  String
+  date      DateTime
 }

@@ -1,5 +1,6 @@
 import prisma from './prisma';
 
 export const getAllStudyLogs = async () => {
-  return await prisma.studyLog.findMany();
+  const logs = await prisma.studyLog.findMany();
+  return logs;
 };
