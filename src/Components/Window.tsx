@@ -3,9 +3,9 @@ import WindowTitle from './WindowTitle';
 
 function Window(props: WindowProps) {
   return (
-    <div className='group bg-gray p-4'>
+    <div className='group bg-gray'>
       <WindowTitle English={props.English} Japanese={props.Japanese} />
-      <div className='p-4'>{props.children}</div>
+      <div className=''>{props.children}</div>
     </div>
   );
 }

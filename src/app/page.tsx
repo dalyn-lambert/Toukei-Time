@@ -2,7 +2,7 @@ import WelcomeAlert from '@/Components/WelcomeAlert';
 
 export default function Home() {
   return (
-    <main className='flex flex-col items-center p-8'>
+    <main className='py-8 px-4'>
       <WelcomeAlert />
     </main>
   );
