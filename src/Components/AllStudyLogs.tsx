@@ -1,13 +1,14 @@
+import Notepad from '@/Components/Notepad';
 import { getAllStudyLogs } from '@/lib/data';
-import Notepad from './Notepad';
 
 const getData = async () => {
   const data = await getAllStudyLogs();
   return data;
 };
 
-const TodaysStudies = async () => {
+const AllStudyLogs = async () => {
   const studyLogs = await getData();
+  console.log(studyLogs);
   return (
     <Notepad>
       <>
@@ -20,4 +21,4 @@ const TodaysStudies = async () => {
   );
 };
 
-export default TodaysStudies;
+export default AllStudyLogs;
