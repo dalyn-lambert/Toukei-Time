@@ -1,9 +1,9 @@
-import LogIn from '@/Components/LogIn';
+import Introduction from '@/Components/Introduction';
 
 export default function LandingPage() {
   return (
     <main>
-      <LogIn />
+      <Introduction />
     </main>
   );
 }
