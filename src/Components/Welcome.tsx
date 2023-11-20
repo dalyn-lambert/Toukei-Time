@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
@@ -8,8 +9,12 @@ function Welcome() {
         <span>こんにちは、Cinder!</span>
         <span>What would you like to do?</span>
         <div className='flex flex-row gap-4 pt-4'>
-          <StyledButton label='Log Studies' />
-          <StyledButton label='Add Resource' />
+          <Link href='/add'>
+            <StyledButton label='Log Studies' />
+          </Link>
+          <Link href='/view'>
+            <StyledButton label='Add Resource' />
+          </Link>
         </div>
       </div>
     </Window>
