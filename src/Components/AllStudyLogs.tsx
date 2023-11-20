@@ -8,7 +8,6 @@ const getData = async () => {
 
 const AllStudyLogs = async () => {
   const studyLogs = await getData();
-  console.log(studyLogs);
   return (
     <Notepad>
       <>
