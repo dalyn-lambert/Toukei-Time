@@ -1,9 +1,9 @@
 import StyledButton from './StyledButton';
 import Window from './Window';
 
-function LogIn() {
+function Registration() {
   return (
-    <Window English='Log In' Japanese='ログイン'>
+    <Window English='Create an account' Japanese='アカウントを作成する'>
       <>
         <form>
           <div className='flex flex-col gap-2'>
@@ -14,11 +14,11 @@ function LogIn() {
           </div>
         </form>
         <div className='pt-2'>
-          <StyledButton label='Enter' />
+          <StyledButton label='Create' />
         </div>
       </>
     </Window>
   );
 }
 
-export default LogIn;
+export default Registration;
