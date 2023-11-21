@@ -1,11 +1,20 @@
-// However, you will need to create a separate file for the bcrypt package. 
+// However, you will need to create a separate file for the bcrypt package.
 // This is because bcrypt relies on Node.js APIs not available in Next.js Middleware.
 
 import NextAuth from 'next-auth';
-import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
- 
+import { authConfig } from './auth.config';
+
+async function getUser(email: string) {
+  try {
+    const user = 'Cinder';
+  } catch (error) {
+    console.error('Failed to fetcvh user:', error);
+    throw new Error('Failed to fetch user.');
+  }
+}
+
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [

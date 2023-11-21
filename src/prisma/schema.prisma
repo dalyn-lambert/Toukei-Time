@@ -8,11 +8,36 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
+
+model User {
+  id Int      @id @default(autoincrement())
+  username String
+  password String
+  resource Resource[]
+  studyLogs StudyLog[]
+}
+
 model StudyLog {
-  id        String     @default(cuid()) @id
+  id        Int     @id @default(autoincrement())
   title     String
   time      Int
   category  String
-  resource  String
   date      DateTime
+  resource  Resource @relation(fields: [resourceId], references: [id])
+  resourceId Int
+  user      User @relation(fields: [userId], references: [id])
+  userId    Int  
+}
+
+
+model Resource {
+  id        Int      @id @default(autoincrement())
+  name     String
+  type      String
+  status  String
+  link  String
+  notes      String
+  studyLogs StudyLog[]
+  user      User @relation(fields: [userId], references: [id])
+  userId    Int  
 }

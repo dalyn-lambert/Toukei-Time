@@ -1,8 +1,30 @@
 import { PrismaClient } from '@prisma/client';
-import { studyLogs } from './seeds/studyLogs';
+import { resources, studyLogs } from './seeds/studyLogs';
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.user.deleteMany();
+  console.log('Deleted records in user table');
+
+  await prisma.user.create({
+    data: {
+      id: 2500,
+      password: '123456',
+      username: 'Cinder',
+    },
+  });
+
+  console.log('Added User data');
+
+  await prisma.resource.deleteMany();
+  console.log('Deleted records in Resource table');
+
+  await prisma.resource.createMany({
+    data: resources,
+  });
+
+  console.log('Added Resource data');
+
   await prisma.studyLog.deleteMany();
   console.log('Deleted records in Study Log table');
 
