@@ -8,7 +8,7 @@ import { authConfig } from './auth.config';
 
 async function getUser(email: string) {
   try {
-    const user = 'Cinder';
+    // const user = await prisma.user.findUnique({ where: { email: email } });
   } catch (error) {
     console.error('Failed to fetcvh user:', error);
     throw new Error('Failed to fetch user.');
