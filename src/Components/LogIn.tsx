@@ -1,3 +1,5 @@
+'use client';
+
 import StyledButton from './StyledButton';
 import Window from './Window';
 
@@ -8,12 +10,10 @@ function LogIn() {
         <form>
           <div className='flex flex-col gap-2'>
             <label htmlFor='email'>Email:</label>
-            <input type='text' id='email' />
-            <label htmlFor='password'>Password:</label>
-            <input type='text' id='password' />
+            <input id='email' type='email' name='email' placeholder='Enter your email address' required />
           </div>
         </form>
-        <div className='pt-2'>
+        <div className='p-2'>
           <StyledButton label='Enter' />
         </div>
       </>
