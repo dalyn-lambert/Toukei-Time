@@ -19,19 +19,23 @@ export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
-      //@ts-ignore
+      //@ts-ignore ?????????????????????????????????????????????????????????????????????????????????
       async authorize(credentials) {
+        console.log('...credentials');
+        console.log(credentials);
         const parsedCredentials = z
           .object({ email: z.string().email(), password: z.string().min(6) })
           .safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
+          console.log(email);
           const user = await getUser(email);
           if (!user) return null;
           if (password === user.password) {
             return user;
           }
+          return null;
         }
 
         console.log('Invalid credentials');
