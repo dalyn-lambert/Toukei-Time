@@ -1,6 +1,5 @@
 'use client';
 
-
 import { authenticate } from '@/lib/actions';
 import { useFormState, useFormStatus } from 'react-dom';
 
@@ -11,7 +10,6 @@ function LogIn() {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   return (
     <Window English='Log In' Japanese='ログイン'>
-
       <form action={dispatch}>
         <div className='flex flex-col gap-2'>
           <label htmlFor='email'>Email:</label>
@@ -19,7 +17,6 @@ function LogIn() {
 
           <label htmlFor='password'>Password:</label>
           <input id='password' type='password' name='password' placeholder='Enter password' required minLength={6} />
-
         </div>
         <LoginButton />
         <div className='flex items-end' aria-live='polite' aria-atomic='true'>
