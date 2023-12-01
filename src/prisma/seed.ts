@@ -11,7 +11,9 @@ async function main() {
       id: 2500,
       username: 'Cinder',
       email: 'dalyn.boyd@gmail.com',
-      password: '123456',
+
+      password: 'password',
+
     },
   });
 
