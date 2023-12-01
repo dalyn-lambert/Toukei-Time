@@ -12,13 +12,14 @@ function LogIn() {
       <form action={dispatch}>
         <div className='flex flex-col gap-2'>
           <label htmlFor='email'>Email:</label>
-          <input type='text' id='email' />
+          <input id='email' type='email' name='email' placeholder='Enter your email address' required />
+
           <label htmlFor='password'>Password:</label>
-          <input type='text' id='password' />
+          <input id='password' type='password' name='password' placeholder='Enter password' required minLength={6} />
         </div>
         <LoginButton />
-        <div className='flex h-8 items-end space-x-1' aria-live='polite' aria-atomic='true'>
-          {/* style this later */}
+        <div className='flex items-end' aria-live='polite' aria-atomic='true'>
+          {/* remove this once magic links are implemented */}
           {errorMessage && (
             <>
               <p className='text-sm text-red-500'>{errorMessage}</p>
@@ -34,7 +35,7 @@ function LoginButton() {
   const { pending } = useFormStatus();
   return (
     <div className='pt-2' aria-disabled={pending}>
-      <StyledButton label='Enter' />
+      <StyledButton label='Log In' />
     </div>
   );
 }
