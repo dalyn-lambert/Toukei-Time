@@ -8,8 +8,12 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
+      // Revisit this sometime
       const isOnHome = nextUrl.pathname.startsWith('/home');
-      if (isOnHome) {
+      const isOnView = nextUrl.pathname.startsWith('/view');
+      const isOnAdd = nextUrl.pathname.startsWith('/add');
+
+      if (isOnHome || isOnAdd || isOnView) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
