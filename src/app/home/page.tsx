@@ -1,5 +1,5 @@
 import Graph from '@/Components/Graph';
-import LogOut from '@/Components/LogOut';
+import Navigation from '@/Components/Navigation';
 import TodaysStudies from '@/Components/TodaysStudies';
 import Welcome from '@/Components/Welcome';
 
@@ -9,7 +9,7 @@ export default function HomePage() {
       <TodaysStudies />
       <Graph />
       <Welcome />
-      <LogOut />
+      <Navigation />
     </main>
   );
 }

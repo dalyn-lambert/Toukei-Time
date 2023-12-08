@@ -9,7 +9,11 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnHome = nextUrl.pathname.startsWith('/home');
-      if (isOnHome) {
+      const isViewingLogs = nextUrl.pathname.startsWith('/view-logs');
+      const isViewingResources = nextUrl.pathname.startsWith('/view-resources');
+      const isLoggingStudies = nextUrl.pathname.startsWith('/log-studies');
+      const isAddingResource = nextUrl.pathname.startsWith('/add-resource');
+      if (isOnHome || isViewingLogs || isViewingResources || isLoggingStudies || isAddingResource) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {

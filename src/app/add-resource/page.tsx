@@ -1,11 +1,11 @@
 import AddResource from '@/Components/AddResource';
-import AddStudyLog from '@/Components/AddStudyLog';
+import Navigation from '@/Components/Navigation';
 
-export default function AddPage() {
+export default function AddResourcePage() {
   return (
     <main className='flex flex-col gap-4'>
-      <AddStudyLog />
       <AddResource />
+      <Navigation />
     </main>
   );
 }
