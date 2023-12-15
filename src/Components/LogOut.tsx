@@ -4,7 +4,7 @@ import Window from './Window';
 
 function LogOut() {
   return (
-    <Window English='Log Out' Japanese='ログアウト'>
+    <Window English='Log Out' Japanese='Log Out'>
       <form
         action={async () => {
           'use server';
