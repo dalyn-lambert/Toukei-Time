@@ -5,7 +5,6 @@ export default function ViewAllLogsPage() {
   return (
     <main className='flex flex-col gap-4'>
       <AllStudyLogs />
-      <Navigation />
     </main>
   );
 }

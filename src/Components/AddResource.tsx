@@ -3,7 +3,7 @@ import Window from './Window';
 
 function AddResource() {
   return (
-    <Window English='Add a resource' Japanese='resource'>
+    <Window English='Add a resource' Japanese='Resource'>
       <>
         <form>
           <div className='flex flex-col gap-2'>

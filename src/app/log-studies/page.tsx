@@ -5,7 +5,6 @@ export default function LogStudiesPage() {
   return (
     <main className='flex flex-col gap-4'>
       <AddStudyLog />
-      <Navigation />
     </main>
   );
 }
