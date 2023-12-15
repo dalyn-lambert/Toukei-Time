@@ -1,5 +1,4 @@
 import AllStudyLogs from '@/Components/AllStudyLogs';
-import Navigation from '@/Components/Navigation';
 
 export default function ViewAllLogsPage() {
   return (
