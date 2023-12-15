@@ -1,10 +1,9 @@
 import { signOut } from '@/auth';
 import StyledButton from './StyledButton';
-import Window from './Window';
 
 function LogOut() {
   return (
-    <Window English='Log Out' Japanese='ログアウト'>
+    <div>
       <form
         action={async () => {
           'use server';
@@ -13,7 +12,7 @@ function LogOut() {
       >
         <LogOutButton />
       </form>
-    </Window>
+    </div>
   );
 }
 

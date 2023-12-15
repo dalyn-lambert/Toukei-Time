@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LogOut from './LogOut';
 import Window from './Window';
 
 function Navigation() {
@@ -8,7 +9,7 @@ function Navigation() {
         <Link href={'/'}>Home</Link>
         <Link href={'/view-logs'}>View Logs</Link>
         <Link href={'/log-studies'}>Log Studies</Link>
-        <Link href={'/home'}>Log Out</Link>
+        <LogOut />
         <Link href={'/view-resources'}>View Resources</Link>
         <Link href={'/add-resource'}>Add Resource</Link>
       </div>
