@@ -19,10 +19,11 @@ const NavTile = ({ link }: NavTileProps) => {
     <Link
       href={link.route}
       className={clsx(
-        'text-black text-sm tracking-widest text-center hover:underline hover:underline-offset-2 hover:decoration-2 hover:decoration-gradient-1',
-        isActive && 'underline underline-offset-2 decoration-2 decoration-gradient-1 font-bold'
+        'text-black text-xs p-1 content-center drop-shadow-lg border-2 border-dark-gray shadow-inner shadow-white hover:bg-pink',
+        isActive && 'bg-pink font-bold'
       )}
     >
+      {link.icon}
       {link.label}
     </Link>
   );

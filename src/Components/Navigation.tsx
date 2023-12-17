@@ -1,13 +1,14 @@
+import { homeIcon } from '@/lib/icons';
 import NavTile from './NavTile';
 
-export type LinkData = { label: string; route: string };
+export type LinkData = { label: string; route: string; icon: JSX.Element };
 
 const links: LinkData[] = [
-  { label: 'Home', route: '/home' },
-  { label: 'Add Resource', route: '/add-resource' },
-  { label: 'Log Studies', route: '/log-studies' },
-  { label: 'View Logs', route: '/view-logs' },
-  { label: 'View Resources', route: '/view-resources' },
+  { label: 'Home', route: '/home', icon: homeIcon },
+  { label: 'Add Resource', route: '/add-resource', icon: homeIcon },
+  { label: 'Log Studies', route: '/log-studies', icon: homeIcon },
+  { label: 'View Logs', route: '/view-logs', icon: homeIcon },
+  { label: 'View Resources', route: '/view-resources', icon: homeIcon },
 ];
 
 const Navigation = async () => {
