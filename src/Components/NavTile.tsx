@@ -19,7 +19,7 @@ const NavTile = ({ link }: NavTileProps) => {
     <Link
       href={link.route}
       className={clsx(
-        'text-black text-xs p-1 content-center drop-shadow-lg border-2 border-dark-gray shadow-inner shadow-white hover:bg-pink',
+        'text-black text-xs p-1 flex flex-col gap-1 justify-end items-center text-center drop-shadow-lg border-2 border-dark-gray shadow-inner shadow-white hover:bg-pink',
         isActive && 'bg-pink font-bold'
       )}
     >
