@@ -1,18 +1,26 @@
-import Link from 'next/link';
+import { addResourceIcon, homeIcon, logStudiesIcon, viewResourcesIcon, viewStudiesIcon } from '@/lib/icons';
+import NavTile from './NavTile';
 
-function Navigation() {
+export type LinkData = { label: string; route: string; icon: JSX.Element };
+
+const links: LinkData[] = [
+  { label: 'Home', route: '/home', icon: homeIcon },
+  { label: 'Add Media', route: '/add-resource', icon: addResourceIcon },
+  { label: 'Log Studies', route: '/log-studies', icon: logStudiesIcon },
+  { label: 'View Logs', route: '/view-logs', icon: viewStudiesIcon },
+  { label: 'View Media', route: '/view-resources', icon: viewResourcesIcon },
+];
+
+const Navigation = async () => {
   return (
     <div className=' bg-gray p-3 drop-shadow-lg border-2 border-dark-gray shadow-inner shadow-white '>
-      <div className='flex flex-row text-xs gap-4'>
-        <Link href={'/'}>Home</Link>
-        <Link href={'/view-logs'}>View Logs</Link>
-        <Link href={'/log-studies'}>Log Studies</Link>
-        <Link href={'/profile'}>Profile</Link>
-        <Link href={'/view-resources'}>View Resources</Link>
-        <Link href={'/add-resource'}>Add Resource</Link>
+      <div className='flex flex-row gap-2 justify-center'>
+        {links.map((link) => (
+          <NavTile key={link.label} link={link} />
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default Navigation;
