@@ -1,9 +1,6 @@
 import Navigation from '@/Components/Navigation';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
+import 'src/app/globals.css';
 
 export const metadata: Metadata = {
   title: 'Toukei Time',
