@@ -3,13 +3,13 @@ import credentials from 'next-auth/providers/credentials';
 
 export const authConfig = {
   pages: {
-    signIn: '/sign-in',
+    signIn: '/',
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       // Revisit this sometime
-      const isOnHome = nextUrl.pathname.startsWith('/');
+      const isOnHome = nextUrl.pathname.startsWith('/home');
       const isViewingLogs = nextUrl.pathname.startsWith('/view-logs');
       const isViewingResources = nextUrl.pathname.startsWith('/view-resources');
       const isLoggingStudies = nextUrl.pathname.startsWith('/log-studies');
@@ -18,7 +18,7 @@ export const authConfig = {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
-        return Response.redirect(new URL('/', nextUrl));
+        return Response.redirect(new URL('/home', nextUrl));
       }
       return true;
     },
