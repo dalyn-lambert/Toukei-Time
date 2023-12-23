@@ -10,14 +10,11 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       // Revisit this sometime
       const isOnHome = nextUrl.pathname.startsWith('/home');
-
       const isViewingLogs = nextUrl.pathname.startsWith('/view-logs');
       const isViewingResources = nextUrl.pathname.startsWith('/view-resources');
       const isLoggingStudies = nextUrl.pathname.startsWith('/log-studies');
       const isAddingResource = nextUrl.pathname.startsWith('/add-resource');
-      const isOnProfile = nextUrl.pathname.startsWith('/profile');
-      if (isOnHome || isViewingLogs || isViewingResources || isLoggingStudies || isAddingResource || isOnProfile) {
-
+      if (isOnHome || isViewingLogs || isViewingResources || isLoggingStudies || isAddingResource) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
