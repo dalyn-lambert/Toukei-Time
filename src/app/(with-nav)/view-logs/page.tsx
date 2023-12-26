@@ -14,9 +14,6 @@ export default async function ViewAllLogsPage() {
       {studyLogs.map((log) => (
         <StudyLogEntry key={log.id} {...log} />
       ))}
-      {studyLogs.map((log) => (
-        <StudyLogEntry key={log.id} {...log} />
-      ))}
     </div>
   );
 }

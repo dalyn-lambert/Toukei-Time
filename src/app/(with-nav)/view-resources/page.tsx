@@ -14,9 +14,6 @@ export default async function ViewAllResourcesPage() {
       {resources.map((resource) => (
         <ResourceEntry key={resource.id} {...resource} />
       ))}
-      {resources.map((resource) => (
-        <ResourceEntry key={resource.id} {...resource} />
-      ))}
     </div>
   );
 }
