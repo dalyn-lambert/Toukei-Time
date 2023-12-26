@@ -5,22 +5,27 @@ function AddResource() {
   return (
     <Window English='Add a resource' Japanese='Resource'>
       <>
-        <form>
+        <form className='add-resource'>
           <div className='flex flex-col gap-2'>
             <label htmlFor='name'>Name:</label>
-            <input type='text' id='name' />
+            <input type='text' id='name' required={true} />
 
             <label htmlFor='type'>Type:</label>
-            <input type='text' id='type' />
+            <input type='text' id='type' required={true} />
 
             <label htmlFor='status'>Status:</label>
-            <input type='text' id='status' />
+            <select id='status' required={true}>
+              <option value='current'>Current</option>
+              <option value='want'>Want</option>
+              <option value='completed'>Completed</option>
+              <option value='dropped'>Dropped</option>
+            </select>
 
             <label htmlFor='link'>Link:</label>
-            <input type='text' id='link' />
+            <input type='text' id='link' required={false} />
 
             <label htmlFor='notes'>Notes:</label>
-            <input type='text' id='notes' />
+            <input type='text' id='notes' required={false} />
           </div>
         </form>
         <div className='pt-2'>
