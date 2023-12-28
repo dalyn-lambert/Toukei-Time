@@ -1,7 +1,10 @@
+import { Category, Status } from '@prisma/client';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
 function AddResource() {
+  const categories = Object.keys(Category);
+  const statuses = Object.keys(Status);
   return (
     <Window English='Add a resource' Japanese='Resource'>
       <>
@@ -10,16 +13,22 @@ function AddResource() {
             <label htmlFor='name'>Name:</label>
             <input type='text' id='name' required={true} />
 
-            <label htmlFor='type'>Type:</label>
-            <input type='text' id='type' required={true} />
+            <label htmlFor='category'>Category:</label>
+            <select id='category' required={true}>
+              {categories.map((category) => (
+                <option key={category} value={category.toLocaleLowerCase()}>
+                  {category}
+                </option>
+              ))}
+            </select>
 
             <label htmlFor='status'>Status:</label>
             <select id='status' required={true}>
-              <option value='current'>Current</option>
-              <option value='want'>Planned</option>
-              <option value='completed'>Completed</option>
-              <option value='on hold'>On Hold</option>
-              <option value='dropped'>Dropped</option>
+              {statuses.map((status) => (
+                <option key={status} value={status.toLocaleLowerCase()}>
+                  {status}
+                </option>
+              ))}
             </select>
 
             <label htmlFor='link'>Link:</label>
