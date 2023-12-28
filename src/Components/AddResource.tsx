@@ -1,4 +1,8 @@
+'use client';
+
+import { createResource } from '@/lib/actions';
 import { Category, Status } from '@prisma/client';
+import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
@@ -8,7 +12,7 @@ function AddResource() {
   return (
     <Window English='Add a resource' Japanese='Resource'>
       <>
-        <form className='add-resource'>
+        <form action={createResource}>
           <div className='flex flex-col gap-2'>
             <label htmlFor='name'>Name:</label>
             <input type='text' id='name' required={true} />
@@ -37,12 +41,19 @@ function AddResource() {
             <label htmlFor='notes'>Notes:</label>
             <input type='text' id='notes' required={false} />
           </div>
+          <AddResourceButton />
         </form>
-        <div className='pt-2'>
-          <StyledButton label='Add' />
-        </div>
       </>
     </Window>
+  );
+}
+
+function AddResourceButton() {
+  const { pending } = useFormStatus();
+  return (
+    <div className='pt-2' aria-disabled={pending}>
+      <StyledButton label='Add' />
+    </div>
   );
 }
 

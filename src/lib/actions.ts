@@ -18,3 +18,15 @@ export async function authenticate(prevState: string | undefined, formData: Form
     throw error;
   }
 }
+
+export async function createResource(formData: FormData) {
+  console.log(formData.getAll);
+  const rawFormData = {
+    name: formData.get('name'),
+    category: formData.get('category'),
+    status: formData.get('status'),
+    link: formData.get('link'),
+    notes: formData.get('notes'),
+  };
+  console.log(rawFormData);
+}
