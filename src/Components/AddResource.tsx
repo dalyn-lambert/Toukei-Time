@@ -15,10 +15,10 @@ function AddResource() {
         <form action={createResource}>
           <div className='flex flex-col gap-2'>
             <label htmlFor='name'>Name:</label>
-            <input type='text' id='name' required={true} />
+            <input type='text' name='name' id='name' required={true} />
 
             <label htmlFor='category'>Category:</label>
-            <select id='category' required={true}>
+            <select name='category' id='category' required={true}>
               {categories.map((category) => (
                 <option key={category} value={category.toLocaleLowerCase()}>
                   {category}
@@ -27,7 +27,7 @@ function AddResource() {
             </select>
 
             <label htmlFor='status'>Status:</label>
-            <select id='status' required={true}>
+            <select name='status' id='status' required={true}>
               {statuses.map((status) => (
                 <option key={status} value={status.toLocaleLowerCase()}>
                   {status}
@@ -36,10 +36,10 @@ function AddResource() {
             </select>
 
             <label htmlFor='link'>Link:</label>
-            <input type='text' id='link' required={false} />
+            <input type='text' name='' id='link' required={false} />
 
             <label htmlFor='notes'>Notes:</label>
-            <input type='text' id='notes' required={false} />
+            <input type='text' name='notes' id='notes' required={false} />
           </div>
           <AddResourceButton />
         </form>

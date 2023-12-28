@@ -44,7 +44,7 @@ model Resource {
 }
 
 enum Category {
-  Listening
+  LISTENING
   Reading
   Watching
   Speaking

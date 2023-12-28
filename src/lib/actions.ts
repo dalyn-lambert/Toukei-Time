@@ -20,7 +20,6 @@ export async function authenticate(prevState: string | undefined, formData: Form
 }
 
 export async function createResource(formData: FormData) {
-  console.log(formData.getAll);
   const rawFormData = {
     name: formData.get('name'),
     category: formData.get('category'),
