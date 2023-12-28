@@ -16,8 +16,9 @@ function AddResource() {
             <label htmlFor='status'>Status:</label>
             <select id='status' required={true}>
               <option value='current'>Current</option>
-              <option value='want'>Want</option>
+              <option value='want'>Planned</option>
               <option value='completed'>Completed</option>
+              <option value='on hold'>On Hold</option>
               <option value='dropped'>Dropped</option>
             </select>
 
