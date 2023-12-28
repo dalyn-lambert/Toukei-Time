@@ -23,7 +23,7 @@ model StudyLog {
   title     String
   time      Int
   category  Category
-  date      DateTime
+  date      DateTime @default(now())
   resource  Resource @relation(fields: [resourceId], references: [id])
   resourceId Int
   user      User @relation(fields: [userId], references: [id])
