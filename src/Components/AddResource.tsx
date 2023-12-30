@@ -36,7 +36,7 @@ function AddResource() {
             </select>
 
             <label htmlFor='link'>Link:</label>
-            <input type='text' name='' id='link' required={false} />
+            <input type='text' name='link' id='link' required={false} />
 
             <label htmlFor='notes'>Notes:</label>
             <input type='text' name='notes' id='notes' required={false} />

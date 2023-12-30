@@ -2,6 +2,8 @@
 
 import { auth, signIn } from '@/auth';
 import { AuthError } from 'next-auth';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { getUser } from './data';
 import prisma from './prisma';
@@ -26,7 +28,7 @@ export async function authenticate(prevState: string | undefined, formData: Form
 
 // Create a new resource
 
-const FormSchema = z.object({
+const ResourceFormSchema = z.object({
   id: z.string(),
   name: z.string(),
   category: z.enum(['Listening', 'Reading', 'Watching', 'Speaking', 'Playing']),
@@ -35,7 +37,7 @@ const FormSchema = z.object({
   notes: z.string().nullish(),
 });
 
-const CreateResource = FormSchema.omit({ id: true, user: true });
+const CreateResource = ResourceFormSchema.omit({ id: true, user: true });
 
 export async function createResource(formData: FormData) {
   const session = await auth();
@@ -65,4 +67,7 @@ export async function createResource(formData: FormData) {
       user: { connect: { id: user.id } },
     },
   });
+
+  revalidatePath('/add-resource');
+  redirect('/add-resource');
 }
