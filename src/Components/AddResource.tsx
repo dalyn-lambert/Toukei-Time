@@ -20,7 +20,7 @@ function AddResource() {
             <label htmlFor='category'>Category:</label>
             <select name='category' id='category' required={true}>
               {categories.map((category) => (
-                <option key={category} value={category.toLocaleLowerCase()}>
+                <option key={category} value={category}>
                   {category}
                 </option>
               ))}
@@ -29,7 +29,7 @@ function AddResource() {
             <label htmlFor='status'>Status:</label>
             <select name='status' id='status' required={true}>
               {statuses.map((status) => (
-                <option key={status} value={status.toLocaleLowerCase()}>
+                <option key={status} value={status}>
                   {status}
                 </option>
               ))}
