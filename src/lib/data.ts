@@ -17,7 +17,7 @@ export const getAllStudyLogs = async () => {
 };
 
 export const getAllResources = async () => {
-  const resources = await prisma.resource.findMany({orderBy: {}});
+  const resources = await prisma.resource.findMany({ orderBy: { dateAdded: 'desc' } });
   return resources;
 };
 
