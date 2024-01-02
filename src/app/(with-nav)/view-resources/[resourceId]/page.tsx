@@ -13,5 +13,10 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   if (!data) {
     redirect(`/view-resources`);
   }
-  return <UpdateResource {...data} />;
+  return (
+    <>
+      <UpdateResource {...data} />
+      <div>Some graph or something</div>
+    </>
+  );
 }
