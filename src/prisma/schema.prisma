@@ -35,6 +35,7 @@ model Resource {
   id        Int      @id @default(autoincrement())
   name      String
   category  Category
+  dateAdded DateTime  @default(now())
   status    Status
   link      String?
   notes     String?
