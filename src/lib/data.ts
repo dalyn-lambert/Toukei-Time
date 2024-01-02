@@ -20,3 +20,12 @@ export const getAllResources = async () => {
   const resources = await prisma.resource.findMany();
   return resources;
 };
+
+export const getResourceFromId = async (id: number) => {
+  const resource = await prisma.resource.findFirst({
+    where: {
+      id: id,
+    },
+  });
+  return resource;
+};
