@@ -2,7 +2,6 @@
 
 import { auth, signIn } from '@/auth';
 import { AuthError } from 'next-auth';
-import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { getUser } from './data';
@@ -57,7 +56,7 @@ export async function createResource(formData: FormData) {
     notes: formData.get('notes'),
   });
 
-  await prisma.resource.create({
+  const newResource = await prisma.resource.create({
     data: {
       name,
       category,
@@ -68,6 +67,7 @@ export async function createResource(formData: FormData) {
     },
   });
 
-  revalidatePath('/add-resource');
-  redirect('/add-resource');
+  console.log(newResource);
+
+  redirect(`/view-resources/${newResource.id}`);
 }

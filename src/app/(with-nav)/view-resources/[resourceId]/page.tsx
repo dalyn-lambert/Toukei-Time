@@ -1,5 +1,6 @@
-import Window from '@/Components/Window';
+import UpdateResource from '@/Components/UpdateResource';
 import { getResourceFromId } from '@/lib/data';
+import { redirect } from 'next/navigation';
 
 const getData = async (id: number) => {
   const data = await getResourceFromId(id);
@@ -10,11 +11,7 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   const id = Number(params.resourceId);
   const data = await getData(id);
   if (!data) {
-    return <div>Not Found</div>;
+    redirect(`/view-resources`);
   }
-  return (
-    <Window English={data.category} Japanese={data.category}>
-      {data.name}
-    </Window>
-  );
+  return <UpdateResource {...data} />;
 }
