@@ -4,7 +4,7 @@ import NavTile from './NavTile';
 export type LinkData = { label: string; route: string; icon: JSX.Element };
 
 const links: LinkData[] = [
-  { label: 'Home', route: '/', icon: homeIcon },
+  { label: 'Home', route: '/home', icon: homeIcon },
   { label: 'Add Media', route: '/add-resource', icon: addResourceIcon },
   { label: 'Log Studies', route: '/log-studies', icon: logStudiesIcon },
   { label: 'View Logs', route: '/view-logs', icon: viewStudiesIcon },

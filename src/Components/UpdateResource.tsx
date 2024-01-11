@@ -5,7 +5,6 @@ import StyledButton from './StyledButton';
 import Window from './Window';
 
 function UpdateResource(resource: Resource) {
-  console.log(resource);
   const categories = Object.keys(Category);
   const statuses = Object.keys(Status);
   return (
@@ -35,10 +34,10 @@ function UpdateResource(resource: Resource) {
             </select>
 
             <label htmlFor='link'>Link:</label>
-            <input type='text' name='link' id='link' required={false} defaultValue={resource.link} />
+            <input type='text' name='link' id='link' required={false} defaultValue={resource.link || undefined} />
 
             <label htmlFor='notes'>Notes:</label>
-            <input type='text' name='notes' id='notes' required={false} defaultValue={resource.notes} />
+            <input type='text' name='notes' id='notes' required={false} defaultValue={resource.notes || undefined} />
           </div>
           <UpdateResourceButton />
         </form>
