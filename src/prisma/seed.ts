@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { resources, studyLogs } from './seeds/studyLogs';
+import { resources, studyLogs } from './seeds/seed';
 const prisma = new PrismaClient();
 
 async function main() {

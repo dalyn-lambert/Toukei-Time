@@ -1,24 +1,22 @@
 'use client';
-
-import { createResource } from '@/lib/actions';
-import { Category, Status } from '@prisma/client';
+import { Category, Resource, Status } from '@prisma/client';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
-function AddResource() {
+function UpdateResource(resource: Resource) {
   const categories = Object.keys(Category);
   const statuses = Object.keys(Status);
   return (
     <Window English='Add a resource' Japanese='Resource'>
       <>
-        <form action={createResource}>
+        <form>
           <div className='flex flex-col gap-2'>
             <label htmlFor='name'>Name:</label>
-            <input type='text' name='name' id='name' required={true} />
+            <input type='text' name='name' id='name' required={true} defaultValue={resource.name} />
 
             <label htmlFor='category'>Category:</label>
-            <select name='category' id='category' required={true}>
+            <select name='category' id='category' required={true} defaultValue={resource.category}>
               {categories.map((category) => (
                 <option key={category} value={category}>
                   {category}
@@ -27,7 +25,7 @@ function AddResource() {
             </select>
 
             <label htmlFor='status'>Status:</label>
-            <select name='status' id='status' required={true}>
+            <select name='status' id='status' required={true} defaultValue={resource.status}>
               {statuses.map((status) => (
                 <option key={status} value={status}>
                   {status}
@@ -36,25 +34,25 @@ function AddResource() {
             </select>
 
             <label htmlFor='link'>Link:</label>
-            <input type='text' name='link' id='link' required={false} />
+            <input type='text' name='link' id='link' required={false} defaultValue={resource.link || undefined} />
 
             <label htmlFor='notes'>Notes:</label>
-            <input type='text' name='notes' id='notes' required={false} />
+            <input type='text' name='notes' id='notes' required={false} defaultValue={resource.notes || undefined} />
           </div>
-          <AddResourceButton />
+          <UpdateResourceButton />
         </form>
       </>
     </Window>
   );
 }
 
-function AddResourceButton() {
+function UpdateResourceButton() {
   const { pending } = useFormStatus();
   return (
     <div className='pt-2' aria-disabled={pending}>
-      <StyledButton label='Add' />
+      <StyledButton label='Update' />
     </div>
   );
 }
 
-export default AddResource;
+export default UpdateResource;

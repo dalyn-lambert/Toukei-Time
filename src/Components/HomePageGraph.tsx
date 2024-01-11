@@ -1,11 +1,11 @@
 import Window from './Window';
 
-function Graph() {
+function HomePageGraph() {
   return (
     <Window English='Graph' Japanese='グラフ'>
-      Graph
+      HomePageGraph
     </Window>
   );
 }
 
-export default Graph;
+export default HomePageGraph;

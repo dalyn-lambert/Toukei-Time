@@ -12,13 +12,21 @@ export const authConfig = {
       const isOnHome = nextUrl.pathname.startsWith('/home');
       const isViewingLogs = nextUrl.pathname.startsWith('/view-logs');
       const isViewingResources = nextUrl.pathname.startsWith('/view-resources');
+      const isViewingAResource = nextUrl.pathname.startsWith('/view-resources/:resourceId');
       const isLoggingStudies = nextUrl.pathname.startsWith('/log-studies');
       const isAddingResource = nextUrl.pathname.startsWith('/add-resource');
-      if (isOnHome || isViewingLogs || isViewingResources || isLoggingStudies || isAddingResource) {
-        if (isLoggedIn) return true;
+      if (
+        isOnHome ||
+        isViewingLogs ||
+        isViewingResources ||
+        isLoggingStudies ||
+        isAddingResource ||
+        isViewingAResource
+      ) {
+        if (isLoggedIn) {
+          return true;
+        }
         return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
-        return Response.redirect(new URL('/home', nextUrl));
       }
       return true;
     },

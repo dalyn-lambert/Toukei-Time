@@ -1,7 +1,9 @@
+import { Category, Status } from '@prisma/client';
+
 export const studyLogs = [
   {
     title: 'Ep.073',
-    category: '聴く',
+    category: Category.Listening,
     date: new Date(11 / 9 / 2023),
     time: 29,
     resourceId: 1,
@@ -9,7 +11,7 @@ export const studyLogs = [
   },
   {
     title: '[Japanese conversation] Talk to the staff at a cafe. Chiba Vlog',
-    category: '聴く',
+    category: Category.Listening,
     date: new Date(11 / 10 / 2023),
     time: 13,
     resourceId: 2,
@@ -17,7 +19,7 @@ export const studyLogs = [
   },
   {
     title: '第０話, read 10 pages',
-    category: '読書',
+    category: Category.Reading,
     date: new Date(11 / 6 / 2023),
     time: 10,
     resourceId: 3,
@@ -25,7 +27,7 @@ export const studyLogs = [
   },
   {
     title: 'Episode 40',
-    category: '観る',
+    category: Category.Watching,
     date: new Date(11 / 9 / 2023),
     time: 20,
     resourceId: 4,
@@ -33,7 +35,7 @@ export const studyLogs = [
   },
   {
     title: 'Lesson with Aoi',
-    category: '話す',
+    category: Category.Speaking,
     date: new Date(11 / 9 / 2023),
     time: 30,
     resourceId: 5,
@@ -45,8 +47,8 @@ export const resources = [
   {
     id: 1,
     name: 'Not Straight! 〜クィアな2人の井戸端会議〜',
-    type: 'Podcast',
-    status: 'Current',
+    category: Category.Listening,
+    status: Status.Current,
     link: '',
     notes: 'Queer content for the win!',
     userId: 2500,
@@ -54,8 +56,8 @@ export const resources = [
   {
     id: 2,
     name: 'あかね的日本語教室',
-    type: 'YouTube Channel',
-    status: 'Current',
+    category: Category.Listening,
+    status: Status.Current,
     link: 'https://www.youtube.com/@Akane-JapaneseClass',
     notes: 'Excellent listening practice.',
     userId: 2500,
@@ -63,8 +65,8 @@ export const resources = [
   {
     id: 3,
     name: '僕らの食卓',
-    type: 'Manga',
-    status: 'Current',
+    category: Category.Reading,
+    status: Status.Current,
     link: 'https://myanimelist.net/manga/104491/Bokura_no_Shokutaku',
     notes: 'No furigana.',
     userId: 2500,
@@ -72,8 +74,8 @@ export const resources = [
   {
     id: 4,
     name: '呪術廻戦 2',
-    type: 'Anime',
-    status: 'Current',
+    category: Category.Watching,
+    status: Status.Current,
     link: 'https://myanimelist.net/anime/51009/Jujutsu_Kaisen_2nd_Season',
     notes: 'Difficult language, but great show.',
     userId: 2500,
@@ -81,8 +83,8 @@ export const resources = [
   {
     id: 5,
     name: 'iTalki',
-    type: 'Website',
-    status: 'Current',
+    category: Category.Speaking,
+    status: Status.Current,
     link: 'https://www.italki.com/',
     notes: 'Great website for speaking practice.',
     userId: 2500,

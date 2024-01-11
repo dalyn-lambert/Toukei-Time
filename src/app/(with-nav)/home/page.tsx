@@ -1,4 +1,4 @@
-import Graph from '@/Components/Graph';
+import Graph from '@/Components/HomePageGraph';
 import LogOut from '@/Components/LogOut';
 import TodaysStudies from '@/Components/TodaysStudies';
 
