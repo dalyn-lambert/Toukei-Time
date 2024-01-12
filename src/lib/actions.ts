@@ -67,7 +67,29 @@ export async function createResource(formData: FormData) {
     },
   });
 
-  console.log(newResource);
-
   redirect(`/view-resources/${newResource.id}`);
+}
+
+// Update an existing resource
+
+const UpdateResource = ResourceFormSchema.omit({ id: true, user: true });
+
+export async function updateResource(id: number, formData: FormData) {
+  console.log(formData);
+  const { name, category, status, link, notes } = UpdateResource.parse({
+    name: formData.get('name'),
+    category: formData.get('category'),
+    status: formData.get('status'),
+    link: formData.get('link'),
+    notes: formData.get('notes'),
+  });
+
+  const updateResource = await prisma.resource.update({
+    where: {
+      id,
+    },
+    data: { name, category, status, link, notes },
+  });
+
+  redirect(`/view-resources/${updateResource.id}`);
 }
