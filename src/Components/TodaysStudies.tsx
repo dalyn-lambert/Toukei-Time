@@ -1,4 +1,5 @@
 import { getAllStudyLogs } from '@/lib/data';
+import { getIconForCategory } from '@/lib/utils';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import Notepad from './Notepad';
@@ -17,10 +18,13 @@ const TodaysStudies = async () => {
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
       <Notepad>
-        <span>{todayJapanese}</span>
+        <span className='border-b-2 border-black'>{todayJapanese}</span>
         <>
           {studyLogs.map((log) => (
-            <span key={log.id}>• {log.title}</span>
+            <div key={log.id} className='flex flex-row text-sm pb-4 items-center'>
+              <span className='pr-2 shrink-0'>{getIconForCategory(log.category)}</span>
+              <span>{log.title}</span>
+            </div>
           ))}
           <span>• | </span>
         </>
