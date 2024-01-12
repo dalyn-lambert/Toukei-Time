@@ -1,6 +1,5 @@
-import Window from '@/Components/Window';
+import ResourceEntry from '@/Components/ResourceEntry';
 import { getAllResources } from '@/lib/data';
-import Link from 'next/link';
 
 const getData = async () => {
   const data = await getAllResources();
@@ -13,11 +12,7 @@ export default async function ViewAllResourcesPage() {
   return (
     <div className='flex flex-col gap-4'>
       {resources.map((resource) => (
-        <Link href={`/view-resources/${resource.id}`} key={resource.id}>
-          <Window English={resource.category} Japanese={resource.category}>
-            {resource.name}
-          </Window>
-        </Link>
+        <ResourceEntry key={resource.id} {...resource} />
       ))}
     </div>
   );

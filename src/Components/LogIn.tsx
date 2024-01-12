@@ -13,10 +13,25 @@ function LogIn() {
       <form action={dispatch}>
         <div className='flex flex-col gap-2'>
           <label htmlFor='email'>Email:</label>
-          <input id='email' type='email' name='email' placeholder='Enter your email address' required />
+          <input
+            id='email'
+            type='email'
+            name='email'
+            placeholder='Enter your email address'
+            required
+            className='pl-1'
+          />
 
           <label htmlFor='password'>Password:</label>
-          <input id='password' type='password' name='password' placeholder='Enter password' required minLength={6} />
+          <input
+            id='password'
+            type='password'
+            name='password'
+            placeholder='Enter password'
+            required
+            minLength={6}
+            className='pl-1'
+          />
         </div>
         <LoginButton />
         <div className='flex items-end' aria-live='polite' aria-atomic='true'>
@@ -35,7 +50,7 @@ function LogIn() {
 function LoginButton() {
   const { pending } = useFormStatus();
   return (
-    <div className='pt-2' aria-disabled={pending}>
+    <div className='pt-3' aria-disabled={pending}>
       <StyledButton label='Log In' />
     </div>
   );

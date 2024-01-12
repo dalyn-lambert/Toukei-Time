@@ -3,6 +3,12 @@ import { resources, studyLogs } from './seeds/seed';
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.studyLog.deleteMany();
+  console.log('Deleted records in Study Log table');
+
+  await prisma.resource.deleteMany();
+  console.log('Deleted records in Resource table');
+
   await prisma.user.deleteMany();
   console.log('Deleted records in user table');
 
@@ -13,23 +19,16 @@ async function main() {
       email: 'dalyn.boyd@gmail.com',
 
       password: 'password',
-
     },
   });
 
   console.log('Added User data');
-
-  await prisma.resource.deleteMany();
-  console.log('Deleted records in Resource table');
 
   await prisma.resource.createMany({
     data: resources,
   });
 
   console.log('Added Resource data');
-
-  await prisma.studyLog.deleteMany();
-  console.log('Deleted records in Study Log table');
 
   await prisma.studyLog.createMany({
     data: studyLogs,
