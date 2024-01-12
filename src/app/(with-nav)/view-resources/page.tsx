@@ -14,7 +14,7 @@ export default async function ViewAllResourcesPage() {
     <div className='flex flex-col gap-4'>
       {resources.map((resource) => (
         <Link href={`/view-resources/${resource.id}`} key={resource.id}>
-          <Window English={resource.category} Japanese={resource.category}>
+          <Window English={resource.category} Japanese={resource.category} category={resource.category}>
             {resource.name}
           </Window>
         </Link>
