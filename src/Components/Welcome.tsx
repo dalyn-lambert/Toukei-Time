@@ -1,6 +1,6 @@
 import Window from './Window';
 
-function Introduction() {
+function Welcome() {
   return (
     <Window English='Welcome!' Japanese='ようこそ！'>
       <div className=' text-center flex flex-col gap-2'>
@@ -11,4 +11,4 @@ function Introduction() {
   );
 }
 
-export default Introduction;
+export default Welcome;
