@@ -51,8 +51,8 @@ function AddResource() {
 function AddResourceButton() {
   const { pending } = useFormStatus();
   return (
-    <div className='pt-2' aria-disabled={pending}>
-      <StyledButton label='Add' />
+    <div className='pt-3' aria-disabled={pending}>
+      <StyledButton label='Add Resource' />
     </div>
   );
 }

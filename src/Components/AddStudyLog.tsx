@@ -23,8 +23,8 @@ function AddStudyLog() {
             <input type='text' id='resource' />
           </div>
         </form>
-        <div className='pt-2'>
-          <StyledButton label='Add' />
+        <div className='pt-3'>
+          <StyledButton label='Add Study Log' />
         </div>
       </>
     </Window>

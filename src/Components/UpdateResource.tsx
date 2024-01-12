@@ -49,8 +49,8 @@ function UpdateResource(resource: Resource) {
 function UpdateResourceButton() {
   const { pending } = useFormStatus();
   return (
-    <div className='pt-2' aria-disabled={pending}>
-      <StyledButton label='Update' />
+    <div className='pt-3' aria-disabled={pending}>
+      <StyledButton label='Update Resource' />
     </div>
   );
 }
