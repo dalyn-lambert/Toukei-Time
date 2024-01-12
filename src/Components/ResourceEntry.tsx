@@ -4,14 +4,9 @@ import Window from './Window';
 
 function ResourceEntry(resource: Resource) {
   return (
-    <Link href={`/view-resources/${resource.id}`}>
-      <Window English={resource.category} Japanese={resource.category}>
-        <div className='flec flex-col gap-2'>
-          {resource.name}
-          <div className='flex flex-row justify-between'>
-            <span>Delete</span> <span>Edit</span>
-          </div>
-        </div>
+    <Link href={`/view-resources/${resource.id}`} key={resource.id}>
+      <Window English={resource.category} Japanese={resource.category} category={resource.category}>
+        {resource.name}
       </Window>
     </Link>
   );
