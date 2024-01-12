@@ -1,4 +1,5 @@
 import UpdateResource from '@/Components/UpdateResource';
+import Window from '@/Components/Window';
 import { getResourceFromId } from '@/lib/data';
 import { redirect } from 'next/navigation';
 
@@ -14,9 +15,11 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
     redirect(`/view-resources`);
   }
   return (
-    <>
+    <div className='flex flex-col gap-4'>
       <UpdateResource {...data} />
-      <div>Some graph or something</div>
-    </>
+      <Window English='some graph' Japanese='some graph'>
+        Some graph or something
+      </Window>
+    </div>
   );
 }

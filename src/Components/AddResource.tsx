@@ -15,7 +15,7 @@ function AddResource() {
         <form action={createResource}>
           <div className='flex flex-col gap-2'>
             <label htmlFor='name'>Name:</label>
-            <input type='text' name='name' id='name' required={true} />
+            <input type='text' name='name' id='name' required={true} className='pl-1' />
 
             <label htmlFor='category'>Category:</label>
             <select name='category' id='category' required={true}>
@@ -36,10 +36,10 @@ function AddResource() {
             </select>
 
             <label htmlFor='link'>Link:</label>
-            <input type='text' name='link' id='link' required={false} />
+            <input type='text' name='link' id='link' required={false} className='pl-1' />
 
             <label htmlFor='notes'>Notes:</label>
-            <input type='text' name='notes' id='notes' required={false} />
+            <input type='text' name='notes' id='notes' required={false} className='pl-1' />
           </div>
           <AddResourceButton />
         </form>
@@ -51,8 +51,8 @@ function AddResource() {
 function AddResourceButton() {
   const { pending } = useFormStatus();
   return (
-    <div className='pt-2' aria-disabled={pending}>
-      <StyledButton label='Add' />
+    <div className='pt-3' aria-disabled={pending}>
+      <StyledButton label='Add Resource' />
     </div>
   );
 }
