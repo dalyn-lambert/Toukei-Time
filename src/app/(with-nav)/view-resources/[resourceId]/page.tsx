@@ -1,3 +1,4 @@
+import StyledButton from '@/Components/StyledButton';
 import UpdateResource from '@/Components/UpdateResource';
 import Window from '@/Components/Window';
 import { getResourceFromId } from '@/lib/data';
@@ -20,6 +21,7 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
       <Window English='some graph' Japanese='some graph'>
         Some graph or something
       </Window>
+      <StyledButton label='Delete Resource' type='Danger' />
     </div>
   );
 }
