@@ -75,7 +75,6 @@ export async function createResource(formData: FormData) {
 const UpdateResource = ResourceFormSchema.omit({ id: true, user: true });
 
 export async function updateResource(id: number, formData: FormData) {
-  console.log(formData);
   const { name, category, status, link, notes } = UpdateResource.parse({
     name: formData.get('name'),
     category: formData.get('category'),
@@ -92,4 +91,13 @@ export async function updateResource(id: number, formData: FormData) {
   });
 
   redirect(`/view-resources/${updateResource.id}`);
+}
+
+// Delete an existing resource
+export async function deleteResource(id: number) {
+  await prisma.resource.delete({
+    where: { id },
+  });
+
+  redirect(`/view-resources/`);
 }
