@@ -1,8 +1,6 @@
 'use client';
 
-import StyledButton from '@/Components/StyledButton';
 import Window from '@/Components/Window';
-import Link from 'next/link';
 import { useEffect } from 'react';
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -13,20 +11,9 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 
   return (
     <main>
-      <Window English='Something went wrong!' Japanese='Something went wrong!'>
-        <h2 className='text-center'>Something went wrong!</h2>
-        <ResetButton />
+      <Window English='Error!' Japanese='エラー'>
+        <h2 className='text-center'>{error.toString()}</h2>
       </Window>
     </main>
-  );
-}
-
-function ResetButton() {
-  return (
-    <div className='pt-3'>
-      <Link href='/home'>
-        <StyledButton label='Go Home' />
-      </Link>
-    </div>
   );
 }
