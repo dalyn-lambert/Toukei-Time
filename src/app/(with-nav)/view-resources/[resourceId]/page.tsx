@@ -2,7 +2,7 @@ import { DeleteResource } from '@/Components/DeleteResource';
 import UpdateResource from '@/Components/UpdateResource';
 import Window from '@/Components/Window';
 import { getResourceFromId } from '@/lib/data';
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 const getData = async (id: number) => {
   const data = await getResourceFromId(id);
@@ -13,7 +13,7 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   const id = Number(params.resourceId);
   const data = await getData(id);
   if (!data) {
-    redirect(`/view-resources`);
+    notFound();
   }
   return (
     <div className='flex flex-col gap-4'>

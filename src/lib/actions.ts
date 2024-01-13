@@ -56,18 +56,23 @@ export async function createResource(formData: FormData) {
     notes: formData.get('notes'),
   });
 
-  const newResource = await prisma.resource.create({
-    data: {
-      name,
-      category,
-      status,
-      link,
-      notes,
-      user: { connect: { id: user.id } },
-    },
-  });
-
-  redirect(`/view-resources/${newResource.id}`);
+  try {
+    const newResource = await prisma.resource.create({
+      data: {
+        name,
+        category,
+        status,
+        link,
+        notes,
+        user: { connect: { id: user.id } },
+      },
+    });
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Create Resource',
+    };
+  }
+  redirect(`/view-resources/`);
 }
 
 // Update an existing resource
@@ -83,21 +88,33 @@ export async function updateResource(id: number, formData: FormData) {
     notes: formData.get('notes'),
   });
 
-  const updateResource = await prisma.resource.update({
-    where: {
-      id,
-    },
-    data: { name, category, status, link, notes },
-  });
-
-  redirect(`/view-resources/${updateResource.id}`);
+  try {
+    const updateResource = await prisma.resource.update({
+      where: {
+        id,
+      },
+      data: { name, category, status, link, notes },
+    });
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed To Update Resource',
+    };
+  }
+  redirect(`/view-resources/${id}`);
 }
 
-// Delete an existing resource
+// Delete an existing resource + related study logs
 export async function deleteResource(id: number) {
-  await prisma.resource.delete({
-    where: { id },
-  });
+  try {
+    await prisma.studyLog.deleteMany({
+      where: { resourceId: id },
+    });
+    await prisma.resource.delete({
+      where: { id },
+    });
+  } catch (error) {
+    return { message: 'Database Error: Failed to Delete Resource' };
+  }
 
   redirect(`/view-resources/`);
 }

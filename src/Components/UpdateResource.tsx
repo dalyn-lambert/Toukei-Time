@@ -10,7 +10,7 @@ function UpdateResource(resource: Resource) {
   const statuses = Object.keys(Status);
   const updateResourceWithId = updateResource.bind(null, resource.id);
   return (
-    <Window English='Add a resource' Japanese='Resource'>
+    <Window English='Add a resource' Japanese='Resource' category={resource.category}>
       <>
         <form action={updateResourceWithId}>
           <div className='flex flex-col gap-2'>
