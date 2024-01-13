@@ -105,6 +105,7 @@ export async function updateResource(id: number, formData: FormData) {
 
 // Delete an existing resource
 export async function deleteResource(id: number) {
+  throw new Error('Failed to Delete Resource');
   try {
     await prisma.resource.delete({
       where: { id },
