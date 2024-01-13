@@ -103,9 +103,12 @@ export async function updateResource(id: number, formData: FormData) {
   redirect(`/view-resources/${id}`);
 }
 
-// Delete an existing resource
+// Delete an existing resource + related study logs
 export async function deleteResource(id: number) {
   try {
+    await prisma.studyLog.deleteMany({
+      where: { resourceId: id },
+    });
     await prisma.resource.delete({
       where: { id },
     });
