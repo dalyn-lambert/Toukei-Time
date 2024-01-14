@@ -12,7 +12,7 @@ export async function getUser(email: string): Promise<User | null> {
 }
 
 export const getAllStudyLogs = async () => {
-  const logs = await prisma.studyLog.findMany();
+  const logs = await prisma.studyLog.findMany({ orderBy: { date: 'desc' } });
   return logs;
 };
 

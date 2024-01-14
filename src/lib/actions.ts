@@ -124,16 +124,15 @@ export async function deleteResource(id: number) {
 const StudyLogFormSchema = z.object({
   id: z.string(),
   title: z.string(),
-  time: z.number(),
+  time: z.coerce.number(),
   category: z.enum(['Listening', 'Reading', 'Watching', 'Speaking', 'Playing']),
-  date: z.date(),
+  date: z.coerce.date(),
   resource: z.string(),
 });
 
 const CreateStudyLog = StudyLogFormSchema.omit({ id: true, user: true });
 
 export async function createStudyLog(formData: FormData) {
-  console.log('creating stuyg log')
   const session = await auth();
   if (!session?.user?.email) {
     return null;

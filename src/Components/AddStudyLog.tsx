@@ -1,25 +1,27 @@
 'use client';
 
 import { createStudyLog } from '@/lib/actions';
-import { Category } from '@prisma/client';
+import { Category, Resource } from '@prisma/client';
 import { format } from 'date-fns';
 import { useFormStatus } from 'react-dom';
-import ResourceSelect from './ResourceSelect';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
-function AddStudyLog() {
+function AddStudyLog(resources: Resource[]) {
   const categories = Object.keys(Category);
   const today = format(Date(), 'yyyy-MM-dd');
+  // would like to revist this sometime because it seems weird
+  const allResources: Resource[] = Object.values(resources);
+
   return (
     <Window English='Add a study log' Japanese='勉強を？？'>
       <form action={createStudyLog}>
         <div className='flex flex-col gap-2'>
-          <label htmlFor='details'>Details:</label>
-          <input type='text' id='details' required={true} className='pl-1' />
+          <label htmlFor='title'>Title:</label>
+          <input name='title' type='text' id='title' required={true} className='pl-1' />
 
           <label htmlFor='time'>Time (minutes):</label>
-          <input type='number' id='time' required={true} className='pl-1' />
+          <input name='time' type='number' id='time' required={true} className='pl-1' />
 
           <label htmlFor='category'>Category:</label>
           <select name='category' id='category' required={true}>
@@ -30,11 +32,18 @@ function AddStudyLog() {
             ))}
           </select>
           <label htmlFor='date'>Date:</label>
-          <input type='date' id='date' defaultValue={today} required={true} className='pl-1' />
-          <ResourceSelect />
+          <input name='date' type='date' id='date' defaultValue={today} required={true} className='pl-1' />
+          <label htmlFor='resource'>Resource:</label>
+          <select name='resource' id='resource' required={true} className='pl-1'>
+            {allResources.map((resource) => (
+              <option key={resource.id} value={resource.name}>
+                {resource.name}
+              </option>
+            ))}
+          </select>
         </div>
+        <AddStudyLogButton />
       </form>
-      <AddStudyLogButton />
     </Window>
   );
 }
