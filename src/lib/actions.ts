@@ -4,7 +4,7 @@ import { auth, signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { getUser } from './data';
+import { getResourceFromTitle, getUser } from './data';
 import prisma from './prisma';
 
 // authenticate user
@@ -117,4 +117,60 @@ export async function deleteResource(id: number) {
   }
 
   redirect(`/view-resources/`);
+}
+
+// Create a new study log
+
+const StudyLogFormSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  time: z.number(),
+  category: z.enum(['Listening', 'Reading', 'Watching', 'Speaking', 'Playing']),
+  date: z.date(),
+  resource: z.string(),
+});
+
+const CreateStudyLog = StudyLogFormSchema.omit({ id: true, user: true });
+
+export async function createStudyLog(formData: FormData) {
+  console.log('creating stuyg log')
+  const session = await auth();
+  if (!session?.user?.email) {
+    return null;
+  }
+  const user = await getUser(session.user.email);
+  if (!user) {
+    return null;
+  }
+
+  const { title, time, category, date, resource } = CreateStudyLog.parse({
+    title: formData.get('title'),
+    time: formData.get('time'),
+    category: formData.get('category'),
+    date: formData.get('date'),
+    resource: formData.get('resource'),
+  });
+
+  const resourceEntry = await getResourceFromTitle(resource);
+  if (!resourceEntry) {
+    return null;
+  }
+
+  try {
+    const newStudyLog = await prisma.studyLog.create({
+      data: {
+        title,
+        time,
+        category,
+        date,
+        user: { connect: { id: user.id } },
+        resource: { connect: { id: resourceEntry.id } },
+      },
+    });
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Create Study Log',
+    };
+  }
+  redirect(`/view-logs`);
 }

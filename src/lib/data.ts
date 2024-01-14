@@ -30,6 +30,15 @@ export const getResourceFromId = async (id: number) => {
   return resource;
 };
 
+export const getResourceFromTitle = async (name: string) => {
+  const resource = await prisma.resource.findFirst({
+    where: {
+      name,
+    },
+  });
+  return resource;
+};
+
 export const getStudyLogFromId = async (id: number) => {
   const studyLog = await prisma.studyLog.findFirst({
     where: {
