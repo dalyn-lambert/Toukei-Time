@@ -173,3 +173,49 @@ export async function createStudyLog(formData: FormData) {
   }
   redirect(`/view-logs`);
 }
+
+// Update an existing resource
+
+const UpdateStudyLog = StudyLogFormSchema.omit({ id: true, user: true });
+
+export async function updateStudyLog(id: number, formData: FormData) {
+  const { title, time, category, date, resource } = UpdateStudyLog.parse({
+    title: formData.get('title'),
+    time: formData.get('time'),
+    category: formData.get('category'),
+    date: formData.get('date'),
+    resource: formData.get('resource'),
+  });
+
+  const resourceEntry = await getResourceFromTitle(resource);
+  if (!resourceEntry) {
+    return null;
+  }
+
+  try {
+    const updateStudyLog = await prisma.studyLog.update({
+      where: {
+        id,
+      },
+      data: { title, time, category, date, resource: { connect: { id: resourceEntry.id } } },
+    });
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed To Update StudyLog',
+    };
+  }
+  redirect(`/view-logs/${id}`);
+}
+
+// Delete an existing study log
+export async function deleteStudyLog(id: number) {
+  try {
+    await prisma.studyLog.delete({
+      where: { id },
+    });
+  } catch (error) {
+    return { message: 'Database Error: Failed to Delete Study Log' };
+  }
+
+  redirect(`/view-logs/`);
+}

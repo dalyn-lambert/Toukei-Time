@@ -1,3 +1,5 @@
+import { DeleteStudyLog } from '@/Components/DeleteStudyLog';
+import UpdateStudyLog from '@/Components/UpdateStudyLog';
 import Window from '@/Components/Window';
 import { getStudyLogFromId } from '@/lib/data';
 import { notFound } from 'next/navigation';
@@ -15,11 +17,11 @@ export default async function StudyLogPage({ params }: { params: { studyLogId: s
   }
   return (
     <div className='flex flex-col gap-4'>
-      {/* update study log */}
+      <UpdateStudyLog {...data} />
       <Window English='some graph' Japanese='some graph'>
         Some graph or something
       </Window>
-      {/* delete study log */}
+      <DeleteStudyLog id={data.id} />
     </div>
   );
 }
