@@ -8,7 +8,7 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      // Revisit this sometime
+      // TODO: REVISIT
       const isOnHome = nextUrl.pathname.startsWith('/home');
       const isViewingLogs = nextUrl.pathname.startsWith('/view-logs');
       const isViewingResources = nextUrl.pathname.startsWith('/view-resources');

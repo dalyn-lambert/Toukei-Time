@@ -10,7 +10,7 @@ export default async function LogStudiesPage() {
 
   return (
     <div className='flex flex-col gap-4'>
-      <AddStudyLog {...allResources} />
+      <AddStudyLog resources={allResources} />
     </div>
   );
 }

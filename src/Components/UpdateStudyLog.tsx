@@ -1,20 +1,23 @@
 'use client';
 
-import { createStudyLog } from '@/lib/actions';
-import { Category, StudyLog } from '@prisma/client';
+import { updateStudyLog } from '@/lib/actions';
+import { Category, Resource, StudyLog } from '@prisma/client';
 import { format } from 'date-fns';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
-function UpdateStudyLog(log: StudyLog) {
+function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource[] }) {
   const categories = Object.keys(Category);
-  // would like to revist this sometime because it seems weird
-  // const allResources: Resource[] = Object.values(resources);
+  const date = format(log.date, 'yyyy-MM-dd');
+  const filteredResource = resources.filter((resource) => resource.id === log.resourceId);
+  const currentResource = filteredResource[0].name;
+
+  const updateStudyLogWithId = updateStudyLog.bind(null, log.id);
 
   return (
     <Window English='Add a study log' Japanese='勉強を？？'>
-      <form action={createStudyLog}>
+      <form action={updateStudyLogWithId}>
         <div className='flex flex-col gap-2'>
           <label htmlFor='title'>Title:</label>
           <input name='title' type='text' id='title' required={true} defaultValue={log.title} className='pl-1' />
@@ -31,22 +34,15 @@ function UpdateStudyLog(log: StudyLog) {
             ))}
           </select>
           <label htmlFor='date'>Date:</label>
-          <input
-            name='date'
-            type='date'
-            id='date'
-            required={true}
-            defaultValue={log.date.toString()}
-            className='pl-1'
-          />
+          <input name='date' type='date' id='date' required={true} defaultValue={date} className='pl-1' />
           <label htmlFor='resource'>Resource:</label>
-          {/* <select name='resource' id='resource' required={true} className='pl-1'>
-            {allResources.map((resource) => (
+          <select name='resource' id='resource' required={true} defaultValue={currentResource} className='pl-1'>
+            {resources.map((resource) => (
               <option key={resource.id} value={resource.name}>
                 {resource.name}
               </option>
             ))}
-          </select> */}
+          </select>
         </div>
         <UpdateStudyLogButton />
       </form>

@@ -171,6 +171,7 @@ export async function createStudyLog(formData: FormData) {
       message: 'Database Error: Failed to Create Study Log',
     };
   }
+
   redirect(`/view-logs`);
 }
 

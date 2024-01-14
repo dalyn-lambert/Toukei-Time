@@ -7,11 +7,9 @@ import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
-function AddStudyLog(resources: Resource[]) {
+function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
   const today = format(Date(), 'yyyy-MM-dd');
-  // would like to revist this sometime because it seems weird
-  const allResources: Resource[] = Object.values(resources);
 
   return (
     <Window English='Add a study log' Japanese='勉強を？？'>
@@ -35,7 +33,7 @@ function AddStudyLog(resources: Resource[]) {
           <input name='date' type='date' id='date' defaultValue={today} required={true} className='pl-1' />
           <label htmlFor='resource'>Resource:</label>
           <select name='resource' id='resource' required={true} className='pl-1'>
-            {allResources.map((resource) => (
+            {resources.map((resource) => (
               <option key={resource.id} value={resource.name}>
                 {resource.name}
               </option>
