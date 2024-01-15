@@ -12,7 +12,7 @@ export async function getUser(email: string): Promise<User | null> {
 }
 
 export const getAllStudyLogs = async () => {
-  const logs = await prisma.studyLog.findMany();
+  const logs = await prisma.studyLog.findMany({ orderBy: { date: 'desc' } });
   return logs;
 };
 
@@ -24,8 +24,26 @@ export const getAllResources = async () => {
 export const getResourceFromId = async (id: number) => {
   const resource = await prisma.resource.findFirst({
     where: {
-      id: id,
+      id,
     },
   });
   return resource;
+};
+
+export const getResourceFromTitle = async (name: string) => {
+  const resource = await prisma.resource.findFirst({
+    where: {
+      name,
+    },
+  });
+  return resource;
+};
+
+export const getStudyLogFromId = async (id: number) => {
+  const studyLog = await prisma.studyLog.findFirst({
+    where: {
+      id,
+    },
+  });
+  return studyLog;
 };

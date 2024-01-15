@@ -1,6 +1,5 @@
 import { DeleteResource } from '@/Components/DeleteResource';
 import UpdateResource from '@/Components/UpdateResource';
-import Window from '@/Components/Window';
 import { getResourceFromId } from '@/lib/data';
 import { notFound } from 'next/navigation';
 
@@ -18,9 +17,6 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   return (
     <div className='flex flex-col gap-4'>
       <UpdateResource {...data} />
-      <Window English='some graph' Japanese='some graph'>
-        Some graph or something
-      </Window>
       <DeleteResource id={data.id} />
     </div>
   );

@@ -4,7 +4,7 @@ import { auth, signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { getUser } from './data';
+import { getResourceFromTitle, getUser } from './data';
 import prisma from './prisma';
 
 // authenticate user
@@ -117,4 +117,106 @@ export async function deleteResource(id: number) {
   }
 
   redirect(`/view-resources/`);
+}
+
+// Create a new study log
+
+const StudyLogFormSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  time: z.coerce.number(),
+  category: z.enum(['Listening', 'Reading', 'Watching', 'Speaking', 'Playing']),
+  date: z.coerce.date(),
+  resource: z.string(),
+});
+
+const CreateStudyLog = StudyLogFormSchema.omit({ id: true, user: true });
+
+export async function createStudyLog(formData: FormData) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return null;
+  }
+  const user = await getUser(session.user.email);
+  if (!user) {
+    return null;
+  }
+
+  const { title, time, category, date, resource } = CreateStudyLog.parse({
+    title: formData.get('title'),
+    time: formData.get('time'),
+    category: formData.get('category'),
+    date: formData.get('date'),
+    resource: formData.get('resource'),
+  });
+
+  const resourceEntry = await getResourceFromTitle(resource);
+  if (!resourceEntry) {
+    return null;
+  }
+
+  try {
+    const newStudyLog = await prisma.studyLog.create({
+      data: {
+        title,
+        time,
+        category,
+        date,
+        user: { connect: { id: user.id } },
+        resource: { connect: { id: resourceEntry.id } },
+      },
+    });
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Create Study Log',
+    };
+  }
+
+  redirect(`/view-logs`);
+}
+
+// Update an existing resource
+
+const UpdateStudyLog = StudyLogFormSchema.omit({ id: true, user: true });
+
+export async function updateStudyLog(id: number, formData: FormData) {
+  const { title, time, category, date, resource } = UpdateStudyLog.parse({
+    title: formData.get('title'),
+    time: formData.get('time'),
+    category: formData.get('category'),
+    date: formData.get('date'),
+    resource: formData.get('resource'),
+  });
+
+  const resourceEntry = await getResourceFromTitle(resource);
+  if (!resourceEntry) {
+    return null;
+  }
+
+  try {
+    const updateStudyLog = await prisma.studyLog.update({
+      where: {
+        id,
+      },
+      data: { title, time, category, date, resource: { connect: { id: resourceEntry.id } } },
+    });
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed To Update StudyLog',
+    };
+  }
+  redirect(`/view-logs/${id}`);
+}
+
+// Delete an existing study log
+export async function deleteStudyLog(id: number) {
+  try {
+    await prisma.studyLog.delete({
+      where: { id },
+    });
+  } catch (error) {
+    return { message: 'Database Error: Failed to Delete Study Log' };
+  }
+
+  redirect(`/view-logs/`);
 }

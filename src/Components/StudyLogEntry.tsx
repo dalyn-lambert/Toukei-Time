@@ -1,16 +1,14 @@
 import { StudyLog } from '@prisma/client';
+import Link from 'next/link';
 import Window from './Window';
 
 function StudyLogEntry(log: StudyLog) {
   return (
-    <Window English={log.category} Japanese={log.category}>
-      <div className='flec flex-col gap-2'>
+    <Link href={`/view-logs/${log.id}`} key={log.id}>
+      <Window English={log.category} Japanese={log.category} category={log.category}>
         {log.title}
-        <div className='flex flex-row justify-between'>
-          <span>Delete</span> <span>Edit</span>
-        </div>
-      </div>
-    </Window>
+      </Window>
+    </Link>
   );
 }
 
