@@ -1,6 +1,7 @@
 'use client';
 
 import { createStudyLog } from '@/lib/actions';
+import { UTCDate } from '@date-fns/utc';
 import { Category, Resource } from '@prisma/client';
 import { format } from 'date-fns';
 import { useFormStatus } from 'react-dom';
@@ -9,7 +10,8 @@ import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
-  const today = format(Date(), 'yyyy-MM-dd');
+  const utcToday = new UTCDate();
+  const formattedToday = format(utcToday, 'yyyy-MM-dd');
 
   return (
     <Window English='Add a study log' Japanese='勉強を？？'>
@@ -30,7 +32,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
             ))}
           </select>
           <label htmlFor='date'>Date:</label>
-          <input name='date' type='date' id='date' defaultValue={today} required={true} className='pl-1' />
+          <input name='date' type='date' id='date' defaultValue={formattedToday} required={true} className='pl-1' />
           <label htmlFor='resource'>Resource:</label>
           <select name='resource' id='resource' required={true} className='pl-1'>
             {resources.map((resource) => (
