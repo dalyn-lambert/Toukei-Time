@@ -1,7 +1,8 @@
 'use client';
 
-import { updateStudyLog } from '@/lib/actions';
 import { UTCDate } from '@date-fns/utc';
+
+import { updateStudyLog } from '@/lib/actions';
 import { Category, Resource, StudyLog } from '@prisma/client';
 import { format } from 'date-fns';
 import { useFormStatus } from 'react-dom';

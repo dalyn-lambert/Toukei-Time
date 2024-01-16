@@ -1,4 +1,5 @@
 import { User } from '@prisma/client';
+import { format, formatISO } from 'date-fns';
 import prisma from './prisma';
 
 export async function getUser(email: string): Promise<User | null> {
@@ -14,6 +15,22 @@ export async function getUser(email: string): Promise<User | null> {
 export const getAllStudyLogs = async () => {
   const logs = await prisma.studyLog.findMany({ orderBy: { date: 'desc' } });
   return logs;
+};
+
+export const getTodaysStudies = async () => {
+  const today = formatISO(new Date());
+  const formattedToday = format(today, 'yyyy-MM-dd');
+  const logs = await prisma.studyLog.findMany({ where: { date: `${formattedToday}T00:00:00.000Z` } });
+  return logs;
+};
+
+export const getStudyLogFromId = async (id: number) => {
+  const studyLog = await prisma.studyLog.findFirst({
+    where: {
+      id,
+    },
+  });
+  return studyLog;
 };
 
 export const getAllResources = async () => {
@@ -37,13 +54,4 @@ export const getResourceFromTitle = async (name: string) => {
     },
   });
   return resource;
-};
-
-export const getStudyLogFromId = async (id: number) => {
-  const studyLog = await prisma.studyLog.findFirst({
-    where: {
-      id,
-    },
-  });
-  return studyLog;
 };

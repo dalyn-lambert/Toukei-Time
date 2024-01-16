@@ -1,4 +1,4 @@
-import { getAllStudyLogs } from '@/lib/data';
+import { getTodaysStudies } from '@/lib/data';
 import { getIconForCategory } from '@/lib/utils';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -6,7 +6,7 @@ import Notepad from './Notepad';
 import Window from './Window';
 
 const getData = async () => {
-  const data = await getAllStudyLogs();
+  const data = await getTodaysStudies();
   return data;
 };
 
