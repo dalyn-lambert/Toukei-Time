@@ -1,4 +1,6 @@
-import { Category } from '@prisma/client';
+import { Category, StudyLog } from '@prisma/client';
+import { format, parseISO } from 'date-fns';
+import { ja } from 'date-fns/locale';
 import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from './icons';
 import { StudyStat } from './types';
 
@@ -56,4 +58,18 @@ export function toHoursAndMinutes(totalMinutes: number) {
     } else return `${hours}時間`;
   }
   return `${minutes}分`;
+}
+
+export function getTimeForCategory(category: Category, logs: StudyLog[]) {
+  if (!logs) {
+    return 0;
+  } else {
+    const filteredArray = logs.filter((log) => log.category === category);
+    const time = sumArray(filteredArray.map((activity) => activity.time));
+    return time;
+  }
+}
+
+export function formatJapaneseDate(date: string) {
+  return format(parseISO(date), 'MMM do', { locale: ja });
 }

@@ -6,4 +6,11 @@ export type WindowTitleProps = { English: string; Japanese: string; category?: C
 export type StyledButtonProps = { label: string; type?: 'Standard' | 'Danger' };
 export type NotepadProps = { children?: ReactNode };
 export type StudyStat = { category: Category; time: number };
-export type DonutChartProps = { width: number; height: number; donutThickness: number; data: StudyStat[] };
+export interface StudyDay {
+  date: string;
+  Speaking: number;
+  Listening: number;
+  Reading: number;
+  Playing: number;
+  Watching: number;
+}

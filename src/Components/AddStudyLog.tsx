@@ -1,17 +1,16 @@
 'use client';
 
 import { createStudyLog } from '@/lib/actions';
-import { UTCDate } from '@date-fns/utc';
 import { Category, Resource } from '@prisma/client';
-import { format } from 'date-fns';
+import { format, formatISO } from 'date-fns';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
-  const utcToday = new UTCDate();
-  const formattedToday = format(utcToday, 'yyyy-MM-dd');
+  const today = formatISO(new Date());
+  const formattedToday = format(today, 'yyyy-MM-dd');
 
   return (
     <Window English='Add a study log' Japanese='勉強を？？'>

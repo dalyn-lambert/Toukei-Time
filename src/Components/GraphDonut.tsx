@@ -1,7 +1,9 @@
-import { DonutChartProps, StudyStat } from '@/lib/types';
+import { StudyStat } from '@/lib/types';
 import { buildTimeArray, getColorForChart, sumArray, toHoursAndMinutes } from '@/lib/utils';
 import { Group } from '@visx/group';
 import { Pie } from '@visx/shape';
+
+type DonutChartProps = { width: number; height: number; donutThickness: number; data: StudyStat[] };
 
 export default function DonutChart({ width, height, data, donutThickness }: DonutChartProps) {
   const getTime = (d: StudyStat) => d.time;
