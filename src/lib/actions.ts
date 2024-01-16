@@ -1,6 +1,6 @@
 'use server';
 
-import { auth, signIn } from '@/auth';
+import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -39,13 +39,9 @@ const ResourceFormSchema = z.object({
 const CreateResource = ResourceFormSchema.omit({ id: true, user: true });
 
 export async function createResource(formData: FormData) {
-  const session = await auth();
-  if (!session?.user?.email) {
-    return null;
-  }
-  const user = await getUser(session.user.email);
+  const user = await getUser();
   if (!user) {
-    return null;
+    throw new Error('Could not create resource, user not found');
   }
 
   const { name, category, status, link, notes } = CreateResource.parse({
@@ -133,13 +129,9 @@ const StudyLogFormSchema = z.object({
 const CreateStudyLog = StudyLogFormSchema.omit({ id: true, user: true });
 
 export async function createStudyLog(formData: FormData) {
-  const session = await auth();
-  if (!session?.user?.email) {
-    return null;
-  }
-  const user = await getUser(session.user.email);
+  const user = await getUser();
   if (!user) {
-    return null;
+    throw new Error('Could not create study log, user not found');
   }
 
   const { title, time, category, date, resource } = CreateStudyLog.parse({
@@ -172,7 +164,7 @@ export async function createStudyLog(formData: FormData) {
     };
   }
 
-  redirect(`/view-logs`);
+  redirect(`/home`);
 }
 
 // Update an existing resource
