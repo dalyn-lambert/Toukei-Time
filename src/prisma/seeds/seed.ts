@@ -7,7 +7,7 @@ export const studyLogs = [
     date: new Date(11 / 9 / 2023),
     time: 29,
     resourceId: 1,
-    userId: 2500,
+    userId: 1,
   },
   {
     title: '[Japanese conversation] Talk to the staff at a cafe. Chiba Vlog',
@@ -15,7 +15,7 @@ export const studyLogs = [
     date: new Date(11 / 10 / 2023),
     time: 13,
     resourceId: 2,
-    userId: 2500,
+    userId: 1,
   },
   {
     title: '第０話, read 10 pages',
@@ -23,7 +23,7 @@ export const studyLogs = [
     date: new Date(11 / 6 / 2023),
     time: 10,
     resourceId: 3,
-    userId: 2500,
+    userId: 1,
   },
   {
     title: 'Episode 40',
@@ -31,7 +31,7 @@ export const studyLogs = [
     date: new Date(11 / 9 / 2023),
     time: 20,
     resourceId: 4,
-    userId: 2500,
+    userId: 1,
   },
   {
     title: 'Lesson with Aoi',
@@ -39,7 +39,7 @@ export const studyLogs = [
     date: new Date(11 / 9 / 2023),
     time: 30,
     resourceId: 5,
-    userId: 2500,
+    userId: 1,
   },
 ];
 
@@ -51,7 +51,7 @@ export const resources = [
     status: Status.Current,
     link: '',
     notes: 'Queer content for the win!',
-    userId: 2500,
+    userId: 1,
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ export const resources = [
     status: Status.Current,
     link: 'https://www.youtube.com/@Akane-JapaneseClass',
     notes: 'Excellent listening practice.',
-    userId: 2500,
+    userId: 1,
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ export const resources = [
     status: Status.Current,
     link: 'https://myanimelist.net/manga/104491/Bokura_no_Shokutaku',
     notes: 'No furigana.',
-    userId: 2500,
+    userId: 1,
   },
   {
     id: 4,
@@ -78,7 +78,7 @@ export const resources = [
     status: Status.Current,
     link: 'https://myanimelist.net/anime/51009/Jujutsu_Kaisen_2nd_Season',
     notes: 'Difficult language, but great show.',
-    userId: 2500,
+    userId: 1,
   },
   {
     id: 5,
@@ -87,6 +87,6 @@ export const resources = [
     status: Status.Current,
     link: 'https://www.italki.com/',
     notes: 'Great website for speaking practice.',
-    userId: 2500,
+    userId: 1,
   },
 ];

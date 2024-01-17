@@ -3,6 +3,8 @@ import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from './icons';
 import { StudyStat } from './types';
+import { auth } from '@/auth';
+import { getUserWithEmail } from './data';
 
 export function getIconForCategory(category: Category) {
   switch (category) {
