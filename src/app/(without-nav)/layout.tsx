@@ -4,7 +4,6 @@ import 'src/app/globals.css';
 export const metadata: Metadata = {
   title: 'Toukei Time',
   description: 'Track your native material studies.',
-  icons: {  },
 };
 
 export default function SignInPageRootLayout({ children }: { children: React.ReactNode }) {

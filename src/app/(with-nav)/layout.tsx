@@ -5,7 +5,6 @@ import 'src/app/globals.css';
 export const metadata: Metadata = {
   title: 'Toukei Time',
   description: 'Track your native material studies.',
-  icons: { icon: 'src/app/favicon.ico' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
