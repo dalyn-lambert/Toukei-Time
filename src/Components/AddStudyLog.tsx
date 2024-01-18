@@ -2,14 +2,14 @@
 
 import { createStudyLog } from '@/lib/actions';
 import { Category, Resource } from '@prisma/client';
-import { format, formatISO } from 'date-fns';
+import { format } from 'date-fns';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
 import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
-  const today = formatISO(new Date());
+  const today = new Date();
   const formattedToday = format(today, 'yyyy-MM-dd');
 
   return (
