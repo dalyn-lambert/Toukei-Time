@@ -8,25 +8,15 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      // TODO: REVISIT
-      const isOnHome = nextUrl.pathname.startsWith('/home');
-      const isViewingLogs = nextUrl.pathname.startsWith('/view-logs');
-      const isViewingResources = nextUrl.pathname.startsWith('/view-resources');
-      const isViewingAResource = nextUrl.pathname.startsWith('/view-resources/:resourceId');
-      const isLoggingStudies = nextUrl.pathname.startsWith('/log-studies');
-      const isAddingResource = nextUrl.pathname.startsWith('/add-resource');
-      if (
-        isOnHome ||
-        isViewingLogs ||
-        isViewingResources ||
-        isLoggingStudies ||
-        isAddingResource ||
-        isViewingAResource
-      ) {
+      const currentPage = nextUrl.pathname;
+      // check if user trying to access a page that requires authentication
+      if (currentPage !== '/') {
         if (isLoggedIn) {
+          // allow an authenticated user to view the page
           return true;
         }
-        return false; // Redirect unauthenticated users to login page
+        // redirect unauthenticated users to login page
+        return false;
       }
       return true;
     },
