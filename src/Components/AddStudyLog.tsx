@@ -3,6 +3,7 @@
 import { createStudyLog } from '@/lib/actions';
 import { Category, Resource } from '@prisma/client';
 import { format } from 'date-fns';
+import { ChangeEvent, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
 import Window from './Window';
@@ -11,6 +12,12 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
   const today = new Date();
   const formattedToday = format(today, 'yyyy-MM-dd');
+  const [selectedCategory, setSelectedCategory] = useState('Listening');
+  const handleCategoryFilter = (e: ChangeEvent<{ value: string }>) => {
+    const newValue = e.target.value;
+    setSelectedCategory(newValue);
+  };
+  const filterdResources = resources.filter((resource) => resource.category === selectedCategory);
 
   return (
     <Window English='Add a study log' Japanese='勉強を？？'>
@@ -23,7 +30,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
           <input name='time' type='number' id='time' required={true} className='pl-1' />
 
           <label htmlFor='category'>Category:</label>
-          <select name='category' id='category' required={true}>
+          <select name='category' id='category' required={true} onChange={handleCategoryFilter}>
             {categories.map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -34,7 +41,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
           <input name='date' type='date' id='date' defaultValue={formattedToday} required={true} className='pl-1' />
           <label htmlFor='resource'>Resource:</label>
           <select name='resource' id='resource' required={true} className='pl-1'>
-            {resources.map((resource) => (
+            {filterdResources.map((resource) => (
               <option key={resource.id} value={resource.name}>
                 {resource.name}
               </option>
