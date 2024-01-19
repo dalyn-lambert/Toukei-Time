@@ -12,7 +12,7 @@ const getData = async () => {
 
 const TodaysStudies = async () => {
   const studyLogs = await getData();
-  const today = new Date();
+  const today = Date();
   const todayJapanese = format(today, 'EE MMM do', { locale: ja });
 
   return (
