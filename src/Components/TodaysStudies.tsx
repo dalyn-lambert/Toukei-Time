@@ -1,6 +1,4 @@
 import { getTodaysStudies } from '@/lib/data';
-import { format } from 'date-fns';
-import { ja } from 'date-fns/locale';
 import Notepad from './Notepad';
 import TodaysStudiesDate from './TodaysStudiesDate';
 import TodaysStudiesItem from './TodaysStudiesItem';
@@ -13,9 +11,6 @@ const getData = async () => {
 
 const TodaysStudies = async () => {
   const studyLogs = await getData();
-  const isoDate = new Date().toISOString();
-  const today = new Date(isoDate).toLocaleString('en-US');
-  const todayJapanese = format(today, 'EE MMM do', { locale: ja });
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>

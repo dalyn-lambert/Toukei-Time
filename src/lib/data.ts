@@ -40,8 +40,7 @@ export const getTodaysStudies = async () => {
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
   }
-  const isoDate = new Date().toISOString();
-  const today = new Date(isoDate).toLocaleString('en-US');
+  const today = new Date();
   const formattedToday = format(today, 'yyyy-MM-dd');
   const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: `${formattedToday}T00:00:00.000Z` } });
   return logs;
