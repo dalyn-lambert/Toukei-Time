@@ -12,8 +12,10 @@ const getData = async () => {
 
 const TodaysStudies = async () => {
   const studyLogs = await getData();
-  const today = Date();
+  const today = new Date();
+  console.log(today);
   const todayJapanese = format(today, 'EE MMM do', { locale: ja });
+  console.log(todayJapanese);
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
