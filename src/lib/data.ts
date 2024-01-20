@@ -1,4 +1,5 @@
 import { auth } from '@/auth';
+import { UTCDate } from '@date-fns/utc';
 import { User } from '@prisma/client';
 import { format } from 'date-fns';
 import prisma from './prisma';
@@ -41,7 +42,8 @@ export const getTodaysStudies = async () => {
     throw new Error("Could not retrieve today's studies, user not found");
   }
   const today = new Date().toLocaleDateString();
-  const formattedToday = format(today, 'yyyy-MM-dd');
+  const utcDate = new UTCDate(today);
+  const formattedToday = format(utcDate, 'yyyy-MM-dd');
   const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: `${formattedToday}T00:00:00.000Z` } });
   return logs;
 };
