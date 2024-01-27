@@ -4,7 +4,7 @@ import Window from './Window';
 
 function ResourceEntry(resource: Resource) {
   return (
-    <Link href={`/view-resources/${resource.id}`} key={resource.id}>
+    <Link href={`/browse/${resource.id}`} key={resource.id}>
       <Window English={resource.category} Japanese={resource.category} category={resource.category}>
         {resource.name}
       </Window>

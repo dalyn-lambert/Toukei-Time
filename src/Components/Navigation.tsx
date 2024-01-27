@@ -1,14 +1,12 @@
-import { addResourceIcon, homeIcon, logStudiesIcon, viewResourcesIcon, viewStudiesIcon } from '@/lib/icons';
+import { homeIcon, logStudiesIcon, viewStudiesIcon } from '@/lib/icons';
 import NavTile from './NavTile';
 
 export type LinkData = { label: string; route: string; icon: JSX.Element };
 
 const links: LinkData[] = [
   { label: 'Home', route: '/home', icon: homeIcon },
-  { label: 'Add Media', route: '/add-resource', icon: addResourceIcon },
-  { label: 'Log Studies', route: '/log-studies', icon: logStudiesIcon },
-  { label: 'View Logs', route: '/view-logs', icon: viewStudiesIcon },
-  { label: 'View Media', route: '/view-resources', icon: viewResourcesIcon },
+  { label: 'Add', route: '/add', icon: logStudiesIcon },
+  { label: 'Browse', route: '/browse', icon: viewStudiesIcon },
 ];
 
 const Navigation = async () => {

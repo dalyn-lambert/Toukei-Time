@@ -68,7 +68,7 @@ export async function createResource(formData: FormData) {
       message: 'Database Error: Failed to Create Resource',
     };
   }
-  redirect(`/view-resources/`);
+  redirect(`/browse/`);
 }
 
 // Update an existing resource
@@ -96,7 +96,7 @@ export async function updateResource(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update Resource',
     };
   }
-  redirect(`/view-resources/${id}`);
+  redirect(`/browse/${id}`);
 }
 
 // Delete an existing resource + related study logs
@@ -112,7 +112,7 @@ export async function deleteResource(id: number) {
     return { message: 'Database Error: Failed to Delete Resource' };
   }
 
-  redirect(`/view-resources/`);
+  redirect(`/browse/`);
 }
 
 // Create a new study log
@@ -197,7 +197,7 @@ export async function updateStudyLog(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update StudyLog',
     };
   }
-  redirect(`/view-logs/${id}`);
+  redirect(`/browse/${id}`);
 }
 
 // Delete an existing study log
@@ -210,5 +210,5 @@ export async function deleteStudyLog(id: number) {
     return { message: 'Database Error: Failed to Delete Study Log' };
   }
 
-  redirect(`/view-logs/`);
+  redirect(`/browse/`);
 }

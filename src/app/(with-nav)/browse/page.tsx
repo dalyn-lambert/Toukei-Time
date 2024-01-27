@@ -6,7 +6,7 @@ const getData = async () => {
   return data;
 };
 
-export default async function ViewAllResourcesPage() {
+export default async function BrowsePage() {
   const resources = await getData();
 
   return (
