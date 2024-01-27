@@ -10,7 +10,7 @@ function StudyLogEntry(log: StudyLog) {
   const utcDate = new UTCDate(log.date);
   const date = format(utcDate, 'MM-dd-yyyy');
   return (
-    <Link href={`/view-logs/${log.id}`} key={log.id}>
+    <Link href={`/${log.id}`} key={log.id}>
       <Window English={log.category} Japanese={log.category} category={log.category}>
         <div className='flex flex-row justify-between'>
           <span>{log.title}</span>
