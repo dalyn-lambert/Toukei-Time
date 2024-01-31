@@ -1,17 +1,18 @@
 import { StudyStat } from '@/lib/types';
-import { getTimeForCategory } from '@/lib/utils';
+import { getFormattedToday, getTimeForCategory } from '@/lib/utils';
 
-import { getTodaysStudies } from '@/lib/data';
+import { getStudiesForDate } from '@/lib/data';
 import DonutChart from './GraphDonut';
 import Window from './Window';
 
-const getData = async () => {
-  const logs = await getTodaysStudies();
+const getData = async (today: string) => {
+  const logs = await getStudiesForDate(today);
   return logs;
 };
 
 const GraphDonutToday = async () => {
-  const data = await getData();
+  const today = getFormattedToday();
+  const data = await getData(today);
   const dailyStats: StudyStat[] = [
     { category: 'Listening', time: getTimeForCategory('Listening', data) },
     { category: 'Playing', time: getTimeForCategory('Playing', data) },

@@ -1,6 +1,5 @@
 import { auth } from '@/auth';
 import { User } from '@prisma/client';
-import { format } from 'date-fns';
 import prisma from './prisma';
 
 export async function getUserWithEmail(email: string): Promise<User | null> {
@@ -35,14 +34,23 @@ export const getAllStudyLogs = async () => {
   return logs;
 };
 
-export const getTodaysStudies = async () => {
+export const getStudiesForDate = async (date: string) => {
   const user = await getUser();
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
   }
-  const today = Date();
-  const formattedToday = format(today, 'yyyy-MM-dd');
-  const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: `${formattedToday}T00:00:00.000Z` } });
+  const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: `${date}T00:00:00.000Z` } });
+  return logs;
+};
+
+export const getStudiesBetweenDates = async (start: string, end: string) => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error("Could not retrieve today's studies, user not found");
+  }
+  const logs = await prisma.studyLog.findMany({
+    where: { userId: user.id, date: { lte: `${end}T00:00:00.000Z`, gte: `${start}T00:00:00.000Z` } },
+  });
   return logs;
 };
 
