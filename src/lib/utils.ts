@@ -1,10 +1,9 @@
+import { UTCDate } from '@date-fns/utc';
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from './icons';
 import { StudyStat } from './types';
-import { auth } from '@/auth';
-import { getUserWithEmail } from './data';
 
 export function getIconForCategory(category: Category) {
   switch (category) {
@@ -74,4 +73,14 @@ export function getTimeForCategory(category: Category, logs: StudyLog[]) {
 
 export function formatJapaneseDate(date: string) {
   return format(parseISO(date), 'MMM do', { locale: ja });
+}
+
+export function getFormattedToday() {
+  const today = new UTCDate().toISOString();
+  const formattedToday = format(today, 'yyyy-MM-dd');
+  return formattedToday;
+}
+
+export function buildStudyDay(){
+  
 }

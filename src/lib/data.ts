@@ -34,12 +34,23 @@ export const getAllStudyLogs = async () => {
   return logs;
 };
 
-export const getTodaysStudies = async (today: string) => {
+export const getStudiesForDate = async (date: string) => {
   const user = await getUser();
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
   }
-  const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: `${today}T00:00:00.000Z` } });
+  const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: `${date}T00:00:00.000Z` } });
+  return logs;
+};
+
+export const getStudiesBetweenDates = async (start: string, end: string) => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error("Could not retrieve today's studies, user not found");
+  }
+  const logs = await prisma.studyLog.findMany({
+    where: { userId: user.id, date: { lte: `${end}T00:00:00.000Z`, gte: `${start}T00:00:00.000Z` } },
+  });
   return logs;
 };
 

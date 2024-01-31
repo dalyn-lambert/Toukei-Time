@@ -1,21 +1,20 @@
-import { getTodaysStudies } from '@/lib/data';
-import { UTCDate } from '@date-fns/utc';
+import { getFormattedToday } from '@/lib/utils';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import Notepad from './Notepad';
 import TodaysStudiesItem from './TodaysStudiesItem';
 import Window from './Window';
+import { getStudiesForDate } from '@/lib/data';
 
 const getData = async (today: string) => {
-  const data = await getTodaysStudies(today);
+  const data = await getStudiesForDate(today);
   return data;
 };
 
 const TodaysStudies = async () => {
-  const today = new UTCDate();
-  const formattedToday = format(today, 'yyyy-MM-dd');
+  const today = getFormattedToday();
   const todayJapanese = format(today, 'EE MMM do', { locale: ja });
-  const studyLogs = await getData(formattedToday);
+  const studyLogs = await getData(today);
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
