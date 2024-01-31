@@ -197,7 +197,7 @@ export async function updateStudyLog(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update StudyLog',
     };
   }
-  redirect(`/browse/${id}`);
+  redirect(`/browse/${resourceEntry.id}`);
 }
 
 // Delete an existing study log

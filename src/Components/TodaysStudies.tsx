@@ -1,6 +1,8 @@
 import { getTodaysStudies } from '@/lib/data';
+import { UTCDate } from '@date-fns/utc';
+import { format } from 'date-fns';
+import { ja } from 'date-fns/locale';
 import Notepad from './Notepad';
-import TodaysStudiesDate from './TodaysStudiesDate';
 import TodaysStudiesItem from './TodaysStudiesItem';
 import Window from './Window';
 
@@ -11,11 +13,13 @@ const getData = async () => {
 
 const TodaysStudies = async () => {
   const studyLogs = await getData();
+  const today = new UTCDate();
+  const todayJapanese = format(today, 'EE MMM do', { locale: ja });
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
       <Notepad>
-        <TodaysStudiesDate />
+        <span className='border-b-2 border-black'>{todayJapanese}</span>
         <div className='pt-2'>
           {studyLogs.map((log) => (
             <TodaysStudiesItem key={log.id} log={log} />
