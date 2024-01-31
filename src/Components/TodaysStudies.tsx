@@ -6,15 +6,16 @@ import Notepad from './Notepad';
 import TodaysStudiesItem from './TodaysStudiesItem';
 import Window from './Window';
 
-const getData = async () => {
-  const data = await getTodaysStudies();
+const getData = async (today: string) => {
+  const data = await getTodaysStudies(today);
   return data;
 };
 
 const TodaysStudies = async () => {
-  const studyLogs = await getData();
   const today = new UTCDate();
+  const formattedToday = format(today, 'yyyy-MM-dd');
   const todayJapanese = format(today, 'EE MMM do', { locale: ja });
+  const studyLogs = await getData(formattedToday);
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
