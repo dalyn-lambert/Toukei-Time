@@ -1,4 +1,3 @@
-import { UTCDate } from '@date-fns/utc';
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -76,11 +75,9 @@ export function formatJapaneseDate(date: string) {
 }
 
 export function getFormattedToday() {
-  const today = new UTCDate().toISOString();
+  const today = new Date().toLocaleDateString();
   const formattedToday = format(today, 'yyyy-MM-dd');
   return formattedToday;
 }
 
-export function buildStudyDay(){
-  
-}
+export function buildStudyDay() {}
