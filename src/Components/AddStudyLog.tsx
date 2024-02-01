@@ -1,9 +1,8 @@
 'use client';
 
 import { createStudyLog } from '@/lib/actions';
-import { UTCDate } from '@date-fns/utc';
+import { getFormattedToday } from '@/lib/utils';
 import { Category, Resource } from '@prisma/client';
-import { format } from 'date-fns';
 import { ChangeEvent, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
@@ -11,8 +10,7 @@ import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
-  const today = new UTCDate();
-  const formattedToday = format(today, 'yyyy-MM-dd');
+  const today = getFormattedToday();
   const [selectedCategory, setSelectedCategory] = useState('Listening');
   const handleCategoryFilter = (e: ChangeEvent<{ value: string }>) => {
     const newValue = e.target.value;
@@ -39,7 +37,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
             ))}
           </select>
           <label htmlFor='date'>Date:</label>
-          <input name='date' type='date' id='date' defaultValue={formattedToday} required={true} className='pl-1' />
+          <input name='date' type='date' id='date' defaultValue={today} required={true} className='pl-1' />
           <label htmlFor='resource'>Resource:</label>
           <select name='resource' id='resource' required={true} className='pl-1'>
             {filterdResources.map((resource) => (
