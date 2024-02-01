@@ -10,7 +10,7 @@ function AddResource() {
   const categories = Object.keys(Category);
   const statuses = Object.keys(Status);
   return (
-    <Window English='Add a resource' Japanese='Resource'>
+    <Window English='Add a resource' Japanese='リソースを追加する'>
       <>
         <form action={createResource}>
           <div className='flex flex-col gap-3'>

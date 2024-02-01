@@ -21,7 +21,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
   const filterdResources = resources.filter((resource) => resource.category === selectedCategory);
 
   return (
-    <Window English='Add a study log' Japanese='勉強を？？'>
+    <Window English='Add a study log' Japanese='勉強を追加する'>
       <form action={createStudyLog}>
         <div className='flex flex-col gap-3'>
           <div className='flex flex-row gap-1'>
