@@ -1,5 +1,5 @@
 import { getStudiesForDate } from '@/lib/data';
-import { getFormattedToday } from '@/lib/utils';
+import { format } from 'date-fns';
 import Notepad from './Notepad';
 import TodaysStudiesDate from './TodaysStudiesDate';
 import TodaysStudiesItem from './TodaysStudiesItem';
@@ -12,8 +12,10 @@ const getData = async (today: string) => {
 };
 
 const TodaysStudies = async () => {
-  const today = getFormattedToday();
-  const studyLogs = await getData(today);
+  const today = new Date().toLocaleDateString();
+  const formattedToday = format(today, 'yyyy-MM-dd');
+  console.log(formattedToday);
+  const studyLogs = await getData(formattedToday);
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
