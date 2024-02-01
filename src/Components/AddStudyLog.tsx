@@ -35,7 +35,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
               className='w-full pl-1'
             />
           </div>
-          <div className='flex flex-row gap-2 justify-around'>
+          <div className='flex flex-row gap-2 justify-between'>
             <div className='flex flex-row gap-1'>
               <label htmlFor='time'>Minutes:</label>
               <input
