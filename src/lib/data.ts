@@ -35,7 +35,6 @@ export const getAllStudyLogs = async () => {
 };
 
 export const getStudiesForDate = async (date: string) => {
-  console.log(`prisma is getting study data from ${date}`);
   const user = await getUser();
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
