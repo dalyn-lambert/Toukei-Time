@@ -6,6 +6,7 @@ import TodaysStudiesItem from './TodaysStudiesItem';
 import Window from './Window';
 
 const getData = async (today: string) => {
+  console.log(`todays studies is looking for ${today}`);
   const data = await getStudiesForDate(today);
   return data;
 };
@@ -18,6 +19,7 @@ const TodaysStudies = async () => {
     <Window English="Today's Studies" Japanese='今日の勉強'>
       <Notepad>
         <TodaysStudiesDate />
+        <span>{today}</span>
         <div className='pt-2'>
           {studyLogs.map((log) => (
             <TodaysStudiesItem key={log.id} log={log} />

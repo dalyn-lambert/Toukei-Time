@@ -76,6 +76,7 @@ export function formatJapaneseDate(date: string) {
 
 export function getFormattedToday() {
   const today = new Date().toLocaleDateString();
+  console.log(`get formatted date says today is ${today}`);
   const formattedToday = format(today, 'yyyy-MM-dd');
   return formattedToday;
 }

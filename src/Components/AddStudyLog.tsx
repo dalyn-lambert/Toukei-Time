@@ -11,6 +11,8 @@ import Window from './Window';
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
   const today = getFormattedToday();
+  console.log(`add study logs thinks today is ${today}`);
+
   const [selectedCategory, setSelectedCategory] = useState('Listening');
   const handleCategoryFilter = (e: ChangeEvent<{ value: string }>) => {
     const newValue = e.target.value;
