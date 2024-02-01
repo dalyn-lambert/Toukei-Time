@@ -21,33 +21,70 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
   const filterdResources = resources.filter((resource) => resource.category === selectedCategory);
 
   return (
-    <Window English='Add a study log' Japanese='勉強を？？'>
+    <Window English='Add a study log' Japanese='勉強を追加する'>
       <form action={createStudyLog}>
-        <div className='flex flex-col gap-2'>
-          <label htmlFor='title'>Title:</label>
-          <input name='title' type='text' id='title' required={true} className='pl-1' />
-
-          <label htmlFor='time'>Time (minutes):</label>
-          <input name='time' type='number' id='time' required={true} className='pl-1' />
-
-          <label htmlFor='category'>Category:</label>
-          <select name='category' id='category' required={true} onChange={handleCategoryFilter}>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-          <label htmlFor='date'>Date:</label>
-          <input name='date' type='date' id='date' defaultValue={formattedToday} required={true} className='pl-1' />
-          <label htmlFor='resource'>Resource:</label>
-          <select name='resource' id='resource' required={true} className='pl-1'>
-            {filterdResources.map((resource) => (
-              <option key={resource.id} value={resource.name}>
-                {resource.name}
-              </option>
-            ))}
-          </select>
+        <div className='flex flex-col gap-3'>
+          <div className='flex flex-row gap-1'>
+            <label htmlFor='title'>Title:</label>
+            <input
+              name='title'
+              type='text'
+              placeholder='Episode 4'
+              id='title'
+              required={true}
+              className='w-full pl-1'
+            />
+          </div>
+          <div className='flex flex-row gap-2 justify-between'>
+            <div className='flex flex-row gap-1'>
+              <label htmlFor='time'>Minutes:</label>
+              <input
+                name='time'
+                type='number'
+                placeholder='20'
+                id='time'
+                required={true}
+                className='w-11 text-center'
+              />
+            </div>
+            <div className='flex flex-row gap-1'>
+              <label htmlFor='category'>Category:</label>
+              <select
+                name='category'
+                id='category'
+                required={true}
+                onChange={handleCategoryFilter}
+                className='text-center'
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className='flex flex-row gap-1'>
+            <label htmlFor='date'>Date:</label>
+            <input
+              name='date'
+              type='date'
+              id='date'
+              defaultValue={formattedToday}
+              required={true}
+              className='text-center'
+            />
+          </div>
+          <div className='flex flex-col gap-0'>
+            <label htmlFor='resource'>Resource:</label>
+            <select name='resource' id='resource' required={true} className='pl-1'>
+              {filterdResources.map((resource) => (
+                <option key={resource.id} value={resource.name}>
+                  {resource.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <AddStudyLogButton />
       </form>
