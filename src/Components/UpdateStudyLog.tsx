@@ -1,8 +1,7 @@
 'use client';
 
-import { UTCDate } from '@date-fns/utc';
-
 import { updateStudyLog } from '@/lib/actions';
+import { UTCDate } from '@date-fns/utc';
 import { Category, Resource, StudyLog } from '@prisma/client';
 import { format } from 'date-fns';
 import { useFormStatus } from 'react-dom';
@@ -11,10 +10,7 @@ import Window from './Window';
 
 function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource[] }) {
   const categories = Object.keys(Category);
-  // must convert the date to UTC to avoid date shifting
-  // https://github.com/date-fns/utc
-  const utcDate = new UTCDate(log.date);
-  const date = format(utcDate, 'yyyy-MM-dd');
+  const date = format(new UTCDate(log.date), 'yyyy-MM-dd');
 
   const filteredResource = resources.filter((resource) => resource.id === log.resourceId);
   const currentResource = filteredResource[0].name;

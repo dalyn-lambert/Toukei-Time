@@ -1,6 +1,7 @@
 'use server';
 
 import { signIn } from '@/auth';
+import { UTCDate } from '@date-fns/utc';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -142,6 +143,8 @@ export async function createStudyLog(formData: FormData) {
     resource: formData.get('resource'),
   });
 
+  console.log(date);
+
   const resourceEntry = await getResourceFromTitle(resource);
   if (!resourceEntry) {
     return null;
@@ -153,11 +156,12 @@ export async function createStudyLog(formData: FormData) {
         title,
         time,
         category,
-        date,
+        date: new UTCDate(date),
         user: { connect: { id: user.id } },
         resource: { connect: { id: resourceEntry.id } },
       },
     });
+    console.log(date);
   } catch (error) {
     return {
       message: 'Database Error: Failed to Create Study Log',

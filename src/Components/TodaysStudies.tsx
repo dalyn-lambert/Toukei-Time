@@ -12,8 +12,7 @@ const getData = async (today: string) => {
 };
 
 const TodaysStudies = async () => {
-  const newDate = new Date().toLocaleDateString();
-  const today = format(new UTCDate(newDate), 'yyyy-MM-dd');
+  const today = format(new UTCDate().toISOString(), 'yyyy-MM-dd');
   const studyLogs = await getData(today);
 
   return (
