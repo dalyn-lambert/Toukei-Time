@@ -1,5 +1,4 @@
 import { getStudiesForDate } from '@/lib/data';
-import { UTCDate } from '@date-fns/utc';
 import { format } from 'date-fns';
 import Notepad from './Notepad';
 import TodaysStudiesDate from './TodaysStudiesDate';
@@ -12,7 +11,7 @@ const getData = async (today: string) => {
 };
 
 const TodaysStudies = async () => {
-  const today = format(new UTCDate().toISOString(), 'yyyy-MM-dd');
+  const today = format(new Date().toLocaleDateString(), 'yyyy-MM-dd');
   const studyLogs = await getData(today);
 
   return (

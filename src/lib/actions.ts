@@ -1,7 +1,6 @@
 'use server';
 
 import { signIn } from '@/auth';
-import { UTCDate } from '@date-fns/utc';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -156,7 +155,7 @@ export async function createStudyLog(formData: FormData) {
         title,
         time,
         category,
-        date: new UTCDate(date),
+        date: new Date(date).toLocaleDateString(),
         user: { connect: { id: user.id } },
         resource: { connect: { id: resourceEntry.id } },
       },
