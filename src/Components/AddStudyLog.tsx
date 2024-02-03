@@ -10,8 +10,7 @@ import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
-  const today = new Date().toLocaleDateString();
-  const formattedToday = format(today, 'yyyy-MM-dd');
+  const today = format(new Date().toLocaleDateString(), 'yyyy-MM-dd');
 
   const [selectedCategory, setSelectedCategory] = useState('Listening');
   const handleCategoryFilter = (e: ChangeEvent<{ value: string }>) => {
@@ -66,14 +65,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
           </div>
           <div className='flex flex-row gap-1'>
             <label htmlFor='date'>Date:</label>
-            <input
-              name='date'
-              type='date'
-              id='date'
-              defaultValue={formattedToday}
-              required={true}
-              className='text-center'
-            />
+            <input name='date' type='date' id='date' defaultValue={today} required={true} className='text-center' />
           </div>
           <div className='flex flex-col gap-0'>
             <label htmlFor='resource'>Resource:</label>
