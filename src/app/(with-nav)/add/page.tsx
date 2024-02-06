@@ -11,8 +11,8 @@ export default async function AddPage() {
 
   return (
     <div className='flex flex-col gap-4'>
-      <AddResource />
       <AddStudyLog resources={allResources} />
+      <AddResource />
     </div>
   );
 }
