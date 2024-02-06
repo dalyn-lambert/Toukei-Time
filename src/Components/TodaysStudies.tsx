@@ -1,18 +1,18 @@
 import { getStudiesForDate } from '@/lib/data';
-import { dateForServerComponent } from '@/lib/utils';
+import { UTCDate } from '@date-fns/utc';
+import { format } from 'date-fns';
 import Notepad from './Notepad';
 import TodaysStudiesDate from './TodaysStudiesDate';
 import TodaysStudiesItem from './TodaysStudiesItem';
 import Window from './Window';
 
 const getData = async (today: string) => {
-  console.log(`todays studies is looking for ${today}`);
   const data = await getStudiesForDate(today);
   return data;
 };
 
 const TodaysStudies = async () => {
-  const today = dateForServerComponent();
+  const today = format(new UTCDate(), 'yyyy-MM-dd');
   const studyLogs = await getData(today);
 
   return (

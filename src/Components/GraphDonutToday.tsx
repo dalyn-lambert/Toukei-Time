@@ -1,7 +1,9 @@
 import { StudyStat } from '@/lib/types';
-import { dateForServerComponent, getTimeForCategory } from '@/lib/utils';
+import { getTimeForCategory } from '@/lib/utils';
 
 import { getStudiesForDate } from '@/lib/data';
+import { UTCDate } from '@date-fns/utc';
+import { format } from 'date-fns';
 import DonutChart from './GraphDonut';
 import Window from './Window';
 
@@ -11,7 +13,7 @@ const getData = async (today: string) => {
 };
 
 const GraphDonutToday = async () => {
-  const today = dateForServerComponent();
+  const today = format(new UTCDate(), 'yyyy-MM-dd');
   const data = await getData(today);
   const dailyStats: StudyStat[] = [
     { category: 'Listening', time: getTimeForCategory('Listening', data) },

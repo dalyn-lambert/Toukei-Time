@@ -74,10 +74,4 @@ export function formatJapaneseDate(date: string) {
   return format(parseISO(date), 'MMM do', { locale: ja });
 }
 
-export function dateForServerComponent() {
-  const today = new Date().toLocaleDateString();
-  const formattedToday = format(today, 'yyyy-MM-dd');
-  return formattedToday;
-}
-
 export function buildStudyDay() {}
