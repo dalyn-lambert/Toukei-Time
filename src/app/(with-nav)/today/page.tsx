@@ -1,14 +1,12 @@
-import GraphBarStackThisWeek from '@/Components/GraphBarStackThisWeek';
 import GraphDonutToday from '@/Components/GraphDonutToday';
 import LogOut from '@/Components/LogOut';
 import TodaysStudies from '@/Components/TodaysStudies';
 
-export default function HomePage() {
+export default function TodayPage() {
   return (
     <div className='flex flex-col gap-4'>
       <TodaysStudies />
       <GraphDonutToday />
-      <GraphBarStackThisWeek />
       <LogOut />
     </div>
   );

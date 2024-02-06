@@ -1,10 +1,10 @@
-import { homeIcon, logStudiesIcon, viewStudiesIcon } from '@/lib/icons';
+import { logStudiesIcon, todayIcon, viewStudiesIcon } from '@/lib/icons';
 import NavTile from './NavTile';
 
 export type LinkData = { label: string; route: string; icon: JSX.Element };
 
 const links: LinkData[] = [
-  { label: 'Home', route: '/home', icon: homeIcon },
+  { label: 'Today', route: '/today', icon: todayIcon },
   { label: 'Add', route: '/add', icon: logStudiesIcon },
   { label: 'Browse', route: '/browse', icon: viewStudiesIcon },
 ];
