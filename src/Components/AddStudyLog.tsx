@@ -10,7 +10,7 @@ import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
-  const today = format(new Date().toISOString(), 'yyyy-MM-dd');
+  const today = format(new Date(), 'yyyy-MM-dd');
 
   const [selectedCategory, setSelectedCategory] = useState('Listening');
   const handleCategoryFilter = (e: ChangeEvent<{ value: string }>) => {
