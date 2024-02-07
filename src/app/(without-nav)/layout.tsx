@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function SignInPageRootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
-      <body className='bg-pink max-w-md p-4 flex flex-col'>{children}</body>
+      <body className='bg-pink p-4 grid grid-col justify-center content-center'>{children}</body>
     </html>
   );
 }
