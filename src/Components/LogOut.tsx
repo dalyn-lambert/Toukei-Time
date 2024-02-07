@@ -1,5 +1,4 @@
 import { signOut } from '@/auth';
-import StyledButton from './StyledButton';
 
 function LogOut() {
   return (
@@ -9,16 +8,8 @@ function LogOut() {
         await signOut();
       }}
     >
-      <LogOutButton />
+      <button>Log Out</button>
     </form>
-  );
-}
-
-function LogOutButton() {
-  return (
-    <div className='pt-2'>
-      <StyledButton label='Log Out' />
-    </div>
   );
 }
 

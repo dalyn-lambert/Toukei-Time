@@ -12,7 +12,7 @@ import prisma from './prisma';
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
-    await signIn('credentials', formData, { redirectTo: '/home' });
+    await signIn('credentials', formData, { redirectTo: '/today' });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -165,7 +165,7 @@ export async function createStudyLog(formData: FormData) {
     };
   }
 
-  redirect(`/home`);
+  redirect(`/today`);
 }
 
 // Update an existing resource
