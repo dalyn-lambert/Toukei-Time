@@ -1,5 +1,5 @@
 import { StudyStat } from '@/lib/types';
-import { getTimeForCategory } from '@/lib/utils';
+import { getIconForCategory, getTimeForCategory, toHoursAndMinutes } from '@/lib/utils';
 
 import { getStudiesForDate } from '@/lib/data';
 import { UTCDate } from '@date-fns/utc';
@@ -22,9 +22,20 @@ const GraphDonutToday = async () => {
     { category: 'Speaking', time: getTimeForCategory('Speaking', data) },
     { category: 'Reading', time: getTimeForCategory('Reading', data) },
   ];
+  const filteredDailyStats: StudyStat[] = dailyStats.filter((stat) => stat.time !== 0);
   return (
     <Window English="Today's Study Time" Japanese='今日の勉強時間'>
-      <DonutChart width={175} height={175} data={dailyStats} donutThickness={30} />
+      <div className='flex flex-row gap-4 justify-around'>
+        <DonutChart width={175} height={175} data={filteredDailyStats} donutThickness={30} />
+        <div className='flex flex-col'>
+          {filteredDailyStats.map((stat) => (
+            <div className='flex flex-row pb-2 items-center' key={stat.category}>
+              <span className='pr-2 shrink-0'>{getIconForCategory(stat.category)}</span>
+              <span>{toHoursAndMinutes(stat.time)}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </Window>
   );
 };
