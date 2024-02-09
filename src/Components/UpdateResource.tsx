@@ -11,53 +11,72 @@ function UpdateResource(resource: Resource) {
   const updateResourceWithId = updateResource.bind(null, resource.id);
   return (
     <Window English='Add a resource' Japanese='Resource' category={resource.category}>
-      <>
-        <form action={updateResourceWithId}>
-          <div className='flex flex-col gap-2'>
+      <form action={updateResourceWithId}>
+        <div className='flex flex-col gap-3'>
+          <div className='flex flex-row gap-1'>
             <label htmlFor='name'>Name:</label>
-            <input type='text' name='name' id='name' required={true} defaultValue={resource.name} className='pl-1' />
+            <input
+              type='text'
+              name='name'
+              id='name'
+              defaultValue={resource.name}
+              required={true}
+              className='pl-1 w-full'
+            />
+          </div>
+          <div className='flex flex-row gap-2 justify-between'>
+            <div className='flex flex-row gap-1'>
+              <label htmlFor='status'>Status:</label>
+              <select name='status' id='status' required={true} className='text-center' defaultValue={resource.status}>
+                {statuses.map((status) => (
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-            <label htmlFor='category'>Category:</label>
-            <select name='category' id='category' required={true} defaultValue={resource.category}>
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-
-            <label htmlFor='status'>Status:</label>
-            <select name='status' id='status' required={true} defaultValue={resource.status}>
-              {statuses.map((status) => (
-                <option key={status} value={status}>
-                  {status}
-                </option>
-              ))}
-            </select>
-
+            <div className='flex flex-row gap-1'>
+              <label htmlFor='category'>Category:</label>
+              <select
+                name='category'
+                id='category'
+                required={true}
+                className='text-center'
+                defaultValue={resource.category}
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className='flex flex-row gap-1'>
             <label htmlFor='link'>Link:</label>
             <input
+              defaultValue={resource.link || undefined}
               type='text'
               name='link'
               id='link'
               required={false}
-              defaultValue={resource.link || undefined}
-              className='pl-1'
+              className='pl-1 w-full'
             />
-
+          </div>
+          <div className='flex flex-col gap-0'>
             <label htmlFor='notes'>Notes:</label>
-            <input
-              type='text'
+            <textarea
+              defaultValue={resource.notes || undefined}
               name='notes'
               id='notes'
               required={false}
-              defaultValue={resource.notes || undefined}
               className='pl-1'
             />
           </div>
-          <UpdateResourceButton />
-        </form>
-      </>
+        </div>
+        <UpdateResourceButton />
+      </form>
     </Window>
   );
 }
