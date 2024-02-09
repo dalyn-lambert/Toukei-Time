@@ -25,7 +25,7 @@ const GraphDonutToday = async () => {
   const filteredDailyStats: StudyStat[] = dailyStats.filter((stat) => stat.time !== 0);
   return (
     <Window English="Today's Study Time" Japanese='今日の勉強時間'>
-      <div className='flex flex-row gap-4 justify-around'>
+      <div className='flex flex-row gap-4 py-2 justify-around'>
         <DonutChart width={175} height={175} data={filteredDailyStats} donutThickness={30} />
         <div className='flex flex-col'>
           {filteredDailyStats.map((stat) => (
