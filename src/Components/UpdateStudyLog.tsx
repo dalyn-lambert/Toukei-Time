@@ -20,31 +20,58 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
   return (
     <Window English='Add a study log' Japanese='勉強を？？'>
       <form action={updateStudyLogWithId}>
-        <div className='flex flex-col gap-2'>
-          <label htmlFor='title'>Title:</label>
-          <input name='title' type='text' id='title' required={true} defaultValue={log.title} className='pl-1' />
+        <div className='flex flex-col gap-3'>
+          <div className='flex flex-row gap-1'>
+            <label htmlFor='title'>Title:</label>
+            <input
+              defaultValue={log.title}
+              name='title'
+              type='text'
+              placeholder='Episode 4'
+              id='title'
+              required={true}
+              className='w-full pl-1'
+            />
+          </div>
+          <div className='flex flex-row gap-2 justify-between'>
+            <div className='flex flex-row gap-1'>
+              <label htmlFor='time'>Minutes:</label>
+              <input
+                defaultValue={log.time}
+                name='time'
+                type='number'
+                placeholder='20'
+                id='time'
+                required={true}
+                className='w-11 text-center'
+              />
+            </div>
+            <div className='flex flex-row gap-1'>
+              <label htmlFor='category'>Category:</label>
+              <select defaultValue={log.category} name='category' id='category' required={true} className='text-center'>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className='flex flex-row gap-1'>
+            <label htmlFor='date'>Date:</label>
+            <input name='date' type='date' id='date' defaultValue={date} required={true} className='text-center' />
+          </div>
 
-          <label htmlFor='time'>Time (minutes):</label>
-          <input name='time' type='number' id='time' required={true} defaultValue={log.time} className='pl-1' />
-
-          <label htmlFor='category'>Category:</label>
-          <select name='category' id='category' required={true} defaultValue={log.category}>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-          <label htmlFor='date'>Date:</label>
-          <input name='date' type='date' id='date' required={true} defaultValue={date} className='pl-1' />
-          <label htmlFor='resource'>Resource:</label>
-          <select name='resource' id='resource' required={true} defaultValue={currentResource} className='pl-1'>
-            {resources.map((resource) => (
-              <option key={resource.id} value={resource.name}>
-                {resource.name}
-              </option>
-            ))}
-          </select>
+          <div className='flex flex-col gap-0'>
+            <label htmlFor='resource'>Resource:</label>
+            <select defaultValue={currentResource} name='resource' id='resource' required={true} className='pl-1'>
+              {resources.map((resource) => (
+                <option key={resource.id} value={resource.name}>
+                  {resource.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <UpdateStudyLogButton />
       </form>
