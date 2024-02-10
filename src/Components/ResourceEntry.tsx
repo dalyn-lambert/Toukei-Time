@@ -1,12 +1,17 @@
+import { getTotalTimeForResource } from '@/lib/utils';
 import { Resource } from '@prisma/client';
 import Link from 'next/link';
 import Window from './Window';
 
-function ResourceEntry(resource: Resource) {
+async function ResourceEntry(resource: Resource) {
+  const totalTime = await getTotalTimeForResource(resource.id);
   return (
     <Link href={`/browse/${resource.id}`} key={resource.id}>
       <Window English={resource.category} Japanese={resource.category} category={resource.category}>
-        {resource.name}
+        <div className='flex flex-col text-center'>
+          <span className='text-lg'>{resource.name}</span>
+          <span className='text-md'>{totalTime}</span>
+        </div>
       </Window>
     </Link>
   );

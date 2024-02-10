@@ -105,7 +105,8 @@ export const getResourceFromTitle = async (name: string) => {
   return resource;
 };
 
-export const getStudyLogForResource = async (id: number) => {
+
+export const getStudyLogsForResource = async (id: number) => {
   const user = await getUser();
   if (!user) {
     throw new Error('Could not retrieve study log, user not found');
