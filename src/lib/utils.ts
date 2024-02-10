@@ -75,6 +75,23 @@ export function formatJapaneseDate(date: string) {
   return format(parseISO(date), 'MMM do', { locale: ja });
 }
 
+export function getJapaneseNameforCategory(category: Category) {
+  switch (category) {
+    case 'Speaking':
+      return '話す';
+    case 'Listening':
+      return '聴く';
+    case 'Playing':
+      return 'ゲーム';
+    case 'Watching':
+      return '観る';
+    case 'Reading':
+      return '読書';
+    default:
+      return 'エラー';
+  }
+}
+
 export function buildStudyDay() {}
 
 export async function getTotalTimeForResource(resourceId: number) {
