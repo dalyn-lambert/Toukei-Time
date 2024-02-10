@@ -73,22 +73,11 @@ export const getAllResources = async () => {
   if (!user) {
     throw new Error('Could not retrieve resources, user not found');
   }
-  const resources = await prisma.resource.findMany({ where: { userId: user.id }, orderBy: { dateAdded: 'desc' } });
-  return resources;
-};
-
-export const getResourceFromId = async (id: number) => {
-  const user = await getUser();
-  if (!user) {
-    throw new Error('Could not retrieve resource, user not found');
-  }
-  const resource = await prisma.resource.findFirst({
-    where: {
-      userId: user.id,
-      id,
-    },
+  const resources = await prisma.resource.findMany({
+    where: { userId: user.id },
+    orderBy: [{ category: 'asc' }, { dateAdded: 'desc' }],
   });
-  return resource;
+  return resources;
 };
 
 export const getResourceFromTitle = async (name: string) => {
@@ -104,7 +93,6 @@ export const getResourceFromTitle = async (name: string) => {
   });
   return resource;
 };
-
 
 export const getStudyLogsForResource = async (id: number) => {
   const user = await getUser();
