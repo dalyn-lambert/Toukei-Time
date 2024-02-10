@@ -1,7 +1,7 @@
 import { DeleteResource } from '@/Components/DeleteResource';
 import StudyLogEntry from '@/Components/StudyLogEntry';
 import UpdateResource from '@/Components/UpdateResource';
-import { getResourceFromId, getStudyLogForResource } from '@/lib/data';
+import { getResourceFromId, getStudyLogsForResource } from '@/lib/data';
 import { notFound } from 'next/navigation';
 
 const getResource = async (id: number) => {
@@ -10,7 +10,7 @@ const getResource = async (id: number) => {
 };
 
 const getStudyLogs = async (id: number) => {
-  const data = await getStudyLogForResource(id);
+  const data = await getStudyLogsForResource(id);
   return data;
 };
 

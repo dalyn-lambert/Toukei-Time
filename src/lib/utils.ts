@@ -1,6 +1,7 @@
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
+import { getStudyLogsForResource } from './data';
 import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from './icons';
 import { StudyStat } from './types';
 
@@ -74,4 +75,28 @@ export function formatJapaneseDate(date: string) {
   return format(parseISO(date), 'MMM do', { locale: ja });
 }
 
+export function getJapaneseNameforCategory(category: Category) {
+  switch (category) {
+    case 'Speaking':
+      return '話す';
+    case 'Listening':
+      return '聴く';
+    case 'Playing':
+      return 'ゲーム';
+    case 'Watching':
+      return '観る';
+    case 'Reading':
+      return '読書';
+    default:
+      return 'エラー';
+  }
+}
+
 export function buildStudyDay() {}
+
+export async function getTotalTimeForResource(resourceId: number) {
+  const allLogs = await getStudyLogsForResource(resourceId);
+  const times = allLogs.map((log) => log.time);
+  const total = sumArray(times);
+  return toHoursAndMinutes(total);
+}
