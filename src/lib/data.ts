@@ -79,6 +79,19 @@ export const getAllResources = async () => {
   });
   return resources;
 };
+export const getResourceFromId = async (id: number) => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve resource, user not found');
+  }
+  const resource = await prisma.resource.findFirst({
+    where: {
+      userId: user.id,
+      id,
+    },
+  });
+  return resource;
+};
 
 export const getResourceFromTitle = async (name: string) => {
   const user = await getUser();
