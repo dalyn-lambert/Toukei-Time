@@ -1,5 +1,4 @@
 import { getStudiesForDate } from '@/lib/data';
-import { UTCDate } from '@date-fns/utc';
 import { format } from 'date-fns';
 import Notepad from './Notepad';
 import TodaysStudiesDate from './TodaysStudiesDate';
@@ -12,7 +11,15 @@ const getData = async (today: string) => {
 };
 
 const TodaysStudies = async () => {
-  const today = format(new UTCDate(), 'yyyy-MM-dd');
+  // get user time zone
+  const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // create a new date
+  const date = new Date();
+  // translate to local date
+  const localDate = date.toLocaleString('en-US', { timeZone: timeZoneIANA });
+  // format for database call
+  const today = format(localDate, 'yyyy-MM-dd');
+
   const studyLogs = await getData(today);
 
   return (
