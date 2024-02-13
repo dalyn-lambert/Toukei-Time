@@ -27,6 +27,7 @@ const GraphDonutToday = async () => {
     <Window English="Today's Study Time" Japanese='今日の勉強時間'>
       <div className='flex flex-row gap-4 py-2 justify-around  p-4 border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
         <DonutChart width={175} height={175} data={filteredDailyStats} donutThickness={30} />
+
         <div className='flex flex-col'>
           {filteredDailyStats.map((stat) => (
             <div className='flex flex-row pb-2 items-center' key={stat.category}>
