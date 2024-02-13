@@ -75,7 +75,7 @@ export function formatJapaneseDate(date: string) {
   return format(parseISO(date), 'MMM do', { locale: ja });
 }
 
-export function getJapaneseNameforCategory(category: Category) {
+export function getJapaneseNameforCategory(category: Category | 'Total') {
   switch (category) {
     case 'Speaking':
       return '話す';
@@ -87,6 +87,8 @@ export function getJapaneseNameforCategory(category: Category) {
       return '観る';
     case 'Reading':
       return '読書';
+    case 'Total':
+      return '全部';
     default:
       return 'エラー';
   }
