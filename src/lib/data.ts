@@ -1,6 +1,7 @@
 import { auth } from '@/auth';
 import { User } from '@prisma/client';
 import prisma from './prisma';
+import { sumArray } from './utils';
 
 export async function getUserWithEmail(email: string): Promise<User | null> {
   try {
@@ -119,4 +120,105 @@ export const getStudyLogsForResource = async (id: number) => {
     },
   });
   return studyLog;
+};
+
+export const getTotalStudyTime = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve study log, user not found');
+  }
+  const times = await prisma.studyLog.findMany({
+    where: {
+      userId: user.id,
+    },
+    select: { time: true },
+  });
+  const timeArray = times.map((time) => time.time);
+  const totalTime = sumArray(timeArray);
+  return totalTime;
+};
+
+export const getTotalListeningTime = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve study log, user not found');
+  }
+  const times = await prisma.studyLog.findMany({
+    where: {
+      userId: user.id,
+      category: 'Listening',
+    },
+    select: { time: true },
+  });
+  const timeArray = times.map((time) => time.time);
+  const totalTime = sumArray(timeArray);
+  return totalTime;
+};
+
+export const getTotalReadingTime = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve study log, user not found');
+  }
+  const times = await prisma.studyLog.findMany({
+    where: {
+      userId: user.id,
+      category: 'Reading',
+    },
+    select: { time: true },
+  });
+  const timeArray = times.map((time) => time.time);
+  const totalTime = sumArray(timeArray);
+  return totalTime;
+};
+
+export const getTotalSpeakingTime = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve study log, user not found');
+  }
+  const times = await prisma.studyLog.findMany({
+    where: {
+      userId: user.id,
+      category: 'Speaking',
+    },
+    select: { time: true },
+  });
+  const timeArray = times.map((time) => time.time);
+  const totalTime = sumArray(timeArray);
+  return totalTime;
+};
+
+export const getTotalPlayingTime = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve study log, user not found');
+  }
+  const times = await prisma.studyLog.findMany({
+    where: {
+      userId: user.id,
+      category: 'Playing',
+    },
+    select: { time: true },
+  });
+  const timeArray = times.map((time) => time.time);
+  const totalTime = sumArray(timeArray);
+  return totalTime;
+};
+
+export const getTotalWatchingTime = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve study log, user not found');
+  }
+  const times = await prisma.studyLog.findMany({
+    where: {
+      userId: user.id,
+      category: 'Watching',
+    },
+    select: { time: true },
+  });
+  const timeArray = times.map((time) => time.time);
+  const totalTime = sumArray(timeArray);
+  return totalTime;
 };

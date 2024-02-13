@@ -3,7 +3,9 @@ import { WindowTitleProps } from '@/lib/types';
 function WindowTitle(props: WindowTitleProps) {
   let color = 'bg-yellow text-black';
   if (props.category) {
-    color = `bg-${props.category.toLocaleLowerCase()} text-white`;
+    if (props.category === 'Total') {
+      color;
+    } else color = `bg-${props.category.toLocaleLowerCase()} text-white`;
   }
 
   return (

@@ -1,3 +1,4 @@
+import AddStudyLog from '@/Components/AddStudyLog';
 import { DeleteResource } from '@/Components/DeleteResource';
 import StudyLogEntry from '@/Components/StudyLogEntry';
 import UpdateResource from '@/Components/UpdateResource';
@@ -25,6 +26,7 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   return (
     <div className='flex flex-col gap-4'>
       <UpdateResource {...resource} />
+      <AddStudyLog resources={[resource]} />
       <div className='flex flex-col gap-4'>
         {studyLogs.map((studyLog) => (
           <StudyLogEntry key={studyLog.id} {...studyLog} />
