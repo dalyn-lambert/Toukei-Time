@@ -1,5 +1,6 @@
 'use client';
 import { updateResource } from '@/lib/actions';
+import { getJapaneseNameforCategory } from '@/lib/utils';
 import { Category, Resource, Status } from '@prisma/client';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
@@ -10,7 +11,11 @@ function UpdateResource(resource: Resource) {
   const statuses = Object.keys(Status);
   const updateResourceWithId = updateResource.bind(null, resource.id);
   return (
-    <Window English='Add a resource' Japanese='Resource' category={resource.category}>
+    <Window
+      English={resource.category}
+      Japanese={`${getJapaneseNameforCategory(resource.category)}`}
+      category={resource.category}
+    >
       <form action={updateResourceWithId}>
         <div className='flex flex-col gap-3'>
           <div className='flex flex-row gap-1'>

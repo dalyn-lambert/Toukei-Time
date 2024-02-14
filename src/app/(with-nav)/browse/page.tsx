@@ -10,7 +10,7 @@ export default async function BrowsePage() {
   const resources = await getData();
 
   return (
-    <div className='flex flex-col gap-4 desktop:mt-52'>
+    <div className='flex flex-col gap-4'>
       {resources.map((resource) => (
         <ResourceEntry key={resource.id} {...resource} />
       ))}
