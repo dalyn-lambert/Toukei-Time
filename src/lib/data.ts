@@ -76,7 +76,7 @@ export const getAllResources = async () => {
   }
   const resources = await prisma.resource.findMany({
     where: { userId: user.id },
-    orderBy: [{ category: 'asc' }, { dateAdded: 'desc' }],
+    orderBy: [{ name: 'asc' }],
   });
   return resources;
 };
