@@ -1,10 +1,10 @@
 import { StudyStat } from '@/lib/types';
-import { getIconForCategory, getTimeForCategory, toHoursAndMinutes } from '@/lib/utils';
+import { getTimeForCategory } from '@/lib/utils';
 
 import { getStudiesForDate } from '@/lib/data';
 import { UTCDate } from '@date-fns/utc';
 import { format } from 'date-fns';
-import DonutChart from './GraphDonut';
+import GraphDonutWithStats from './GraphDonutWithStats';
 import Window from './Window';
 
 const getData = async (today: string) => {
@@ -25,18 +25,7 @@ const GraphDonutToday = async () => {
   const filteredDailyStats: StudyStat[] = dailyStats.filter((stat) => stat.time !== 0);
   return (
     <Window English="Today's Study Time" Japanese='今日の勉強時間'>
-      <div className='flex flex-row gap-4 py-2 justify-around  p-4 border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
-        <DonutChart width={175} height={175} data={filteredDailyStats} donutThickness={30} />
-
-        <div className='flex flex-col'>
-          {filteredDailyStats.map((stat) => (
-            <div className='flex flex-row pb-2 items-center' key={stat.category}>
-              <span className='pr-2 shrink-0'>{getIconForCategory(stat.category)}</span>
-              <span>{toHoursAndMinutes(stat.time)}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      <GraphDonutWithStats stats={filteredDailyStats} />
     </Window>
   );
 };
