@@ -26,7 +26,7 @@ async function GraphDonutAllStats() {
   const filteredTimes = times.filter((d) => d.time !== 0);
 
   return (
-    <Window English='' Japanese=''>
+    <Window English='All Study Time' Japanese='全部勉強時間'>
       <GraphDonutWithStats stats={filteredTimes} />
     </Window>
   );
