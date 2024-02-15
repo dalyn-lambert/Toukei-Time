@@ -1,5 +1,5 @@
 import GraphBarStackThisWeek from '@/Components/GraphBarStackThisWeek';
-import TotalStudyTimeStats from '@/Components/TotalStudyTimeStats';
+import TotalStudyTimeStats from '@/Components/GraphDonutAllStats';
 
 export default function ThisWeekPage() {
   return (

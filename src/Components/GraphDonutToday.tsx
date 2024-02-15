@@ -15,17 +15,16 @@ const getData = async (today: string) => {
 const GraphDonutToday = async () => {
   const today = format(new UTCDate(), 'yyyy-MM-dd');
   const data = await getData(today);
-  const dailyStats: StudyStat[] = [
+  const stats: StudyStat[] = [
     { category: 'Listening', time: getTimeForCategory('Listening', data) },
     { category: 'Playing', time: getTimeForCategory('Playing', data) },
     { category: 'Watching', time: getTimeForCategory('Watching', data) },
     { category: 'Speaking', time: getTimeForCategory('Speaking', data) },
     { category: 'Reading', time: getTimeForCategory('Reading', data) },
   ];
-  const filteredDailyStats: StudyStat[] = dailyStats.filter((stat) => stat.time !== 0);
   return (
     <Window English="Today's Study Time" Japanese='今日の勉強時間'>
-      <GraphDonutWithStats stats={filteredDailyStats} />
+      <GraphDonutWithStats stats={stats} />
     </Window>
   );
 };

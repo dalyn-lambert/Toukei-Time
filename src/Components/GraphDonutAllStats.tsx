@@ -17,17 +17,14 @@ const getData = async () => {
     { category: 'Playing', time: await getTotalPlayingTime() },
     { category: 'Watching', time: await getTotalWatchingTime() },
   ];
-
   return times;
 };
 
 async function GraphDonutAllStats() {
   const times = await getData();
-  const filteredTimes = times.filter((d) => d.time !== 0);
-
   return (
     <Window English='All Study Time' Japanese='全部勉強時間'>
-      <GraphDonutWithStats stats={filteredTimes} />
+      <GraphDonutWithStats stats={times} />
     </Window>
   );
 }
