@@ -40,7 +40,7 @@ const tooltipStyles = {
 
 const background = 'rgb(241 245 249)';
 
-export default function BarGraphStack({ width, height, margin = defaultMargin, data }: BarStackProps) {
+export default function GraphBarStack({ width, height, margin = defaultMargin, data }: BarStackProps) {
   const keys = Object.keys(data[0]).filter((d) => d !== 'date') as Category[];
 
   const studyTotals = data.reduce((allTotals, currentDate) => {
