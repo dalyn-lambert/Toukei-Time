@@ -6,7 +6,6 @@ import { Category } from '@prisma/client';
 import { AxisBottom } from '@visx/axis';
 import { localPoint } from '@visx/event';
 import { Group } from '@visx/group';
-import { LegendOrdinal } from '@visx/legend';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { BarStack } from '@visx/shape';
 import { SeriesPoint } from '@visx/shape/lib/types';
@@ -28,7 +27,7 @@ const defaultMargin = {
   top: 40,
   right: 0,
   bottom: 0,
-  left: 10,
+  left: 0,
 };
 
 const tooltipStyles = {
@@ -37,8 +36,6 @@ const tooltipStyles = {
   // base-gray
   backgroundColor: '#B7B6C1',
 };
-
-const background = 'rgb(241 245 249)';
 
 export default function GraphBarStack({ width, height, margin = defaultMargin, data }: BarStackProps) {
   const keys = Object.keys(data[0]).filter((d) => d !== 'date') as Category[];
@@ -93,7 +90,6 @@ export default function GraphBarStack({ width, height, margin = defaultMargin, d
   return width < 10 ? null : (
     <div style={{ position: 'relative' }}>
       <svg ref={containerRef} width={width} height={height}>
-        <rect x={0} y={0} width={width} height={height} fill={background} />
         <Group top={margin.top}>
           <BarStack<StudyDay, Category>
             data={data}
@@ -160,7 +156,7 @@ export default function GraphBarStack({ width, height, margin = defaultMargin, d
           justifyContent: 'center',
         }}
       >
-        <LegendOrdinal scale={colorScale} direction='row' labelMargin='0 15px 0 0' />
+        {/* <LegendOrdinal className='flex flex-wrap' scale={colorScale} direction='row' labelMargin='0 15px 0 0' /> */}
       </div>
       {tooltipOpen && tooltipData && (
         <TooltipInPortal top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
