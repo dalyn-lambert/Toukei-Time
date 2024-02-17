@@ -15,7 +15,14 @@ const getData = async (today: string) => {
 };
 
 const GraphBarStackRecent = async () => {
-  const today = format(new Date(), 'yyyy-MM-dd');
+  // get user time zone
+  const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // create a new date
+  const date = new Date();
+  // translate to local date
+  const localDate = date.toLocaleString('en-US', { timeZone: timeZoneIANA });
+  // format for database call
+  const today = format(localDate, 'yyyy-MM-dd');
   const data = await getData(today);
 
   return (
