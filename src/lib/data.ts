@@ -74,7 +74,7 @@ export const getStudyDayForDate = async (date: string) => {
   const Playing = sumArray(playingTime.map((d) => d.time));
 
   const speakingTime = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: date, category: 'Listening' },
+    where: { userId: user.id, date: date, category: 'Speaking' },
     select: { time: true },
   });
   const Speaking = sumArray(speakingTime.map((d) => d.time));

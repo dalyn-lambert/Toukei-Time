@@ -2,6 +2,7 @@
 
 import { signIn } from '@/auth';
 import { UTCDate } from '@date-fns/utc';
+import { format } from 'date-fns';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -154,7 +155,7 @@ export async function createStudyLog(formData: FormData) {
         title,
         time,
         category,
-        date: new UTCDate(date),
+        date: format(new UTCDate(date), 'yyyy-MM-dd'),
         user: { connect: { id: user.id } },
         resource: { connect: { id: resourceEntry.id } },
       },
@@ -191,7 +192,13 @@ export async function updateStudyLog(id: number, formData: FormData) {
       where: {
         id,
       },
-      data: { title, time, category, date, resource: { connect: { id: resourceEntry.id } } },
+      data: {
+        title,
+        time,
+        category,
+        date: format(date, 'yyyy-MM-dd'),
+        resource: { connect: { id: resourceEntry.id } },
+      },
     });
   } catch (error) {
     return {

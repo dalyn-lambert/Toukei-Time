@@ -12,7 +12,6 @@ const getData = async (today: string) => {
 
 const TodaysStudies = async () => {
   const today = getToday();
-  console.log(today);
   const studyLogs = await getData(today);
 
   return (
