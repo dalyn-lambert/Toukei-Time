@@ -18,7 +18,7 @@ const TodaysStudies = async () => {
     <Window English="Today's Studies" Japanese='今日の勉強'>
       <Notepad>
         <TodaysStudiesDate />
-        <span>{today}</span>
+        <span>getToday {today}</span>
         <div className='pt-2'>
           {studyLogs.map((log) => (
             <TodaysStudiesItem key={log.id} log={log} />

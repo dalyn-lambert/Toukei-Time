@@ -9,12 +9,14 @@ import Window from './Window';
 const getData = async (today: string) => {
   const start = subDays(today, 4);
   const startDate = format(new UTCDate(start), 'yyyy-MM-dd');
+  console.log(startDate);
   let data: StudyDay[] = [];
   for (let i = 0; i <= 5; i++) {
     if (i === 0) {
       data.push(await getStudyDayForDate(startDate));
     } else {
       const date = format(addDays(startDate, i), 'yyyy-MM-dd');
+      console.log(date);
       data.push(await getStudyDayForDate(date));
     }
   }
