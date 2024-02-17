@@ -1,3 +1,4 @@
+import { UTCDate } from '@date-fns/utc';
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -13,7 +14,7 @@ export function getToday() {
   // // translate to local date
   // const localDate = date.toLocaleString('en-US', { timeZone: timeZoneIANA });
   // // format for database call
-  const today = format(new Date(), 'yyyy-MM-dd');
+  const today = format(new UTCDate(), 'yyyy-MM-dd');
   return today;
 }
 

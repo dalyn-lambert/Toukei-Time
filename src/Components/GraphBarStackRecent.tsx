@@ -7,24 +7,27 @@ import GraphBarStack from './GraphBarStack';
 import Window from './Window';
 
 const getData = async (today: string) => {
-  const start = subDays(today, 3);
+  const start = subDays(today, 4);
+  const startDate = format(new UTCDate(start), 'yyyy-MM-dd');
   let data: StudyDay[] = [];
-  for (let i = 0; i <= 4; i++) {
-    const date = format(addDays(start, i), 'yyyy-MM-dd');
-    data.push(await getStudyDayForDate(date));
+  for (let i = 0; i <= 5; i++) {
+    if (i === 0) {
+      data.push(await getStudyDayForDate(startDate));
+    } else {
+      const date = format(addDays(startDate, i), 'yyyy-MM-dd');
+      data.push(await getStudyDayForDate(date));
+    }
   }
   return data;
 };
 
 const GraphBarStackRecent = async () => {
-  const UTCToday = new UTCDate().toISOString();
   const today = getToday();
   const data = await getData(today);
 
   return (
     <Window English='Recent Study Time' Japanese='最近の勉強時間'>
-      <div>Today {today}</div>
-      <div>UTC {UTCToday}</div>
+      <div>getToday {today}</div>
       <div className='flex flex-row justify-center border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
         <GraphBarStack data={data} width={300} height={250} />
       </div>
