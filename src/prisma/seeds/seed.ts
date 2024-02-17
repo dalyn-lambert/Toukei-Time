@@ -4,7 +4,7 @@ export const studyLogs = [
   {
     title: 'Ep.073',
     category: Category.Listening,
-    date: new Date(2023, 12, 10),
+    date: '2024-02-17',
     time: 29,
     resourceId: 1,
     userId: 1,
@@ -12,7 +12,7 @@ export const studyLogs = [
   {
     title: '[Japanese conversation] Talk to the staff at a cafe. Chiba Vlog',
     category: Category.Listening,
-    date: new Date(2023, 12, 8),
+    date: '2024-02-17',
     time: 13,
     resourceId: 2,
     userId: 1,
@@ -20,7 +20,7 @@ export const studyLogs = [
   {
     title: '第０話, read 10 pages',
     category: Category.Reading,
-    date: new Date(2023, 10, 1),
+    date: '2024-02-17',
     time: 10,
     resourceId: 3,
     userId: 1,
@@ -28,7 +28,7 @@ export const studyLogs = [
   {
     title: 'Episode 40',
     category: Category.Watching,
-    date: new Date(2023, 12, 10),
+    date: '2024-02-17',
     time: 20,
     resourceId: 4,
     userId: 1,
@@ -36,7 +36,7 @@ export const studyLogs = [
   {
     title: 'Lesson with Aoi',
     category: Category.Speaking,
-    date: new Date(2023, 12, 10),
+    date: '2024-02-17',
     time: 30,
     resourceId: 5,
     userId: 1,
