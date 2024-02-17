@@ -2,7 +2,7 @@ import { getStudyDayForDate } from '@/lib/data';
 import { StudyDay } from '@/lib/types';
 import { getToday } from '@/lib/utils';
 import { UTCDate } from '@date-fns/utc';
-import { addDays, format, subDays } from 'date-fns';
+import { format, subDays } from 'date-fns';
 import GraphBarStack from './GraphBarStack';
 import Window from './Window';
 
@@ -11,15 +11,16 @@ const getData = async (today: string) => {
   const startDate = format(new UTCDate(start), 'yyyy-MM-dd');
   console.log(startDate);
   let data: StudyDay[] = [];
-  for (let i = 0; i <= 5; i++) {
-    if (i === 0) {
-      data.push(await getStudyDayForDate(startDate));
-    } else {
-      const date = format(addDays(startDate, i), 'yyyy-MM-dd');
-      console.log(date);
-      data.push(await getStudyDayForDate(date));
-    }
-  }
+  data.push(await getStudyDayForDate(startDate));
+  // for (let i = 0; i <= 5; i++) {
+  //   if (i === 0) {
+  //     data.push(await getStudyDayForDate(startDate));
+  //   } else {
+  //     const date = format(addDays(startDate, i), 'yyyy-MM-dd');
+  //     console.log(date);
+  //     data.push(await getStudyDayForDate(date));
+  //   }
+  // }
   return data;
 };
 
