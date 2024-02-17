@@ -1,6 +1,7 @@
 import { getStudyDayForDate } from '@/lib/data';
 import { StudyDay } from '@/lib/types';
 import { getToday } from '@/lib/utils';
+import { UTCDate } from '@date-fns/utc';
 import { addDays, format, subDays } from 'date-fns';
 import GraphBarStack from './GraphBarStack';
 import Window from './Window';
@@ -16,12 +17,14 @@ const getData = async (today: string) => {
 };
 
 const GraphBarStackRecent = async () => {
+  const UTCToday = new UTCDate().toISOString();
   const today = getToday();
   const data = await getData(today);
 
   return (
     <Window English='Recent Study Time' Japanese='最近の勉強時間'>
-      <div>{today}</div>
+      <div>Today {today}</div>
+      <div>UTC {UTCToday}</div>
       <div className='flex flex-row justify-center border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
         <GraphBarStack data={data} width={300} height={250} />
       </div>
