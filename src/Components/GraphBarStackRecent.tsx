@@ -1,4 +1,4 @@
-import { getStudyDayForDate } from '@/lib/data';
+import { getStudiesBetweenDates, getStudyDayForDate } from '@/lib/data';
 import { StudyDay } from '@/lib/types';
 import { getToday } from '@/lib/utils';
 import { UTCDate } from '@date-fns/utc';
@@ -9,7 +9,7 @@ import Window from './Window';
 const getData = async (today: string) => {
   const start = subDays(today, 4);
   const startDate = format(new UTCDate(start), 'yyyy-MM-dd');
-  console.log(startDate);
+  const logs = await getStudiesBetweenDates(startDate, today);
   let data: StudyDay[] = [];
   data.push(await getStudyDayForDate(startDate));
   // for (let i = 0; i <= 5; i++) {

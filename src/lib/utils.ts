@@ -7,14 +7,14 @@ import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from '.
 import { StudyStat } from './types';
 
 export function getToday() {
-  // // get user time zone
-  // const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  // // create a new date
-  // const date = new Date();
-  // // translate to local date
-  // const localDate = date.toLocaleString('en-US', { timeZone: timeZoneIANA });
-  // // format for database call
-  const today = format(new UTCDate(), 'yyyy-MM-dd');
+  // get user time zone
+  const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // create a new date
+  const date = new Date();
+  // translate to local date
+  const localDate = date.toLocaleString('en-US', { timeZone: timeZoneIANA });
+  // format for database call
+  const today = format(new UTCDate(localDate), 'yyyy-MM-dd');
   return today;
 }
 

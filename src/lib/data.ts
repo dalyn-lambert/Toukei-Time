@@ -81,14 +81,18 @@ export const getStudyDayForDate = async (date: string) => {
 
   return { date, Listening, Reading, Watching, Playing, Speaking };
 };
+
 export const getStudiesBetweenDates = async (start: string, end: string) => {
   const user = await getUser();
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
   }
   const logs = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: { lte: `${end}T00:00:00.000Z`, gte: `${start}T00:00:00.000Z` } },
+    where: { userId: user.id, date: { lte: end, gte: start } },
+    select: { date: true, category: true, time: true },
   });
+
+  console.log(logs);
   return logs;
 };
 
