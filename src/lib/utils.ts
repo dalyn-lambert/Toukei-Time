@@ -4,12 +4,9 @@ import { ja } from 'date-fns/locale';
 import { getStudyLogsForResource } from './data';
 import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from './icons';
 import { StudyStat } from './types';
-import { UTCDate } from '@date-fns/utc';
 
 export function getToday() {
-  const today = format(new UTCDate(), 'yyyy-MM-dd');
-  console.log({ today });
-
+  const today = format(new Date(), 'yyyy-MM-dd');
   return today;
 }
 
