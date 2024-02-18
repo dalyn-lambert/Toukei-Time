@@ -1,8 +1,8 @@
 'use client';
 
 import { createStudyLog } from '@/lib/actions';
+import { getToday } from '@/lib/utils';
 import { Category, Resource } from '@prisma/client';
-import { format } from 'date-fns';
 import { ChangeEvent, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import StyledButton from './StyledButton';
@@ -10,7 +10,7 @@ import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories = Object.keys(Category);
-  const today = format(new Date(), 'yyyy-MM-dd');
+  const today = getToday();
 
   const [selectedCategory, setSelectedCategory] = useState('Listening');
   const handleCategoryFilter = (e: ChangeEvent<{ value: string }>) => {

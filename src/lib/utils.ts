@@ -5,6 +5,11 @@ import { getStudyLogsForResource } from './data';
 import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from './icons';
 import { StudyStat } from './types';
 
+export function getToday() {
+  const today = format(new Date(), 'yyyy-MM-dd');
+  return today;
+}
+
 export function getIconForCategory(category: Category) {
   switch (category) {
     case 'Speaking':

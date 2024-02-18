@@ -40,7 +40,7 @@ export const getStudiesForDate = async (date: string) => {
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
   }
-  const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: `${date}T00:00:00.000Z` } });
+  const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: date } });
   return logs;
 };
 
@@ -50,45 +50,48 @@ export const getStudyDayForDate = async (date: string) => {
     throw new Error("Could not retrieve today's studies, user not found");
   }
   const listeningTimes = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: `${date}T00:00:00.000Z`, category: 'Listening' },
+    where: { userId: user.id, date: date, category: 'Listening' },
     select: { time: true },
   });
   const Listening = sumArray(listeningTimes.map((d) => d.time));
 
   const readingTimes = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: `${date}T00:00:00.000Z`, category: 'Reading' },
+    where: { userId: user.id, date: date, category: 'Reading' },
     select: { time: true },
   });
   const Reading = sumArray(readingTimes.map((d) => d.time));
 
   const watchingTimes = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: `${date}T00:00:00.000Z`, category: 'Watching' },
+    where: { userId: user.id, date: date, category: 'Watching' },
     select: { time: true },
   });
   const Watching = sumArray(watchingTimes.map((d) => d.time));
 
   const playingTime = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: `${date}T00:00:00.000Z`, category: 'Playing' },
+    where: { userId: user.id, date: date, category: 'Playing' },
     select: { time: true },
   });
   const Playing = sumArray(playingTime.map((d) => d.time));
 
   const speakingTime = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: `${date}T00:00:00.000Z`, category: 'Listening' },
+    where: { userId: user.id, date: date, category: 'Speaking' },
     select: { time: true },
   });
   const Speaking = sumArray(speakingTime.map((d) => d.time));
 
   return { date, Listening, Reading, Watching, Playing, Speaking };
 };
+
 export const getStudiesBetweenDates = async (start: string, end: string) => {
   const user = await getUser();
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
   }
   const logs = await prisma.studyLog.findMany({
-    where: { userId: user.id, date: { lte: `${end}T00:00:00.000Z`, gte: `${start}T00:00:00.000Z` } },
+    where: { userId: user.id, date: { lte: end, gte: start } },
+    select: { date: true, category: true, time: true },
   });
+
   return logs;
 };
 
