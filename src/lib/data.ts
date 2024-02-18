@@ -92,7 +92,6 @@ export const getStudiesBetweenDates = async (start: string, end: string) => {
     select: { date: true, category: true, time: true },
   });
 
-  console.log(logs);
   return logs;
 };
 

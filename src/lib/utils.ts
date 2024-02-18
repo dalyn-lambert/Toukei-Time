@@ -1,3 +1,4 @@
+import { UTCDate } from '@date-fns/utc/date';
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -9,8 +10,9 @@ export function getToday() {
   // get user time zone
   const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
   console.log({ timeZoneIANA });
+
   // create a new date
-  const date = new Date();
+  const date = new UTCDate();
   console.log({ date });
   // translate to local date
   const localDate = date.toLocaleString('en-US', { timeZone: timeZoneIANA });
