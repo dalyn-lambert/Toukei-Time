@@ -1,4 +1,3 @@
-import { UTCDate } from '@date-fns/utc/date';
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -7,19 +6,7 @@ import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from '.
 import { StudyStat } from './types';
 
 export function getToday() {
-  // get user time zone
-  const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  console.log({ timeZoneIANA });
-
-  // create a new date
-  const date = new UTCDate();
-  console.log({ date });
-  // translate to local date
-  const localDate = date.toLocaleString('en-US', { timeZone: timeZoneIANA });
-  console.log({ localDate });
-
-  // format for database call
-  const today = format(localDate, 'yyyy-MM-dd');
+  const today = format(new Date(), 'yyyy-MM-dd');
   console.log({ today });
 
   return today;
