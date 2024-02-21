@@ -9,7 +9,7 @@ import StyledButton from './StyledButton';
 import Window from './Window';
 
 function AddStudyLog({ resources }: { resources: Resource[] }) {
-  const categories = Object.keys(Category);
+  const categories: Category[] = Object.values(Category);
   const today = getToday();
 
   const [selectedCategory, setSelectedCategory] = useState('Listening');
