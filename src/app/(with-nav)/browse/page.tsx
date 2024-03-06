@@ -1,13 +1,9 @@
-import BrowseExplorer from '@/Components/BrowseExplorer';
-import { getAllResources } from '@/lib/data';
+import BrowseExplorerWrapper from '@/Components/BrowseExploererWrapper';
 
-const getData = async () => {
-  const data = await getAllResources();
-  return data;
-};
-
-export default async function BrowsePage() {
-  const resources = await getData();
-
-  return <BrowseExplorer resources={resources} />;
+export default function BrowsePage() {
+  return (
+    <div className='flex flex-col gap-4 desktop:content-center'>
+      <BrowseExplorerWrapper />
+    </div>
+  );
 }
