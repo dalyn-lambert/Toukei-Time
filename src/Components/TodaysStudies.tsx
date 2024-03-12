@@ -19,6 +19,7 @@ const TodaysStudies = async () => {
       <Notepad>
         <TodaysStudiesDate />
         <span>getToday {today}</span>
+        <span>{new Date().toISOString()}</span>
         <div className='pt-2'>
           {studyLogs.map((log) => (
             <TodaysStudiesItem key={log.id} log={log} />
