@@ -1,5 +1,4 @@
 import { getStudiesForDate } from '@/lib/data';
-import { getToday } from '@/lib/utils';
 import Notepad from './Notepad';
 import TodaysStudiesDate from './TodaysStudiesDate';
 import TodaysStudiesItem from './TodaysStudiesItem';
@@ -13,14 +12,14 @@ const getData = async (today: string) => {
 };
 
 const TodaysStudies = async ({ date }: TodaysStudiesProps) => {
-  const today = getToday();
+  // const today = getToday();
   const studyLogs = await getData(date);
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
       <Notepad>
         <TodaysStudiesDate />
-        <span>getToday {today}</span>
+        <span>getToday {date}</span>
         <div className='pt-2'>
           {studyLogs.map((log) => (
             <TodaysStudiesItem key={log.id} log={log} />

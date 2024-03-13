@@ -7,7 +7,9 @@ import Window from './Window';
 
 const UseClient = () => {
   const newDate = new UTCDate().toISOString();
+  console.log(`new date ${newDate}`);
   const today = format(newDate, 'yyyy-MM-dd');
+  console.log(`today ${today}`);
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
