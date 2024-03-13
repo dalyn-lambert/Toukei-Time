@@ -1,4 +1,3 @@
-import { UTCDate } from '@date-fns/utc';
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
@@ -7,7 +6,7 @@ import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from '.
 import { StudyStat } from './types';
 
 export function getToday() {
-  const newDate = new UTCDate().toISOString();
+  const newDate = new Date().toISOString();
   const today = format(newDate, 'yyyy-MM-dd');
   return today;
 }
