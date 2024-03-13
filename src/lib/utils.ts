@@ -7,8 +7,8 @@ import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from '.
 import { StudyStat } from './types';
 
 export function getToday() {
-  const newDate = new UTCDate();
-  const today = format(newDate, 'yyyy-MM-dd');
+  const today = new UTCDate().toISOString();
+  // const today = format(newDate, 'yyyy-MM-dd');
   return today;
 }
 
