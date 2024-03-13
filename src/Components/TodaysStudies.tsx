@@ -5,14 +5,16 @@ import TodaysStudiesDate from './TodaysStudiesDate';
 import TodaysStudiesItem from './TodaysStudiesItem';
 import Window from './Window';
 
+type TodaysStudiesProps = { date: string };
+
 const getData = async (today: string) => {
   const data = await getStudiesForDate(today);
   return data;
 };
 
-const TodaysStudies = async () => {
+const TodaysStudies = async ({ date }: TodaysStudiesProps) => {
   const today = getToday();
-  const studyLogs = await getData(today);
+  const studyLogs = await getData(date);
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>
