@@ -2,6 +2,7 @@
 
 import { signIn } from '@/auth';
 import { UTCDate } from '@date-fns/utc';
+import { format } from 'date-fns/format';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -143,6 +144,8 @@ export async function createStudyLog(formData: FormData) {
     resource: formData.get('resource'),
   });
 
+  console.log(`form date is ${date}`);
+
   const resourceEntry = await getResourceFromTitle(resource);
   if (!resourceEntry) {
     return null;
@@ -154,12 +157,12 @@ export async function createStudyLog(formData: FormData) {
         title,
         time,
         category,
-        date: new UTCDate(date).toISOString(),
+        date: format(new UTCDate(date), 'yyyy-MM-dd'),
         user: { connect: { id: user.id } },
         resource: { connect: { id: resourceEntry.id } },
       },
     });
-    console.log(`created a study log on date: ${date}`);
+    console.log(`created a study log on date: ${format(new UTCDate(date), 'yyyy-MM-dd')}`);
   } catch (error) {
     return {
       message: 'Database Error: Failed to Create Study Log',

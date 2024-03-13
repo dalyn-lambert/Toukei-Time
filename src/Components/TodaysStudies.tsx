@@ -7,6 +7,7 @@ import TodaysStudiesItem from './TodaysStudiesItem';
 import Window from './Window';
 
 const getData = async (today: string) => {
+  console.log(`getDate is looking for ${today}`);
   const data = await getStudiesForDate(today);
   return data;
 };
