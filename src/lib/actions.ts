@@ -159,6 +159,7 @@ export async function createStudyLog(formData: FormData) {
         resource: { connect: { id: resourceEntry.id } },
       },
     });
+    console.log(`created a study log on date: ${date}`);
   } catch (error) {
     return {
       message: 'Database Error: Failed to Create Study Log',
