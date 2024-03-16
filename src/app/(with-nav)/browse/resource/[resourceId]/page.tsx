@@ -1,7 +1,9 @@
 import AddStudyLog from '@/Components/AddStudyLog';
 import { DeleteResource } from '@/Components/DeleteResource';
+import Notepad from '@/Components/Notepad';
 import StudyLogEntry from '@/Components/StudyLogEntry';
 import UpdateResource from '@/Components/UpdateResource';
+import Window from '@/Components/Window';
 import { getResourceFromId, getStudyLogsForResource } from '@/lib/data';
 import { notFound } from 'next/navigation';
 
@@ -27,11 +29,15 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
     <div className='flex flex-col gap-4'>
       <UpdateResource {...resource} />
       <AddStudyLog resources={[resource]} />
-      <div className='flex flex-col gap-4'>
-        {studyLogs.map((studyLog) => (
-          <StudyLogEntry key={studyLog.id} {...studyLog} />
-        ))}
-      </div>
+      <Window English='' Japanese=''>
+        <Notepad>
+          <div className='flex flex-col gap-4'>
+            {studyLogs.map((studyLog) => (
+              <StudyLogEntry key={studyLog.id} {...studyLog} />
+            ))}
+          </div>
+        </Notepad>
+      </Window>
       <DeleteResource id={resource.id} />
     </div>
   );
