@@ -13,7 +13,7 @@ import prisma from './prisma';
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
-    await signIn('credentials', formData, { redirectTo: '/today' });
+    await signIn('credentials', formData, { redirectTo: '/add' });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -144,8 +144,6 @@ export async function createStudyLog(formData: FormData) {
     resource: formData.get('resource'),
   });
 
-  console.log(`form date is ${date}`);
-
   const resourceEntry = await getResourceFromTitle(resource);
   if (!resourceEntry) {
     return null;
@@ -162,14 +160,13 @@ export async function createStudyLog(formData: FormData) {
         resource: { connect: { id: resourceEntry.id } },
       },
     });
-    console.log(`created a study log on date: ${format(new UTCDate(date), 'yyyy-MM-dd')}`);
   } catch (error) {
     return {
       message: 'Database Error: Failed to Create Study Log',
     };
   }
 
-  redirect(`/today`);
+  redirect(`/add`);
 }
 
 // Update an existing resource
