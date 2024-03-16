@@ -5,9 +5,9 @@ import NavTile from './NavTile';
 export type LinkData = { label: string; route: string; icon: JSX.Element };
 
 const links: LinkData[] = [
-  { label: 'Stats', route: '/stats', icon: statIcon },
-  { label: 'Today', route: '/today', icon: todayIcon },
+  { label: 'Month', route: '/month', icon: statIcon },
   { label: 'Add', route: '/add', icon: addIcon },
+  { label: 'Today', route: '/today', icon: todayIcon },
   { label: 'Browse', route: '/browse', icon: browseIcon },
 ];
 
