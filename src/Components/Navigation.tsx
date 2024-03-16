@@ -11,7 +11,7 @@ const links: LinkData[] = [
   { label: 'Browse', route: '/browse', icon: browseIcon },
 ];
 
-const Navigation = async () => {
+const Navigation = () => {
   return (
     <div className=' bg-gray p-3 drop-shadow-lg border-2 border-dark-gray shadow-inner shadow-white '>
       <div className='flex flex-row gap-2 justify-center'>
