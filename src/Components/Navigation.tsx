@@ -5,13 +5,13 @@ import NavTile from './NavTile';
 export type LinkData = { label: string; route: string; icon: JSX.Element };
 
 const links: LinkData[] = [
-  { label: 'Stats', route: '/stats', icon: statIcon },
-  { label: 'Today', route: '/today', icon: todayIcon },
+  { label: 'Month', route: '/month', icon: statIcon },
   { label: 'Add', route: '/add', icon: addIcon },
+  { label: 'Today', route: '/today', icon: todayIcon },
   { label: 'Browse', route: '/browse', icon: browseIcon },
 ];
 
-const Navigation = async () => {
+const Navigation = () => {
   return (
     <div className=' bg-gray p-3 drop-shadow-lg border-2 border-dark-gray shadow-inner shadow-white '>
       <div className='flex flex-row gap-2 justify-center'>

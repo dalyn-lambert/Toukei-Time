@@ -1,5 +1,5 @@
-import GraphDonutToday from '@/Components/GraphDonutToday';
-import TodaysStudies from '@/Components/TodaysStudies';
+import GraphDonutToday from "@/Components/GraphDonutToday";
+import TodaysStudies from "@/Components/TodaysStudies";
 
 export default function TodayPage() {
   return (
