@@ -1,5 +1,5 @@
 import { StudyStat } from '@/lib/types';
-import { getTimeForCategory, getToday } from '@/lib/utils';
+import { getTimeForCategory } from '@/lib/utils';
 
 import { getStudiesForDate } from '@/lib/data';
 import GraphDonutWithStats from './GraphDonutWithStats';
@@ -10,8 +10,9 @@ const getData = async (today: string) => {
   return logs;
 };
 
-const GraphDonutToday = async () => {
-  const today = getToday();
+type GraphDonutTodayProps = { today: string };
+
+const GraphDonutToday = async ({ today }: GraphDonutTodayProps) => {
   const data = await getData(today);
   const stats: StudyStat[] = [
     { category: 'Listening', time: getTimeForCategory('Listening', data) },

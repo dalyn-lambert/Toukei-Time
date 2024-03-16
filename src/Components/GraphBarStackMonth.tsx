@@ -3,7 +3,6 @@ import { StudyDay } from '@/lib/types';
 import { getToday } from '@/lib/utils';
 import { UTCDate } from '@date-fns/utc';
 import { format, subDays } from 'date-fns';
-import GraphBarStack from './GraphBarStack';
 import Window from './Window';
 
 const getData = async (today: string) => {
@@ -24,18 +23,18 @@ const getData = async (today: string) => {
   return data;
 };
 
-const GraphBarStackRecent = async () => {
+const GraphBarStackMonth = async () => {
   const today = getToday();
   const data = await getData(today);
 
   return (
-    <Window English='Recent Study Time' Japanese='最近の勉強時間'>
-      <div>getToday {today}</div>
+    <Window English='This Month Study Time' Japanese='今月の勉強時間'>
       <div className='flex flex-row justify-center border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
-        <GraphBarStack data={data} width={300} height={250} />
+        {/* <GraphBarStack data={data} width={300} height={250} /> */}
+        Monthly graph data
       </div>
     </Window>
   );
 };
 
-export default GraphBarStackRecent;
+export default GraphBarStackMonth;
