@@ -2,7 +2,6 @@ import Notepad from '@/Components/Notepad';
 import ResourceEntry from '@/Components/ResourceEntry';
 import Window from '@/Components/Window';
 import { getAllResources } from '@/lib/data';
-import { Category } from '@prisma/client';
 
 const getData = async () => {
   const data = await getAllResources();
@@ -10,9 +9,9 @@ const getData = async () => {
 };
 
 async function BrowseExplorer() {
-  const categories: Category[] = Object.values(Category);
-  // const [selectedCategory, setSelectedCategory] = useState('Listening');
   const resources = await getData();
+  // const categories: Category[] = Object.values(Category);
+  // const [selectedCategory, setSelectedCategory] = useState('Listening');
   // const filterdResources = resources.filter((resource) => resource.category === selectedCategory);
 
   return (
