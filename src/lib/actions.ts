@@ -1,8 +1,6 @@
 'use server';
 
 import { signIn } from '@/auth';
-import { UTCDate } from '@date-fns/utc';
-import { format } from 'date-fns/format';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -124,7 +122,7 @@ const StudyLogFormSchema = z.object({
   title: z.string(),
   time: z.coerce.number(),
   category: z.enum(['Listening', 'Reading', 'Watching', 'Speaking', 'Playing']),
-  date: z.coerce.date(),
+  date: z.string(),
   resource: z.string(),
 });
 
@@ -135,7 +133,6 @@ export async function createStudyLog(formData: FormData) {
   if (!user) {
     throw new Error('Could not create study log, user not found');
   }
-
   const { title, time, category, date, resource } = CreateStudyLog.parse({
     title: formData.get('title'),
     time: formData.get('time'),
@@ -143,8 +140,6 @@ export async function createStudyLog(formData: FormData) {
     date: formData.get('date'),
     resource: formData.get('resource'),
   });
-
-  console.log(`date from form ${date}`);
 
   const resourceEntry = await getResourceFromTitle(resource);
   if (!resourceEntry) {
@@ -157,19 +152,18 @@ export async function createStudyLog(formData: FormData) {
         title,
         time,
         category,
-        date: format(new UTCDate(date), 'yyyy-MM-dd'),
+        date,
         user: { connect: { id: user.id } },
         resource: { connect: { id: resourceEntry.id } },
       },
     });
-    console.log(`date from new study log ${date}`);
   } catch (error) {
     return {
       message: 'Database Error: Failed to Create Study Log',
     };
   }
 
-  redirect(`/log`);
+  redirect(`/browse`);
 }
 
 // Update an existing resource
@@ -199,11 +193,10 @@ export async function updateStudyLog(id: number, formData: FormData) {
         title,
         time,
         category,
-        date: format(new UTCDate(date), 'yyyy-MM-dd'),
+        date,
         resource: { connect: { id: resourceEntry.id } },
       },
     });
-    console.log(`date from update log ${date}`);
   } catch (error) {
     return {
       message: 'Database Error: Failed To Update StudyLog',
