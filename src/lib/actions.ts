@@ -13,7 +13,7 @@ import prisma from './prisma';
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
-    await signIn('credentials', formData, { redirectTo: '/add' });
+    await signIn('credentials', formData, { redirectTo: '/log' });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -70,7 +70,7 @@ export async function createResource(formData: FormData) {
       message: 'Database Error: Failed to Create Resource',
     };
   }
-  redirect(`/browse/`);
+  redirect(`/browse`);
 }
 
 // Update an existing resource
@@ -98,7 +98,7 @@ export async function updateResource(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update Resource',
     };
   }
-  redirect(`/browse/${id}`);
+  redirect(`/browse/resource/${id}`);
 }
 
 // Delete an existing resource + related study logs
@@ -114,7 +114,7 @@ export async function deleteResource(id: number) {
     return { message: 'Database Error: Failed to Delete Resource' };
   }
 
-  redirect(`/browse/`);
+  redirect(`/browse`);
 }
 
 // Create a new study log
@@ -169,7 +169,7 @@ export async function createStudyLog(formData: FormData) {
     };
   }
 
-  redirect(`/add`);
+  redirect(`/log`);
 }
 
 // Update an existing resource
@@ -209,7 +209,7 @@ export async function updateStudyLog(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update StudyLog',
     };
   }
-  redirect(`/browse/${resourceEntry.id}`);
+  redirect(`/browse/studylog/${id}`);
 }
 
 // Delete an existing study log
@@ -222,5 +222,5 @@ export async function deleteStudyLog(id: number) {
     return { message: 'Database Error: Failed to Delete Study Log' };
   }
 
-  redirect(`/browse/`);
+  redirect(`/browse`);
 }
