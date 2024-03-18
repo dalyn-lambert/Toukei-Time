@@ -1,8 +1,6 @@
 'use server';
 
 import { signIn } from '@/auth';
-import { UTCDate } from '@date-fns/utc';
-import { format } from 'date-fns/format';
 import { AuthError } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
@@ -13,7 +11,7 @@ import prisma from './prisma';
 
 export async function authenticate(prevState: string | undefined, formData: FormData) {
   try {
-    await signIn('credentials', formData, { redirectTo: '/add' });
+    await signIn('credentials', formData, { redirectTo: '/log' });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -70,7 +68,7 @@ export async function createResource(formData: FormData) {
       message: 'Database Error: Failed to Create Resource',
     };
   }
-  redirect(`/browse/`);
+  redirect(`/browse`);
 }
 
 // Update an existing resource
@@ -98,7 +96,7 @@ export async function updateResource(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update Resource',
     };
   }
-  redirect(`/browse/${id}`);
+  redirect(`/browse/resource/${id}`);
 }
 
 // Delete an existing resource + related study logs
@@ -114,7 +112,7 @@ export async function deleteResource(id: number) {
     return { message: 'Database Error: Failed to Delete Resource' };
   }
 
-  redirect(`/browse/`);
+  redirect(`/browse`);
 }
 
 // Create a new study log
@@ -124,7 +122,7 @@ const StudyLogFormSchema = z.object({
   title: z.string(),
   time: z.coerce.number(),
   category: z.enum(['Listening', 'Reading', 'Watching', 'Speaking', 'Playing']),
-  date: z.coerce.date(),
+  date: z.string(),
   resource: z.string(),
 });
 
@@ -135,7 +133,6 @@ export async function createStudyLog(formData: FormData) {
   if (!user) {
     throw new Error('Could not create study log, user not found');
   }
-
   const { title, time, category, date, resource } = CreateStudyLog.parse({
     title: formData.get('title'),
     time: formData.get('time'),
@@ -155,7 +152,7 @@ export async function createStudyLog(formData: FormData) {
         title,
         time,
         category,
-        date: format(new UTCDate(date), 'yyyy-MM-dd'),
+        date,
         user: { connect: { id: user.id } },
         resource: { connect: { id: resourceEntry.id } },
       },
@@ -166,7 +163,7 @@ export async function createStudyLog(formData: FormData) {
     };
   }
 
-  redirect(`/add`);
+  redirect(`/browse`);
 }
 
 // Update an existing resource
@@ -196,7 +193,7 @@ export async function updateStudyLog(id: number, formData: FormData) {
         title,
         time,
         category,
-        date: date.toISOString(),
+        date,
         resource: { connect: { id: resourceEntry.id } },
       },
     });
@@ -205,7 +202,7 @@ export async function updateStudyLog(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update StudyLog',
     };
   }
-  redirect(`/browse/${resourceEntry.id}`);
+  redirect(`/browse/studylog/${id}`);
 }
 
 // Delete an existing study log
@@ -218,5 +215,5 @@ export async function deleteStudyLog(id: number) {
     return { message: 'Database Error: Failed to Delete Study Log' };
   }
 
-  redirect(`/browse/`);
+  redirect(`/browse`);
 }

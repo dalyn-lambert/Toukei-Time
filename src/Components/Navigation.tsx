@@ -12,7 +12,7 @@ const today = format(new UTCDate().toISOString(), 'yyyy-MM-dd');
 const links: LinkData[] = [
   { label: 'Profile', route: '/profile', icon: statIcon },
   { label: 'Month', route: '/month', icon: statIcon },
-  { label: 'Add', route: '/add', icon: addIcon },
+  { label: 'Log Studies', route: '/log', icon: addIcon },
   { label: 'Today', route: `/${today}`, icon: todayIcon },
   { label: 'Browse', route: '/browse', icon: browseIcon },
 ];
