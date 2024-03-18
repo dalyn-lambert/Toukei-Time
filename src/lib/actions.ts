@@ -144,6 +144,8 @@ export async function createStudyLog(formData: FormData) {
     resource: formData.get('resource'),
   });
 
+  console.log(`date from form ${date}`);
+
   const resourceEntry = await getResourceFromTitle(resource);
   if (!resourceEntry) {
     return null;
@@ -160,6 +162,7 @@ export async function createStudyLog(formData: FormData) {
         resource: { connect: { id: resourceEntry.id } },
       },
     });
+    console.log(`date from new study log ${date}`);
   } catch (error) {
     return {
       message: 'Database Error: Failed to Create Study Log',
@@ -196,10 +199,11 @@ export async function updateStudyLog(id: number, formData: FormData) {
         title,
         time,
         category,
-        date: date.toISOString(),
+        date: format(new UTCDate(date), 'yyyy-MM-dd'),
         resource: { connect: { id: resourceEntry.id } },
       },
     });
+    console.log(`date from update log ${date}`);
   } catch (error) {
     return {
       message: 'Database Error: Failed To Update StudyLog',
