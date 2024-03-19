@@ -10,7 +10,7 @@ function AddResource() {
   const statuses = Object.keys(Status);
   return (
     <form action={createResource}>
-      <div className='flex flex-col gap-4'>
+      <div className='flex flex-col gap-3'>
         <div className='flex flex-row gap-1'>
           <label htmlFor='name'>Name:</label>
           <input
