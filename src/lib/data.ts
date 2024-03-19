@@ -1,5 +1,5 @@
 import { auth } from '@/auth';
-import { User } from '@prisma/client';
+import { Category, User } from '@prisma/client';
 import prisma from './prisma';
 import { sumArray } from './utils';
 
@@ -129,6 +129,20 @@ export const getResourceFromId = async (id: number) => {
     where: {
       userId: user.id,
       id,
+    },
+  });
+  return resource;
+};
+
+export const getResourceForCategory = async (category: Category) => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve resource, user not found');
+  }
+  const resource = await prisma.resource.findMany({
+    where: {
+      userId: user.id,
+      category,
     },
   });
   return resource;

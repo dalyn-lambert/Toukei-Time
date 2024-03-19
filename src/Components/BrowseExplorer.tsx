@@ -1,32 +1,39 @@
-import Notepad from '@/Components/Notepad';
-import ResourceEntry from '@/Components/ResourceEntry';
+'use client';
+
 import Window from '@/Components/Window';
-import { getAllResources } from '@/lib/data';
+import { getIconForCategory } from '@/lib/utils';
+import { Category, Resource } from '@prisma/client';
+import clsx from 'clsx';
+import React from 'react';
+import Notepad from './Notepad';
+import ResourceEntry from './ResourceEntry';
 
-const getData = async () => {
-  const data = await getAllResources();
-  return data;
-};
-
-async function BrowseExplorer() {
-  const resources = await getData();
-  // const categories: Category[] = Object.values(Category);
-  // const [selectedCategory, setSelectedCategory] = useState('Listening');
-  // const filterdResources = resources.filter((resource) => resource.category === selectedCategory);
+function BrowseExplorer({ resources }: { resources: Resource[] }) {
+  const categories: Category[] = Object.values(Category);
+  const [selectedCategory, setSelectedCategory] = React.useState<`${Category}`>(Category.Listening);
+  const filterdResources = resources.filter((resource) => resource.category === selectedCategory);
 
   return (
     <Window English='' Japanese=''>
-      {/* <div className='flex flex-row justify-around pb-2'>
-        {categories.map((category) => (
-          <div key={category} className='flex flex-row gap-1'>
-            <input type='radio' id={category} name='category' value={category} />
-            <label htmlFor={category}>{getJapaneseNameforCategory(category)}</label>
-          </div>
-        ))}
-      </div> */}
+      <div className='flex flex-row justify-around'>
+        <div className='flex flex-row gap-4'>
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={clsx(
+                ' border-r border-l-2 border-t-2 border-dark-gray p-2 bg-dark-gray bg-opacity-30',
+                selectedCategory === category && 'bg-gray shadow-inner shadow-white'
+              )}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {getIconForCategory(category)}
+            </button>
+          ))}
+        </div>
+      </div>
       <Notepad>
         <div className='flex flex-col gap-4'>
-          {resources.map((resource) => (
+          {filterdResources.map((resource) => (
             <ResourceEntry key={resource.id} {...resource} />
           ))}
         </div>
