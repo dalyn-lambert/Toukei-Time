@@ -5,7 +5,7 @@ import { UTCDate } from '@date-fns/utc';
 import { Category, Resource, StudyLog } from '@prisma/client';
 import { format } from 'date-fns';
 import { useFormStatus } from 'react-dom';
-import StyledButton from './StyledButton';
+import ButtonGeneral from './ButtonGeneral';
 import Window from './Window';
 
 function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource[] }) {
@@ -83,7 +83,7 @@ function UpdateStudyLogButton() {
   const { pending } = useFormStatus();
   return (
     <div className='pt-3' aria-disabled={pending}>
-      <StyledButton label='Update Study Log' />
+      <ButtonGeneral label='Update Study Log' />
     </div>
   );
 }

@@ -3,7 +3,7 @@
 import { authenticate } from '@/lib/actions';
 import { useFormState, useFormStatus } from 'react-dom';
 
-import StyledButton from './StyledButton';
+import ButtonGeneral from './ButtonGeneral';
 import Window from './Window';
 
 function LogIn() {
@@ -51,7 +51,7 @@ function LoginButton() {
   const { pending } = useFormStatus();
   return (
     <div className='pt-3' aria-disabled={pending}>
-      <StyledButton label='Log In' />
+      <ButtonGeneral label='Log In' />
     </div>
   );
 }

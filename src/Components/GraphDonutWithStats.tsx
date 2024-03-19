@@ -11,7 +11,7 @@ const GraphDonutWithStats = ({ stats }: { stats: StudyStat[] }) => {
 
   return (
     <div className='flex flex-row gap-4 py-2 items-center justify-around p-4 border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
-      <DonutChart width={175} height={175} data={sortedTimes} donutThickness={30} />
+      <DonutChart width={165} height={165} data={sortedTimes} donutThickness={30} />
       <div className='flex flex-col'>
         {sortedTimes.map((stat) => (
           <div className='flex flex-row pb-2 items-center' key={stat.category}>
