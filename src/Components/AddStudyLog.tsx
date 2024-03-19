@@ -12,7 +12,6 @@ import Window from './Window';
 function AddStudyLog({ resources }: { resources: Resource[] }) {
   const categories: Category[] = Object.values(Category);
   const today = format(new UTCDate().toISOString(), 'yyyy-MM-dd');
-  console.log(`add study log says today is ${today}`);
   const [selectedCategory, setSelectedCategory] = useState('Listening');
   const handleCategoryFilter = (e: ChangeEvent<{ value: string }>) => {
     const newValue = e.target.value;

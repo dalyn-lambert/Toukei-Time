@@ -1,4 +1,5 @@
 import { getStudiesForDate } from '@/lib/data';
+import { UTCDate } from '@date-fns/utc';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import Notepad from './Notepad';
@@ -16,9 +17,7 @@ type TodayStudiesProps = {
 
 const TodaysStudies = async ({ today }: TodayStudiesProps) => {
   const studyLogs = await getData(today);
-  console.log(`todays studies says ${today}`);
-
-  const todayJapanese = format(today, 'EE MMM do', { locale: ja });
+  const todayJapanese = format(new UTCDate(today), 'EE MMM do', { locale: ja });
 
   return (
     <Window English="Today's Studies" Japanese='今日の勉強'>

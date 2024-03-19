@@ -141,8 +141,6 @@ export async function createStudyLog(formData: FormData) {
     resource: formData.get('resource'),
   });
 
-  console.log(`the form date is ${date}`)
-
   const resourceEntry = await getResourceFromTitle(resource);
   if (!resourceEntry) {
     return null;
@@ -159,8 +157,6 @@ export async function createStudyLog(formData: FormData) {
         resource: { connect: { id: resourceEntry.id } },
       },
     });
-    console.log(`the date going in the db is ${date}`)
-
   } catch (error) {
     return {
       message: 'Database Error: Failed to Create Study Log',
