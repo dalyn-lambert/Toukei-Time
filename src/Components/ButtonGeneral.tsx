@@ -1,6 +1,6 @@
-import { StyledButtonProps } from '@/lib/types';
+type ButtonGeneralProps = { label: string; type?: 'Standard' | 'Danger' };
 
-function StyledButton({ label, type }: StyledButtonProps) {
+function ButtonGeneral({ label, type }: ButtonGeneralProps) {
   const dangerStyles = 'bg-rose-700 hover:bg-rose-900';
   const standardStyles = 'bg-green hover:bg-dark-green';
   const styles = type === 'Danger' ? dangerStyles : standardStyles;
@@ -9,4 +9,4 @@ function StyledButton({ label, type }: StyledButtonProps) {
   );
 }
 
-export default StyledButton;
+export default ButtonGeneral;

@@ -1,5 +1,4 @@
-import AddResource from '@/Components/AddResource';
-import AddStudyLog from '@/Components/AddStudyLog';
+import AddWindow from '@/Components/AddWindow';
 import TotalStudyTimeStats from '@/Components/GraphDonutAllStats';
 import { getAllResources } from '@/lib/data';
 
@@ -14,8 +13,7 @@ export default async function AddPage() {
   return (
     <div className='flex flex-col gap-4'>
       <TotalStudyTimeStats />
-      <AddStudyLog resources={allResources} />
-      <AddResource />
+      <AddWindow resources={allResources} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { updateResource } from '@/lib/actions';
 import { getJapaneseNameforCategory } from '@/lib/utils';
 import { Category, Resource, Status } from '@prisma/client';
 import { useFormStatus } from 'react-dom';
-import StyledButton from './StyledButton';
+import ButtonGeneral from './ButtonGeneral';
 import Window from './Window';
 
 function UpdateResource(resource: Resource) {
@@ -90,7 +90,7 @@ function UpdateResourceButton() {
   const { pending } = useFormStatus();
   return (
     <div className='pt-3' aria-disabled={pending}>
-      <StyledButton label='Update Resource' />
+      <ButtonGeneral label='Update Resource' />
     </div>
   );
 }
