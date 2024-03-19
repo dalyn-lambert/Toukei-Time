@@ -29,7 +29,7 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
     <div className='flex flex-col gap-4'>
       <UpdateResource {...resource} />
       <AddStudyLog resources={[resource]} />
-      <Window English='' Japanese=''>
+      <Window English='All Study Logs for Resource' Japanese='全部のローグ' category={resource.category}>
         <Notepad>
           <div className='flex flex-col gap-4'>
             {studyLogs.map((studyLog) => (

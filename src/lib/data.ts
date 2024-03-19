@@ -158,6 +158,9 @@ export const getStudyLogsForResource = async (id: number) => {
       userId: user.id,
       resourceId: id,
     },
+    orderBy: {
+      date: 'desc',
+    },
   });
   return studyLog;
 };
