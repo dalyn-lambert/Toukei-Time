@@ -1,4 +1,3 @@
-import AddStudyLog from '@/Components/AddStudyLog';
 import { DeleteResource } from '@/Components/DeleteResource';
 import Notepad from '@/Components/Notepad';
 import StudyLogEntry from '@/Components/StudyLogEntry';
@@ -28,7 +27,6 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   return (
     <div className='flex flex-col gap-4'>
       <UpdateResource {...resource} />
-      <AddStudyLog resources={[resource]} />
       <Window English='All Study Logs for Resource' Japanese='全部のローグ' category={resource.category}>
         <Notepad>
           <div className='flex flex-col gap-4'>
