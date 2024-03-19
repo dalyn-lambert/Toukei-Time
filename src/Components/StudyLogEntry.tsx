@@ -10,8 +10,8 @@ function StudyLogEntry(log: StudyLog) {
 
   return (
     <Link href={`/browse/studylog/${log.id}`} key={log.id}>
-      <div className='grid grid-cols-7 gap-2'>
-        <div className='col-start-1 pr-2 shrink-0 g'>{getIconForCategory(log.category)}</div>
+      <div className='grid grid-cols-8'>
+        <div className='col-start-1 pr-2 shrink-0'>{getIconForCategory(log.category)}</div>
         <div className='col-start-2 col-span-2 text-sm'>{JapaneseDate}</div>
         <div className='col-start-4 col-span-3 truncate text-sm'>{log.title}</div>
         <div className='col-start-7 col-span-2 text-sm text-center'>{toHoursAndMinutes(log.time)}</div>
