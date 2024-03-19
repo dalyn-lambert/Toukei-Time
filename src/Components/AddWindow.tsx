@@ -15,7 +15,7 @@ function AddWindow({ resources }: { resources: Resource[] }) {
         <div className='border-b-2 border-dark-gray flex-grow'></div>
         <button
           className={clsx(
-            'border-r border-l-2 border-t-2 border-dark-gray p-2 bg-dark-gray bg-opacity-10',
+            'border-r border-l-2 border-t-2 border-dark-gray p-2 bg-dark-gray bg-opacity-30',
             add === 'Study Log' && 'bg-gray bg-opacity-100 border-b-none underline',
             add === 'Resource' && 'border-b-2'
           )}
@@ -25,7 +25,7 @@ function AddWindow({ resources }: { resources: Resource[] }) {
         </button>
         <button
           className={clsx(
-            'border-l border-r-2 border-t-2 border-dark-gray p-2 bg-dark-gray bg-opacity-10',
+            'border-l border-r-2 border-t-2 border-dark-gray p-2 bg-dark-gray bg-opacity-30',
             add === 'Resource' && 'bg-gray bg-opacity-100 border-b-none underline',
             add === 'Study Log' && 'border-b-2'
           )}
