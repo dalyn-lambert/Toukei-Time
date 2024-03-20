@@ -7,7 +7,23 @@ import Window from './Window';
 
 const getData = async (today: string) => {
   const start = subDays(today, 5);
-  const startDate = format(new UTCDate(start), 'yyyy-MM-dd');
+  const startDate = format(new UTCDate(start).toISOString(), 'yyyy-MM-dd');
+  // const logs: Partial<StudyLog>[] = await getStudiesBetweenDates(startDate, today);
+
+  // let newData: StudyDay[] = [];
+
+  // // https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore?tab=readme-ov-file#_groupby
+  // const grouped = logs.reduce((r, v, i, a, k = v.date) => ((r[k] || (r[k] = [])).push(v), r), {});
+
+  // const test = logs.map((log) => {
+  //   newData.push({
+  //     date: log.date,
+  //      log.category: log.time,
+  //   });
+  // });
+
+  // console.log(newData);
+
   let data: StudyDay[] = [];
   for (let i = 0; i <= 6; i++) {
     const date = format(addDays(startDate, i), 'yyyy-MM-dd');
