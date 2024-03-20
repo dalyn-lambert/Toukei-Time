@@ -1,7 +1,7 @@
 // https://github.com/airbnb/visx/issues/1637#issuecomment-1587440404
 'use client';
 import { StudyDay } from '@/lib/types';
-import { formatJapaneseDate, toHoursAndMinutes } from '@/lib/utils';
+import { formatJapaneseDateWithDay, toHoursAndMinutes } from '@/lib/utils';
 import { Category } from '@prisma/client';
 import { AxisBottom } from '@visx/axis';
 import { localPoint } from '@visx/event';
@@ -52,7 +52,7 @@ export default function GraphBarStack({ width, height, margin = defaultMargin, d
   // accessors
   const getDate = (d: StudyDay) => d.date;
 
-  const formatDate = (date: string) => formatJapaneseDate(date);
+  const formatDate = (date: string) => formatJapaneseDateWithDay(date);
 
   // scales
   const dateScale = scaleBand<string>({

@@ -81,6 +81,10 @@ export function formatJapaneseDate(date: string) {
   return format(parseISO(date), 'MMM do', { locale: ja });
 }
 
+export function formatJapaneseDateWithDay(date: string) {
+  return format(parseISO(date), 'EE', { locale: ja });
+}
+
 export function getJapaneseNameforCategory(category: Category | 'Total') {
   switch (category) {
     case 'Speaking':

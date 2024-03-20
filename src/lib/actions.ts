@@ -163,7 +163,7 @@ export async function createStudyLog(formData: FormData) {
     };
   }
 
-  redirect(`/browse`);
+  redirect(`/${date}`);
 }
 
 // Update an existing resource

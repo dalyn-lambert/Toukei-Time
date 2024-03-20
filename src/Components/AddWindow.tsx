@@ -10,7 +10,7 @@ import Window from './Window';
 function AddWindow({ resources }: { resources: Resource[] }) {
   const [add, setAdd] = React.useState('Study Log');
   return (
-    <Window English={`Add a ${add}`} Japanese='???'>
+    <Window English={`Add a ${add}`} Japanese='加える'>
       <div className='flex flex-row justify-end'>
         <div className='border-b-2 border-dark-gray flex-grow'></div>
         <button

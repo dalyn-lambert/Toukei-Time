@@ -1,3 +1,4 @@
+import GraphBarStackPastWeek from '@/Components/GraphBarStackPastWeek';
 import GraphDonutToday from '@/Components/GraphDonutToday';
 import TodaysStudies from '@/Components/TodaysStudies';
 
@@ -7,6 +8,7 @@ export default function TodayPage({ params }: { params: { today: string } }) {
     <div className='flex flex-col gap-4 desktop:content-center'>
       <GraphDonutToday today={today} />
       <TodaysStudies today={today} />
+      <GraphBarStackPastWeek today={today} />
     </div>
   );
 }
