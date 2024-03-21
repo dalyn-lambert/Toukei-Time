@@ -8,7 +8,7 @@ import React from 'react';
 import Notepad from './Notepad';
 import ResourceEntry from './ResourceEntry';
 
-function BrowseExplorer({ resources }: { resources: Resource[] }) {
+function BrowseWindow({ resources }: { resources: Resource[] }) {
   const categories: Category[] = Object.values(Category);
   const [selectedCategory, setSelectedCategory] = React.useState<`${Category}`>(Category.Listening);
   const filterdResources = resources.filter((resource) => resource.category === selectedCategory);
@@ -41,4 +41,4 @@ function BrowseExplorer({ resources }: { resources: Resource[] }) {
     </Window>
   );
 }
-export default BrowseExplorer;
+export default BrowseWindow;

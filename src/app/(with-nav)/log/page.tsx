@@ -12,8 +12,8 @@ export default async function AddPage() {
 
   return (
     <div className='flex flex-col gap-4'>
-      <TotalStudyTimeStats />
       <AddWindow resources={allResources} />
+      <TotalStudyTimeStats />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { Category, User } from '@prisma/client';
 import prisma from './prisma';
-import { sumArray } from './utils';
+import { sumArray, toHoursAndMinutes } from './utils';
 
 export async function getUserWithEmail(email: string): Promise<User | null> {
   try {
@@ -119,8 +119,19 @@ export const getAllResources = async () => {
     where: { userId: user.id },
     orderBy: [{ name: 'asc' }],
   });
+
+  console.log(resources);
+
   return resources;
 };
+
+export async function getTotalTimeForResource(resourceId: number) {
+  const allLogs = await getStudyLogsForResource(resourceId);
+  const times = allLogs.map((log) => log.time);
+  const total = sumArray(times);
+  return toHoursAndMinutes(total);
+}
+
 export const getResourceFromId = async (id: number) => {
   const user = await getUser();
   if (!user) {
