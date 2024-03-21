@@ -120,8 +120,6 @@ export const getAllResources = async () => {
     orderBy: [{ name: 'asc' }],
   });
 
-  console.log(resources);
-
   return resources;
 };
 
