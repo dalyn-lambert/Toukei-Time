@@ -1,4 +1,4 @@
-import BrowseExplorer from '@/Components/BrowseExplorer';
+import BrowseWindow from '@/Components/BrowseWindow';
 import { getAllResources } from '@/lib/data';
 
 const getData = async () => {
@@ -10,7 +10,7 @@ export default async function BrowsePage() {
   const resources = await getData();
   return (
     <div className='flex flex-col gap-4'>
-      <BrowseExplorer resources={resources} />
+      <BrowseWindow resources={resources} />
     </div>
   );
 }
