@@ -106,9 +106,4 @@ export function getJapaneseNameforCategory(category: Category | 'Total') {
 
 export function buildStudyDay() {}
 
-export async function getTotalTimeForResource(resourceId: number) {
-  const allLogs = await getStudyLogsForResource(resourceId);
-  const times = allLogs.map((log) => log.time);
-  const total = sumArray(times);
-  return toHoursAndMinutes(total);
-}
+
