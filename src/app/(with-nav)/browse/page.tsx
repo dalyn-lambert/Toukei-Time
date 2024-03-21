@@ -12,7 +12,7 @@ const addTotalTime = async (resources: ResourceWithTotalTime[]) => {
     const totalTime = await getTotalTimeForResource(resources[i].id);
     resources[i].totalTime = totalTime;
   }
-  return resources as ResourceWithTotalTime[];
+  return resources;
 };
 
 export default async function BrowsePage() {
