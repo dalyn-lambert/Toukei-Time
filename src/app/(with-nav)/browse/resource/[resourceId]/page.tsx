@@ -1,14 +1,22 @@
-import { DeleteResource } from '@/Components/DeleteResource';
 import Notepad from '@/Components/Notepad';
+import ResourceHeader from '@/Components/ResourceHeader';
 import StudyLogEntry from '@/Components/StudyLogEntry';
-import UpdateResource from '@/Components/UpdateResource';
 import Window from '@/Components/Window';
-import { getResourceFromId, getStudyLogsForResource } from '@/lib/data';
+import { getResourceFromId, getStudyLogsForResource, getTotalTimeForResource } from '@/lib/data';
+import { ResourceWithTotalTime } from '@/lib/types';
+import { StudyLog } from '@prisma/client';
 import { notFound } from 'next/navigation';
 
 const getResource = async (id: number) => {
   const data = await getResourceFromId(id);
+
   return data;
+};
+
+const addTotalTime = async (resource: ResourceWithTotalTime) => {
+  const totalTime = await getTotalTimeForResource(resource.id);
+  resource.totalTime = totalTime;
+  return resource;
 };
 
 const getStudyLogs = async (id: number) => {
@@ -22,11 +30,12 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   if (!resource) {
     notFound();
   }
-  const studyLogs = await getStudyLogs(id);
+  const resourceWithTotalTime = await addTotalTime(resource);
+  const studyLogs: StudyLog[] = await getStudyLogs(id);
 
   return (
     <div className='flex flex-col gap-4'>
-      <UpdateResource {...resource} />
+      <ResourceHeader resource={resourceWithTotalTime} />
       <Window English='All Study Logs for Resource' Japanese='全部のローグ' category={resource.category}>
         <Notepad>
           <div className='flex flex-col gap-4'>
@@ -36,7 +45,6 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
           </div>
         </Notepad>
       </Window>
-      <DeleteResource id={resource.id} />
     </div>
   );
 }

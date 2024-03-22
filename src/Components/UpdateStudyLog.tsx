@@ -18,7 +18,7 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
   const updateStudyLogWithId = updateStudyLog.bind(null, log.id);
 
   return (
-    <Window English='Add a study log' Japanese='勉強を？？'>
+    <Window English='Update study log' Japanese='ローグをアップデート'>
       <form action={updateStudyLogWithId}>
         <div className='flex flex-col gap-3'>
           <div className='flex flex-row gap-1'>
