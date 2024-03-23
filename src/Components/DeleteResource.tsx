@@ -11,7 +11,7 @@ export function DeleteResource({ id }: { id: number }) {
         <span className='shrink-0'>{warningIcon}</span>
         <span className='text-center text-sm'>
           Clicking the button below will permanently delete this resource. Study logs associated with this resource will
-          also be delete. This action can not be undone.
+          also be deleted. This action can not be undone.
         </span>
       </div>
       <form action={deleteResourceWithId}>
