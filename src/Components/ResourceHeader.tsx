@@ -7,7 +7,7 @@ type ResourceHeaderProps = { resource: ResourceWithTotalTime };
 
 function ResourceHeader({ resource }: ResourceHeaderProps) {
   return (
-    <Window English={resource.name} Japanese={resource.name}>
+    <Window English={resource.name} Japanese={resource.name} category={resource.category}>
       <div className='flex flex-col'>
         <div className=' pr-2 shrink-0 g'>{getIconForCategory(resource.category)}</div>
         <div className='  text-sm'>{resource.name}</div>
