@@ -20,7 +20,7 @@ function BrowseWindow({ resources }: { resources: Resource[] }) {
   );
 
   return (
-    <Window English='Browse' Japanese=''>
+    <Window English='Browse Resources' Japanese='資源を見る'>
       <div className='flex flex-col gap-4 min-h-96'>
         <div className='flex flex-row gap-2 text-sm pl-2'>
           {statuses.map((status) => (
