@@ -9,7 +9,6 @@ import { notFound } from 'next/navigation';
 
 const getResource = async (id: number) => {
   const data = await getResourceFromId(id);
-
   return data;
 };
 

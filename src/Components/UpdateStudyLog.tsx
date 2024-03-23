@@ -13,12 +13,13 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
   const date = format(new UTCDate(log.date), 'yyyy-MM-dd');
 
   const filteredResource = resources.filter((resource) => resource.id === log.resourceId);
-  const currentResource = filteredResource[0].name;
+  const currentResourceName = filteredResource[0].name;
+  const currentResourceCategory = filteredResource[0].category;
 
   const updateStudyLogWithId = updateStudyLog.bind(null, log.id);
 
   return (
-    <Window English='Update study log' Japanese='ローグをアップデート'>
+    <Window English='Update study log' Japanese='ローグをアップデート' category={currentResourceCategory}>
       <form action={updateStudyLogWithId}>
         <div className='flex flex-col gap-3'>
           <div className='flex flex-row gap-1'>
@@ -64,7 +65,7 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
 
           <div className='flex flex-col gap-0'>
             <label htmlFor='resource'>Resource:</label>
-            <select defaultValue={currentResource} name='resource' id='resource' required={true} className='pl-1'>
+            <select defaultValue={currentResourceName} name='resource' id='resource' required={true} className='pl-1'>
               {resources.map((resource) => (
                 <option key={resource.id} value={resource.name}>
                   {resource.name}

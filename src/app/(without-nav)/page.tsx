@@ -8,10 +8,6 @@ export default function LandingPage() {
         <Welcome />
         <LogIn />
       </div>
-      <div className='text-center flex flex-col'>
-        <span>A project by Dalyn Lambert</span>
-        <span>Contact Me: </span>
-      </div>
     </div>
   );
 }

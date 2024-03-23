@@ -9,8 +9,9 @@ import Window from './Window';
 
 function AddWindow({ resources }: { resources: Resource[] }) {
   const [add, setAdd] = React.useState('Study Log');
+  const JapaneseHeader = add === 'Study Log' ? 'ログを加える': '資源を加える'
   return (
-    <Window English={`Add a ${add}`} Japanese='加える'>
+    <Window English={`Add a ${add}`} Japanese={JapaneseHeader}>
       <div className='flex flex-row justify-end'>
         <div className='border-b-2 border-dark-gray flex-grow'></div>
         <button
