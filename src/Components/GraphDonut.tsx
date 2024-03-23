@@ -42,57 +42,58 @@ export default function DonutChart({ width, height, data, donutThickness }: Donu
   // });
 
   return (
-    <div className='grid place-items-center'>
-      {/* ref={containerRef} */}
-      <div className='absolute grid place-items-center'>{totalTime === '0分' ? 'No study time' : totalTime}</div>
-      <svg width={width} height={height}>
-        {/* <rect x={0} y={0} width={width} height={height} fill={background} /> */}
-        <Group top={top} left={left}>
-          <Pie
-            data={data}
-            pieValue={getTime}
-            pieSort={null}
-            pieSortValues={null}
-            outerRadius={radius}
-            innerRadius={radius - donutThickness}
-            cornerRadius={3}
-            padAngle={0.005}
-            // onMouseLeave={() => {
-            //   tooltipTimeout = window.setTimeout(() => {
-            //     hideTooltip();
-            //   }, 200);
-            // }}
-            // onMouseMove={(event) => {
-            //   if (tooltipTimeout) clearTimeout(tooltipTimeout);
-            //   // TooltipInPortal expects coordinates to be relative to containerRef
-            //   // localPoint returns coordinates relative to the nearest SVG, which
-            //   // is what containerRef is set to in this example.
-            //   const eventSvgCoords = localPoint(event);
-            //   const left = 2;
-            //   showTooltip({
-            //     tooltipData: 'hello',
-            //     tooltipTop: eventSvgCoords?.y,
-            //     tooltipLeft: left,
-            //   });
-            // }}
-          >
-            {(pie) => {
-              return pie.arcs.map((arc, index) => {
-                const { category } = arc.data;
-                const arcPath: string | undefined | null = pie.path(arc);
-                const arcFill = getColorForChart(category);
-                return (
-                  <g key={`arc-${category}-${index}`}>
-                    {/* @ts-ignore */}
-                    <path d={arcPath} fill={arcFill} />
-                  </g>
-                );
-              });
-            }}
-          </Pie>
-        </Group>
-      </svg>
-      {/* {tooltipOpen && tooltipData && (
+    <>
+      <div className='grid place-items-center'>
+        {/* ref={containerRef} */}
+        <div className='absolute grid place-items-center'>{totalTime}</div>
+        <svg width={width} height={height}>
+          {/* <rect x={0} y={0} width={width} height={height} fill={background} /> */}
+          <Group top={top} left={left}>
+            <Pie
+              data={data}
+              pieValue={getTime}
+              pieSort={null}
+              pieSortValues={null}
+              outerRadius={radius}
+              innerRadius={radius - donutThickness}
+              cornerRadius={3}
+              padAngle={0.005}
+              // onMouseLeave={() => {
+              //   tooltipTimeout = window.setTimeout(() => {
+              //     hideTooltip();
+              //   }, 200);
+              // }}
+              // onMouseMove={(event) => {
+              //   if (tooltipTimeout) clearTimeout(tooltipTimeout);
+              //   // TooltipInPortal expects coordinates to be relative to containerRef
+              //   // localPoint returns coordinates relative to the nearest SVG, which
+              //   // is what containerRef is set to in this example.
+              //   const eventSvgCoords = localPoint(event);
+              //   const left = 2;
+              //   showTooltip({
+              //     tooltipData: 'hello',
+              //     tooltipTop: eventSvgCoords?.y,
+              //     tooltipLeft: left,
+              //   });
+              // }}
+            >
+              {(pie) => {
+                return pie.arcs.map((arc, index) => {
+                  const { category } = arc.data;
+                  const arcPath: string | undefined | null = pie.path(arc);
+                  const arcFill = getColorForChart(category);
+                  return (
+                    <g key={`arc-${category}-${index}`}>
+                      {/* @ts-ignore */}
+                      <path d={arcPath} fill={arcFill} />
+                    </g>
+                  );
+                });
+              }}
+            </Pie>
+          </Group>
+        </svg>
+        {/* {tooltipOpen && tooltipData && (
         <TooltipInPortal top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
           <div className='text-black'>
             <strong>{'Category'}</strong>
@@ -100,6 +101,7 @@ export default function DonutChart({ width, height, data, donutThickness }: Donu
           <div className='text-black'>{'Time'}</div>
         </TooltipInPortal>
       )} */}
-    </div>
+      </div>
+    </>
   );
 }
