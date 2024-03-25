@@ -1,5 +1,5 @@
 import { StudyStat } from '@/lib/types';
-import { getIconForCategory, toHoursAndMinutes } from '@/lib/utils';
+import { getIconForCategory, toHoursAndMinutesJapanese } from '@/lib/utils';
 
 import DonutChart from './GraphDonut';
 
@@ -16,7 +16,7 @@ const GraphDonutWithStats = ({ stats }: { stats: StudyStat[] }) => {
         {sortedTimes.map((stat) => (
           <div className='flex flex-row pb-2 items-center' key={stat.category}>
             <span className='pr-2 shrink-0'>{getIconForCategory(stat.category)}</span>
-            <span>{toHoursAndMinutes(stat.time)}</span>
+            <span>{toHoursAndMinutesJapanese(stat.time)}</span>
           </div>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { Category, User } from '@prisma/client';
 import prisma from './prisma';
-import { sumArray, toHoursAndMinutes } from './utils';
+import { sumArray, toHoursAndMinutesJapanese } from './utils';
 
 export async function getUserWithEmail(email: string): Promise<User | null> {
   try {
@@ -123,11 +123,23 @@ export const getAllResources = async () => {
   return resources;
 };
 
+export const countResources = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve resources, user not found');
+  }
+  const count = await prisma.resource.count({
+    where: { userId: user.id },
+    select: { _all: true },
+  });
+  return count._all;
+};
+
 export async function getTotalTimeForResource(resourceId: number) {
   const allLogs = await getStudyLogsForResource(resourceId);
   const times = allLogs.map((log) => log.time);
   const total = sumArray(times);
-  return toHoursAndMinutes(total);
+  return toHoursAndMinutesJapanese(total);
 }
 
 export const getResourceFromId = async (id: number) => {
@@ -187,6 +199,18 @@ export const getStudyLogsForResource = async (id: number) => {
     },
   });
   return studyLog;
+};
+
+export const countStudyLogs = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve study logs, user not found');
+  }
+  const count = await prisma.studyLog.count({
+    where: { userId: user.id },
+    select: { _all: true },
+  });
+  return count._all;
 };
 
 export const getTotalStudyTime = async () => {

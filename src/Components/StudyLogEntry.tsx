@@ -1,4 +1,4 @@
-import { formatJapaneseDate, getIconForCategory, toHoursAndMinutes } from '@/lib/utils';
+import { formatJapaneseDate, getIconForCategory, toHoursAndMinutesJapanese } from '@/lib/utils';
 import { UTCDate } from '@date-fns/utc';
 import { StudyLog } from '@prisma/client';
 import { format } from 'date-fns';
@@ -14,7 +14,7 @@ function StudyLogEntry(log: StudyLog) {
         <div className='col-start-1 pr-2 shrink-0'>{getIconForCategory(log.category)}</div>
         <div className='col-start-2 col-span-2 text-sm'>{JapaneseDate}</div>
         <div className='col-start-4 col-span-3 truncate text-sm'>{log.title}</div>
-        <div className='col-start-7 col-span-2 text-sm text-center'>{toHoursAndMinutes(log.time)}</div>
+        <div className='col-start-7 col-span-2 text-sm text-center'>{toHoursAndMinutesJapanese(log.time)}</div>
       </div>
     </Link>
   );
