@@ -1,6 +1,6 @@
 'use client';
 
-import { addIcon, browseIcon, statIcon, todayIcon } from '@/lib/icons';
+import { addIcon, browseIcon, profileIcon, todayIcon } from '@/lib/icons';
 import { UTCDate } from '@date-fns/utc';
 import { format } from 'date-fns';
 import NavTile from './NavTile';
@@ -10,8 +10,7 @@ export type LinkData = { label: string; route: string; icon: JSX.Element };
 const today = format(new UTCDate().toISOString(), 'yyyy-MM-dd');
 
 const links: LinkData[] = [
-  { label: 'Profile', route: '/profile', icon: statIcon },
-  { label: 'Month', route: '/month', icon: statIcon },
+  { label: 'Profile', route: '/profile', icon: profileIcon },
   { label: 'Log', route: '/log', icon: addIcon },
   { label: 'Today', route: `/${today}`, icon: todayIcon },
   { label: 'Browse', route: '/browse', icon: browseIcon },
