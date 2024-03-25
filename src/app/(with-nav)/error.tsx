@@ -1,6 +1,7 @@
 'use client';
 
 import Window from '@/Components/Window';
+import { warningIcon } from '@/lib/icons';
 import { useEffect } from 'react';
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -11,8 +12,11 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 
   return (
     <main>
-      <Window English='Error!' Japanese='エラー'>
-        <h2 className='text-center'>{error.toString()}</h2>
+      <Window English='Error!' Japanese='エラー' category='Danger'>
+        <div className='flex flex-row gap-4 px-8 pb-4 items-center'>
+          <span className='shrink-0'>{warningIcon}</span>
+          <span className='text-center'>{error.toString()}</span>
+        </div>
       </Window>
     </main>
   );
