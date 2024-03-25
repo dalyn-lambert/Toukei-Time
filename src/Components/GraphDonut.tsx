@@ -1,5 +1,5 @@
 import { StudyStat } from '@/lib/types';
-import { buildTimeArray, getColorForChart, sumArray, toHoursAndMinutes } from '@/lib/utils';
+import { buildTimeArray, getColorForChart, sumArray, toHoursAndMinutesJapanese } from '@/lib/utils';
 import { Group } from '@visx/group';
 import { Pie } from '@visx/shape';
 
@@ -17,7 +17,7 @@ export default function DonutChart({ width, height, data, donutThickness }: Donu
 
   // get total study time to display in center of chart
   const timeArray = data.map(buildTimeArray);
-  const totalTime = toHoursAndMinutes(sumArray(timeArray));
+  const totalTime = toHoursAndMinutesJapanese(sumArray(timeArray));
   // type TooltipData = {
   //   key: StudyCategory;
   // };

@@ -2,7 +2,6 @@ import { UTCDate } from '@date-fns/utc';
 import { Category, StudyLog } from '@prisma/client';
 import { format, parseISO } from 'date-fns';
 import { ja } from 'date-fns/locale';
-import { getStudyLogsForResource } from './data';
 import { bookmarkIcon, gameIcon, headphonesIcon, speechIcon, watchIcon } from './icons';
 import { StudyStat } from './types';
 
@@ -56,7 +55,7 @@ export function sumArray(array: number[]) {
   return sum;
 }
 
-export function toHoursAndMinutes(totalMinutes: number) {
+export function toHoursAndMinutesJapanese(totalMinutes: number) {
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
   if (hours > 0) {
@@ -105,5 +104,3 @@ export function getJapaneseNameforCategory(category: Category | 'Total') {
 }
 
 export function buildStudyDay() {}
-
-

@@ -1,16 +1,19 @@
 import { signOut } from '@/auth';
 import ButtonGeneral from './ButtonGeneral';
+import Window from './Window';
 
 function LogOut() {
   return (
-    <form
-      action={async () => {
-        'use server';
-        await signOut();
-      }}
-    >
-      <LogOutButton />
-    </form>
+    <Window English='Log Out' Japanese='ログアウト' category='Danger'>
+      <form
+        action={async () => {
+          'use server';
+          await signOut();
+        }}
+      >
+        <LogOutButton />
+      </form>
+    </Window>
   );
 }
 
