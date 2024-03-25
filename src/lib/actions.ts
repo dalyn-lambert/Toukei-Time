@@ -31,7 +31,7 @@ const ResourceFormSchema = z.object({
   id: z.string(),
   name: z.string(),
   category: z.enum(['Listening', 'Reading', 'Watching', 'Speaking', 'Playing']),
-  status: z.enum(['Current', 'Completed', 'Planned', 'OnHold', 'Dropped']),
+  status: z.enum(['Current', 'Completed', 'Planned', 'Hold', 'Dropped']),
   link: z.string().nullish(),
   notes: z.string().nullish(),
 });
