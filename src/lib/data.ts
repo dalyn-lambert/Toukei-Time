@@ -40,7 +40,10 @@ export const getStudiesForDate = async (date: string) => {
   if (!user) {
     throw new Error("Could not retrieve today's studies, user not found");
   }
-  const logs = await prisma.studyLog.findMany({ where: { userId: user.id, date: date } });
+  const logs = await prisma.studyLog.findMany({
+    where: { userId: user.id, date: date },
+    orderBy: { dateAdded: 'asc' },
+  });
   return logs;
 };
 
