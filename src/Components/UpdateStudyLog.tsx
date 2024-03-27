@@ -4,6 +4,7 @@ import { updateStudyLog } from '@/lib/actions';
 import { UTCDate } from '@date-fns/utc';
 import { Category, Resource, StudyLog } from '@prisma/client';
 import { format } from 'date-fns';
+import Link from 'next/link';
 import { useFormStatus } from 'react-dom';
 import ButtonGeneral from './ButtonGeneral';
 import Window from './Window';
@@ -15,6 +16,7 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
   const filteredResource = resources.filter((resource) => resource.id === log.resourceId);
   const currentResourceName = filteredResource[0].name;
   const currentResourceCategory = filteredResource[0].category;
+  const currentResourceId = filteredResource[0].id;
 
   const updateStudyLogWithId = updateStudyLog.bind(null, log.id);
 
@@ -72,6 +74,9 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
                 </option>
               ))}
             </select>
+            <Link href={`/browse/resource/${currentResourceId}`} className=''>
+              Go to resource
+            </Link>
           </div>
         </div>
         <UpdateStudyLogButton />
