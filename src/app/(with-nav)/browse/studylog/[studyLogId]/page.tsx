@@ -22,8 +22,8 @@ export default async function StudyLogPage({ params }: { params: { studyLogId: s
   }
   return (
     <div className='flex flex-col gap-4'>
-      <DeleteStudyLog id={data.id} />
       <UpdateStudyLog log={data} resources={allResources} />
+      <DeleteStudyLog id={data.id} />
     </div>
   );
 }
