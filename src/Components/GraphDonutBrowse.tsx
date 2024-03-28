@@ -25,7 +25,7 @@ const GraphDonutBrowse = async () => {
   return (
     <Window English='Study Log Count' Japanese='ログ・カウント'>
       <div className='flex flex-row gap-4 py-2 items-center justify-around p-4 border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
-        <DonutChart displayType='Number' width={165} height={165} data={sortedCount} donutThickness={30} />
+        <DonutChart displayType='Number' width={150} height={150} data={sortedCount} donutThickness={30} />
         <div className='flex flex-col'>
           {sortedCount.map((data) => (
             <div className='grid grid-cols-2 pb-2 items-center gap-2' key={data.category}>

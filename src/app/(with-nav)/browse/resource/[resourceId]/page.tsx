@@ -35,7 +35,7 @@ export default async function ResourcePage({ params }: { params: { resourceId: s
   return (
     <div className='flex flex-col gap-4'>
       <ResourceHeader resource={resourceWithTotalTime} />
-      <Window English='All Study Logs for Resource' Japanese='全部のローグ' category={resource.category}>
+      <Window English='All Study Logs for Resource' Japanese='全部のログ' category={resource.category}>
         <Notepad>
           <div className='flex flex-col gap-4 pt-2'>
             {studyLogs.map((studyLog) => (
