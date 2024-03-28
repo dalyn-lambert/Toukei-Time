@@ -17,8 +17,8 @@ export default async function UpdateResourcePage({ params }: { params: { resourc
 
   return (
     <div className='flex flex-col gap-4'>
-      <DeleteResource id={resource.id} />
       <UpdateResource {...resource} />
+      <DeleteResource id={resource.id} />
     </div>
   );
 }

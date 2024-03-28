@@ -28,7 +28,7 @@ export function getIconForCategory(category: Category) {
 }
 
 export function buildTimeArray(entry: StudyStat) {
-  return entry.time;
+  return entry.value;
 }
 
 export function getColorForChart(category: Category) {

@@ -8,11 +8,11 @@ import Window from './Window';
 const getData = async (today: string) => {
   const logs = await getStudiesForDate(today);
   const stats: StudyStat[] = [
-    { category: 'Listening', time: getTimeForCategory('Listening', logs) },
-    { category: 'Playing', time: getTimeForCategory('Playing', logs) },
-    { category: 'Watching', time: getTimeForCategory('Watching', logs) },
-    { category: 'Speaking', time: getTimeForCategory('Speaking', logs) },
-    { category: 'Reading', time: getTimeForCategory('Reading', logs) },
+    { category: 'Listening', value: getTimeForCategory('Listening', logs) },
+    { category: 'Playing', value: getTimeForCategory('Playing', logs) },
+    { category: 'Watching', value: getTimeForCategory('Watching', logs) },
+    { category: 'Speaking', value: getTimeForCategory('Speaking', logs) },
+    { category: 'Reading', value: getTimeForCategory('Reading', logs) },
   ];
   return stats;
 };

@@ -1,29 +1,40 @@
-import { StudyStat } from '@/lib/types';
-import { getTimeForCategory } from '@/lib/utils';
-
-import { getStudiesForDate } from '@/lib/data';
+import { countStudyLogsForCategory } from '@/lib/data';
+import { StudyLogCount } from '@/lib/types';
+import { getIconForCategory } from '@/lib/utils';
+import DonutChart from './GraphDonut';
 import Window from './Window';
 
-const getData = async (category: string) => {
-  const logs = await getStudiesForDate(category);
-  const stats: StudyStat[] = [
-    { category: 'Listening', time: getTimeForCategory('Listening', logs) },
-    { category: 'Playing', time: getTimeForCategory('Playing', logs) },
-    { category: 'Watching', time: getTimeForCategory('Watching', logs) },
-    { category: 'Speaking', time: getTimeForCategory('Speaking', logs) },
-    { category: 'Reading', time: getTimeForCategory('Reading', logs) },
+const getData = async () => {
+  const studyLogCount: StudyLogCount[] = [
+    { category: 'Listening', value: await countStudyLogsForCategory('Listening') },
+    { category: 'Playing', value: await countStudyLogsForCategory('Playing') },
+    { category: 'Watching', value: await countStudyLogsForCategory('Watching') },
+    { category: 'Speaking', value: await countStudyLogsForCategory('Speaking') },
+    { category: 'Reading', value: await countStudyLogsForCategory('Reading') },
   ];
-  return stats;
+  return studyLogCount;
 };
 
-type GraphDonutBrowseProps = { category: string };
-
 const GraphDonutBrowse = async () => {
-  // const data = await getData(category);
+  const data = await getData();
+  const filteredCount = data.filter((d) => d.value !== 0);
+  const sortedCount = filteredCount.sort((a, b) => {
+    return b.value - a.value;
+  });
 
   return (
-    <Window English='' Japanese='勉強時間'>
-      GraphDonut for
+    <Window English='Study Log Count' Japanese='ログ・カウント'>
+      <div className='flex flex-row gap-4 py-2 items-center justify-around p-4 border-2 bg-dark-gray bg-opacity-10 border-dark-gray'>
+        <DonutChart displayType='Number' width={165} height={165} data={sortedCount} donutThickness={30} />
+        <div className='flex flex-col'>
+          {sortedCount.map((data) => (
+            <div className='grid grid-cols-2 pb-2 items-center gap-2' key={data.category}>
+              <span className='col-start-1 pr-2 shrink-0'>{getIconForCategory(data.category)}</span>
+              <span className='col-start-2'>{data.value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </Window>
   );
 };

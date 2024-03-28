@@ -1,12 +1,18 @@
-import { StudyStat } from '@/lib/types';
+import { StudyLogCount, StudyStat } from '@/lib/types';
 import { buildTimeArray, getColorForChart, sumArray, toHoursAndMinutesJapanese } from '@/lib/utils';
 import { Group } from '@visx/group';
 import { Pie } from '@visx/shape';
 
-type DonutChartProps = { width: number; height: number; donutThickness: number; data: StudyStat[] };
+type DonutChartProps = {
+  displayType: 'Time' | 'Number';
+  width: number;
+  height: number;
+  donutThickness: number;
+  data: StudyStat[] | StudyLogCount[];
+};
 
-export default function DonutChart({ width, height, data, donutThickness }: DonutChartProps) {
-  const getTime = (d: StudyStat) => d.time;
+export default function DonutChart({ displayType, width, height, data, donutThickness }: DonutChartProps) {
+  const getValue = (d: StudyStat | StudyLogCount) => d.value;
 
   const centerY = height / 2;
   const centerX = width / 2;
@@ -16,8 +22,14 @@ export default function DonutChart({ width, height, data, donutThickness }: Donu
   const background = 'rgb(241 245 249)';
 
   // get total study time to display in center of chart
-  const timeArray = data.map(buildTimeArray);
-  const totalTime = toHoursAndMinutesJapanese(sumArray(timeArray));
+  let totalValues;
+  const valueArray = data.map(buildTimeArray);
+  if (displayType === 'Time') {
+    totalValues = toHoursAndMinutesJapanese(sumArray(valueArray));
+  } else {
+    totalValues = sumArray(valueArray);
+  }
+
   // type TooltipData = {
   //   key: StudyCategory;
   // };
@@ -45,13 +57,13 @@ export default function DonutChart({ width, height, data, donutThickness }: Donu
     <>
       <div className='grid place-items-center'>
         {/* ref={containerRef} */}
-        <div className='absolute grid place-items-center'>{totalTime}</div>
+        <div className='absolute grid place-items-center'>{totalValues}</div>
         <svg width={width} height={height}>
           {/* <rect x={0} y={0} width={width} height={height} fill={background} /> */}
           <Group top={top} left={left}>
             <Pie
               data={data}
-              pieValue={getTime}
+              pieValue={getValue}
               pieSort={null}
               pieSortValues={null}
               outerRadius={radius}
