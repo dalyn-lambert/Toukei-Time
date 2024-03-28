@@ -20,9 +20,9 @@ function BrowseWindow({ resources }: { resources: Resource[] }) {
   );
 
   return (
-    <Window English='Browse Resources' Japanese='資源を見る'>
-      <div className='flex flex-col gap-4'>
-        <div className='flex flex-row gap-2 text-sm pl-2'>
+    <div className='flex flex-col gap-4'>
+      <Window English='Browse Resources' Japanese='資源を見る'>
+        <div className='flex flex-row gap-3 text-sm pl-2 pb-4'>
           {statuses.map((status) => (
             <button
               key={status}
@@ -33,29 +33,33 @@ function BrowseWindow({ resources }: { resources: Resource[] }) {
             </button>
           ))}
         </div>
-        <div className='flex flex-row justify-evenly'>
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={clsx(
-                'border-r border-l-2 border-t-2 border-dark-gray p-2 bg-dark-gray bg-opacity-30',
-                selectedCategory === category && 'bg-gray shadow-inner shadow-white'
-              )}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {getIconForCategory(category)}
-            </button>
-          ))}
+        <div className='flex flex-row'>
+          <div className='w-full'>
+            <Notepad>
+              <div className='flex flex-col gap-4'>
+                {filteredResources.map((resource) => (
+                  <ResourceEntry key={resource.id} {...resource} />
+                ))}
+              </div>
+            </Notepad>
+          </div>
+          <div className='flex flex-col justify-evenly divide-y-2 border-y'>
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={clsx(
+                  'border-r-2  border-dark-gray p-2 bg-dark-gray bg-opacity-30 flex-grow',
+                  selectedCategory === category && 'bg-gray bg-opacity-100'
+                )}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {getIconForCategory(category)}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-      <Notepad>
-        <div className='flex flex-col gap-4'>
-          {filteredResources.map((resource) => (
-            <ResourceEntry key={resource.id} {...resource} />
-          ))}
-        </div>
-      </Notepad>
-    </Window>
+      </Window>
+    </div>
   );
 }
 export default BrowseWindow;

@@ -1,4 +1,5 @@
 import BrowseWindow from '@/Components/BrowseWindow';
+import GraphDonutBrowse from '@/Components/GraphDonutBrowse';
 import { getAllResources, getTotalTimeForResource } from '@/lib/data';
 import { ResourceWithTotalTime } from '@/lib/types';
 
@@ -21,6 +22,13 @@ export default async function BrowsePage() {
   return (
     <div className='flex flex-col gap-4'>
       <BrowseWindow resources={resourcesWithTotalTime} />
+      <div className='flex flex-row flex-wrap flex-grow'>
+        <GraphDonutBrowse />
+        <GraphDonutBrowse />
+        <GraphDonutBrowse />
+        <GraphDonutBrowse />
+        <GraphDonutBrowse />
+      </div>
     </div>
   );
 }
