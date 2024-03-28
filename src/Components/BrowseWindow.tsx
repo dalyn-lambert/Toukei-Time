@@ -43,7 +43,7 @@ function BrowseWindow({ resources }: { resources: Resource[] }) {
               </div>
             </Notepad>
           </div>
-          <div className='flex flex-col justify-evenly divide-y-2 border-y'>
+          <div className='flex flex-col justify-evenly divide-y-2 border-y-2'>
             {categories.map((category) => (
               <button
                 key={category}
