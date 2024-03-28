@@ -1,5 +1,4 @@
 import BrowseWindow from '@/Components/BrowseWindow';
-import GraphDonutBrowse from '@/Components/GraphDonutBrowse';
 import { getAllResources, getTotalTimeForResource } from '@/lib/data';
 import { ResourceWithTotalTime } from '@/lib/types';
 
@@ -19,16 +18,5 @@ const addTotalTime = async (resources: ResourceWithTotalTime[]) => {
 export default async function BrowsePage() {
   const resources = await getData();
   const resourcesWithTotalTime = await addTotalTime(resources);
-  return (
-    <div className='flex flex-col gap-4'>
-      <BrowseWindow resources={resourcesWithTotalTime} />
-      <div className='flex flex-row flex-wrap flex-grow'>
-        <GraphDonutBrowse />
-        <GraphDonutBrowse />
-        <GraphDonutBrowse />
-        <GraphDonutBrowse />
-        <GraphDonutBrowse />
-      </div>
-    </div>
-  );
+  return <BrowseWindow resources={resourcesWithTotalTime} />;
 }
