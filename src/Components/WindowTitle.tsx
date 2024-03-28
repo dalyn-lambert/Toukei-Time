@@ -6,7 +6,7 @@ function WindowTitle(props: WindowTitleProps) {
     if (props.category === 'Total') {
       color;
     } else if (props.category === 'Danger') {
-      color = 'bg-rose-950 text-white';
+      color = 'bg-rose-700 text-white';
     } else color = `bg-${props.category.toLocaleLowerCase()} text-white`;
   }
 

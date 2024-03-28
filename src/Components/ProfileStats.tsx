@@ -9,6 +9,7 @@ import {
   getTotalWatchingTime,
 } from '@/lib/data';
 import { toHoursAndMinutesJapanese } from '@/lib/utils';
+import Notepad from './Notepad';
 import Window from './Window';
 
 async function ProfileStats() {
@@ -22,16 +23,18 @@ async function ProfileStats() {
   const totalWatching = await getTotalWatchingTime();
   return (
     <Window English='Stats' Japanese='統計'>
-      <div className='p-4 border-2 border-dark-gray flex flex-col gap-2 text-lg'>
-        <span>Total Study Time: {toHoursAndMinutesJapanese(totalStudyTime)}</span>
-        <span>Resources: {totalResourceCount}</span>
-        <span>Study Logs: {totalStudyLogCount}</span>
-        <span>Listening: {toHoursAndMinutesJapanese(totalListening)}</span>
-        <span>Reading: {toHoursAndMinutesJapanese(totalReading)}</span>
-        <span>Watching: {toHoursAndMinutesJapanese(totalWatching)}</span>
-        <span>Speaking: {toHoursAndMinutesJapanese(totalSpeaking)}</span>
-        <span>Playing: {toHoursAndMinutesJapanese(totalPlaying)}</span>
-      </div>
+      <Notepad>
+        <div className='flex flex-col gap-2'>
+          <span>• Total Study Time: {toHoursAndMinutesJapanese(totalStudyTime)}</span>
+          <span>• Resources: {totalResourceCount}</span>
+          <span>• Study Logs: {totalStudyLogCount}</span>
+          <span>• Listening: {toHoursAndMinutesJapanese(totalListening)}</span>
+          <span>• Reading: {toHoursAndMinutesJapanese(totalReading)}</span>
+          <span>• Watching: {toHoursAndMinutesJapanese(totalWatching)}</span>
+          <span>• Speaking: {toHoursAndMinutesJapanese(totalSpeaking)}</span>
+          <span>• Playing: {toHoursAndMinutesJapanese(totalPlaying)}</span>
+        </div>
+      </Notepad>
     </Window>
   );
 }

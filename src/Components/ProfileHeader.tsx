@@ -8,7 +8,7 @@ async function ProfileHeader() {
       <div className='p-4 text-center flex flex-col gap-2'>
         <span>ようこそ {user?.username}!</span>
         <span>Thanks for using Toukei Time.</span>
-        <span>You are currently registered with the email {user?.email}</span>
+        <span>You are currently registered with this email: {user?.email}</span>
       </div>
     </Window>
   );
