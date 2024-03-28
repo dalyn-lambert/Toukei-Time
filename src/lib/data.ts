@@ -126,6 +126,19 @@ export const getAllResources = async () => {
   return resources;
 };
 
+export const getCurrentResources = async () => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve resources, user not found');
+  }
+  const resources = await prisma.resource.findMany({
+    where: { userId: user.id, status: 'Current' },
+    orderBy: [{ name: 'asc' }],
+  });
+
+  return resources;
+};
+
 export const countResources = async () => {
   const user = await getUser();
   if (!user) {

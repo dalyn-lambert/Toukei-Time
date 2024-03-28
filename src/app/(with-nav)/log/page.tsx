@@ -1,18 +1,18 @@
 import AddWindow from '@/Components/AddWindow';
 import TotalStudyTimeStats from '@/Components/GraphDonutAllStats';
-import { getAllResources } from '@/lib/data';
+import { getCurrentResources } from '@/lib/data';
 
 const getData = async () => {
-  const data = await getAllResources();
+  const data = await getCurrentResources();
   return data;
 };
 
 export default async function AddPage() {
-  const allResources = await getData();
+  const currentResources = await getData();
 
   return (
     <div className='flex flex-col gap-4'>
-      <AddWindow resources={allResources} />
+      <AddWindow resources={currentResources} />
       <TotalStudyTimeStats />
     </div>
   );

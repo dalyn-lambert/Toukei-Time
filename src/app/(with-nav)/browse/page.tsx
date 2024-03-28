@@ -18,9 +18,5 @@ const addTotalTime = async (resources: ResourceWithTotalTime[]) => {
 export default async function BrowsePage() {
   const resources = await getData();
   const resourcesWithTotalTime = await addTotalTime(resources);
-  return (
-    <div className='flex flex-col gap-4'>
-      <BrowseWindow resources={resourcesWithTotalTime} />
-    </div>
-  );
+  return <BrowseWindow resources={resourcesWithTotalTime} />;
 }
