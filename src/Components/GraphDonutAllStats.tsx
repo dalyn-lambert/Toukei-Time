@@ -11,11 +11,11 @@ import Window from './Window';
 
 const getData = async () => {
   const times: StudyStat[] = [
-    { category: 'Listening', time: await getTotalListeningTime() },
-    { category: 'Reading', time: await getTotalReadingTime() },
-    { category: 'Speaking', time: await getTotalSpeakingTime() },
-    { category: 'Playing', time: await getTotalPlayingTime() },
-    { category: 'Watching', time: await getTotalWatchingTime() },
+    { category: 'Listening', value: await getTotalListeningTime() },
+    { category: 'Reading', value: await getTotalReadingTime() },
+    { category: 'Speaking', value: await getTotalSpeakingTime() },
+    { category: 'Playing', value: await getTotalPlayingTime() },
+    { category: 'Watching', value: await getTotalWatchingTime() },
   ];
   return times;
 };

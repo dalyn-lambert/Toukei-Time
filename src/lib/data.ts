@@ -151,6 +151,18 @@ export const countResources = async () => {
   return count._all;
 };
 
+export const countStudyLogsForCategory = async (category: Category) => {
+  const user = await getUser();
+  if (!user) {
+    throw new Error('Could not retrieve resources, user not found');
+  }
+  const count = await prisma.studyLog.count({
+    where: { userId: user.id, category: category },
+    select: { _all: true },
+  });
+  return count._all;
+};
+
 export async function getTotalTimeForResource(resourceId: number) {
   const allLogs = await getStudyLogsForResource(resourceId);
   const times = allLogs.map((log) => log.time);
