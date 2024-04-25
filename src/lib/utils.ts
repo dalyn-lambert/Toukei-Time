@@ -102,5 +102,3 @@ export function getJapaneseNameforCategory(category: Category | 'Total') {
       return 'エラー';
   }
 }
-
-export function buildStudyDay() {}
