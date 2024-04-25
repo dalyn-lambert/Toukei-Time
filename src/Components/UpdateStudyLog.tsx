@@ -1,9 +1,11 @@
 'use client';
 
 import { updateStudyLog } from '@/lib/actions';
+import { arrowRightIcon } from '@/lib/icons';
 import { UTCDate } from '@date-fns/utc';
 import { Category, Resource, StudyLog } from '@prisma/client';
 import { format } from 'date-fns';
+import Link from 'next/link';
 import { useFormStatus } from 'react-dom';
 import ButtonGeneral from './ButtonGeneral';
 import Window from './Window';
@@ -65,7 +67,12 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
           </div>
 
           <div className='flex flex-col gap-0'>
-            <label htmlFor='resource'>Resource:</label>
+            <div className='flex flex-row gap-2 items-center'>
+              <label htmlFor='resource'>Resource:</label>
+              <Link href={`/browse/resource/${currentResourceId}`}>
+                <span className='shrink-0'>{arrowRightIcon}</span>
+              </Link>
+            </div>
             <select defaultValue={currentResourceName} name='resource' id='resource' required={true} className='pl-1'>
               {resources.map((resource) => (
                 <option key={resource.id} value={resource.name}>
