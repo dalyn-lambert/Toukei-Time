@@ -1,4 +1,5 @@
 import { getStudiesBetweenDates } from '@/lib/data';
+import { lightbulbIcon } from '@/lib/icons';
 import { StudyStat } from '@/lib/types';
 import { getTimeForCategory } from '@/lib/utils';
 import { UTCDate } from '@date-fns/utc';
@@ -27,11 +28,21 @@ const GraphDonutMonth = async ({ month }: GraphDonutMonthProps) => {
   const data = await getData(start, end);
   return (
     <>
-      <Window English='' Japanese=''>
-        <div className='text-center'>Study time for {formattedMonth}</div>
-      </Window>
       <Window English='Monthly Study Time' Japanese='今月の勉強時間'>
         <GraphDonutWithStats stats={data} />
+      </Window>
+      <Window English='Notice' Japanese='注目'>
+        <div className='flex flex-col gap-2 items-center'>
+          <div className='flex flex-row gap-4 pb-4 items-center'>
+            <span className='shrink-0'>{lightbulbIcon}</span>
+            <span className='text-center text-lg font-bold'>Did you know?</span>
+          </div>
+          <span className='text-center'>
+            You can see study data for a different day by changing the URL to month/YYYY-MM where YYYY-MM is the year
+            and month you want to see.
+          </span>
+          <span className='text-center'>For example, month/2024-01 would show study data from January 2024.</span>
+        </div>
       </Window>
     </>
   );
