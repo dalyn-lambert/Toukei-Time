@@ -14,7 +14,7 @@ const links: LinkData[] = [
   { label: 'Profile', route: '/profile', icon: profileIcon },
   { label: 'Month', route: `/month/${month}`, icon: monthIcon },
   { label: 'Log', route: '/log', icon: addIcon },
-  { label: 'Today', route: `/${today}`, icon: todayIcon },
+  { label: 'Today', route: `/day/${today}`, icon: todayIcon },
   { label: 'Browse', route: '/browse', icon: browseIcon },
 ];
 
