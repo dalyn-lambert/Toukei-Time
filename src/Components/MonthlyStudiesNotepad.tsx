@@ -9,7 +9,7 @@ const MonthlyStudies = async ({ data, year, monthJapanese, monthEnglish }: Month
   return (
     <Window English={`Study Logs for ${monthEnglish}`} Japanese={`${year}年${monthJapanese}のログ`}>
       <Notepad>
-        <div className='pt-2'>
+        <div>
           {data.map((log) => (
             <NotepadStudyItem key={log.id} log={log} />
           ))}
