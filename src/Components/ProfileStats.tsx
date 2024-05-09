@@ -24,7 +24,7 @@ async function ProfileStats() {
   return (
     <Window English='Stats' Japanese='統計'>
       <Notepad>
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-1'>
           <span>• Total Study Time: {toHoursAndMinutesJapanese(totalStudyTime)}</span>
           <span>• Resources: {totalResourceCount}</span>
           <span>• Study Logs: {totalStudyLogCount}</span>
