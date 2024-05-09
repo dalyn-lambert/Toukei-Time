@@ -92,7 +92,7 @@ export const getStudiesBetweenDates = async (start: string, end: string) => {
   }
   const logs = await prisma.studyLog.findMany({
     where: { userId: user.id, date: { lte: end, gte: start } },
-    orderBy: { date: 'asc' },
+    orderBy: { date: 'desc' },
   });
 
   return logs;

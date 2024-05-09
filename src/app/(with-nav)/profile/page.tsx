@@ -16,10 +16,12 @@ export default function Profile() {
             <span className='text-center text-lg font-bold'>Did you know?</span>
           </div>
           <span className='text-center'>
-            You can see study data for a different day by changing the URL to /YYYY-MM-DD where YYYY-MM-DD is the date
-            you want to see.
+            On the Today and Month pages you can see diffrent study data by changing the URL.
           </span>
-          <span className='text-center'>For example, /2024-01-15 would show study data from January 15, 2024.</span>
+          <span className='text-center'>
+            For example, day/2024-01-15 would show study data from January 15, 2024 and month/2024-01 would show study
+            data from January 2024.
+          </span>
         </div>
       </Window>
       <LogOut />

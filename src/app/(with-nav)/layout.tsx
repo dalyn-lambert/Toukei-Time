@@ -4,7 +4,7 @@ import 'src/app/globals.css';
 
 export const metadata: Metadata = {
   title: 'Toukei Time',
-  description: 'Track your native material studies.',
+  description: 'Track your native material studies for your Japanese learning.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

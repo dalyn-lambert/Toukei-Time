@@ -10,6 +10,7 @@ type NavTileProps = { link: LinkData };
 const NavTile = ({ link }: NavTileProps) => {
   const pathname = usePathname();
   let isActive = false;
+  console.log(pathname);
 
   if (pathname == link.route) {
     isActive = true;

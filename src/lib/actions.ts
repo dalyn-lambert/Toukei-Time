@@ -163,7 +163,7 @@ export async function createStudyLog(formData: FormData) {
     };
   }
 
-  redirect(`/${date}`);
+  redirect(`/day/${date}`);
 }
 
 // Update an existing resource
@@ -202,7 +202,7 @@ export async function updateStudyLog(id: number, formData: FormData) {
       message: 'Database Error: Failed To Update StudyLog',
     };
   }
-  redirect(`/${date}`);
+  redirect(`/day/${date}`);
 }
 
 // Delete an existing study log
