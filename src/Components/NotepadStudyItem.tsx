@@ -8,7 +8,7 @@ const getData = async (resourceId: number) => {
   return data;
 };
 
-const TodaysStudiesItem = async ({ log }: { log: StudyLog }) => {
+const NotepadStudyItem = async ({ log }: { log: StudyLog }) => {
   const resource = await getData(log.resourceId);
 
   return (
@@ -23,4 +23,4 @@ const TodaysStudiesItem = async ({ log }: { log: StudyLog }) => {
   );
 };
 
-export default TodaysStudiesItem;
+export default NotepadStudyItem;

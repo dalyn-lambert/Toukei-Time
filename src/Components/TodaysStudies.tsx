@@ -3,7 +3,7 @@ import { UTCDate } from '@date-fns/utc';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale';
 import Notepad from './Notepad';
-import TodaysStudiesItem from './TodayStudiesItem';
+import NotepadStudyItem from './NotepadStudyItem';
 import Window from './Window';
 
 const getData = async (today: string) => {
@@ -25,7 +25,7 @@ const TodaysStudies = async ({ today }: TodayStudiesProps) => {
         <span className='border-b-2 border-black'>{todayJapanese}</span>
         <div className='pt-2'>
           {studyLogs.map((log) => (
-            <TodaysStudiesItem key={log.id} log={log} />
+            <NotepadStudyItem key={log.id} log={log} />
           ))}
           <span>• | </span>
         </div>
