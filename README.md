@@ -13,11 +13,11 @@ When beginning this project I had the intention to continue to log my studies in
 
 ### User Stories
 
-An existing user is able to log in with an email and password.
-A user can quickly log their native material studies from their phone.
-A user can view a graph of their study time for a specific day.
-A user can view a graph of their study time for a specific month.
-A user can browse their resources.
+- An existing user is able to log in with an email and password.
+- A user can quickly log their native material studies from their phone.
+- A user can view a graph of their study time for a specific day.
+- A user can view a graph of their study time for a specific month.
+- A user can browse their resources.
 
 ## How to Use
 
