@@ -5,6 +5,8 @@ You can log in using following creditials:
 email: `shoko@jujutsuhigh.edu`  
 password: `gojorulez`
 
+The word Toukei - 統計(とうけい) - means statistics in Japanese.
+
 ## Background
 
 I have been studying Japanese with various level of intesity since 2018. However, in 2022 I started to get serious about consuming native materials in Japanese and began tracking my time spent on stuch things in Japanese. By 2023 I had accumulated a lot of data in Notion, but lacked any type of visualization that showed my progress.
