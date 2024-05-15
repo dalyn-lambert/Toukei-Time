@@ -1,4 +1,5 @@
 # Toukei Time
+Track native material studies for your Japanese learning journey.
 
 ## Visit the Site
 
