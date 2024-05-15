@@ -1,5 +1,6 @@
 # Toukei Time
 Track native material studies for your Japanese learning journey.
+
 The word Toukei - 統計(とうけい) - means statistics in Japanese.
 
 ## Visit the Site
