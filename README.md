@@ -8,7 +8,7 @@ The word Toukei - 統計(とうけい) - means statistics in Japanese.
 [Toukei Time](https://toukei-time.vercel.app/)  
 You can log in using following creditials:  
 email: `shoko@jujutsuhigh.edu`  
-password: `gojorulez`
+password: `gojorules`
 
 ## Background
 
