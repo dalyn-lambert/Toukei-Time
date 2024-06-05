@@ -28,7 +28,7 @@ When beginning this project I had the intention to continue logging my study tim
 
 ## How to Use
 
-Toukei Time was designed with a 'mobile first' mindset that prioritized the ability to log studies and create resources as quickly as possible. However, the site is still fully functionally on laptop and desktop computers. The Japanese text is translated to English on hover or tap.
+Toukei Time was designed with a 'mobile first' mindset that prioritizes the ability to log studies and create resources as quickly as possible on the go. However, the site is still fully functionally on laptop and desktop computers. The Japanese text is translated to English on hover or tap.
 
 The 'Log' page funtions as the site's homepage. Here a user can log a study session or create a new resource. The 'Today' and 'Month' pages display study data for a specific day or month based on URL parameters. On the 'Browse' page a user can view all of their resources and filter them by status or category.
 
