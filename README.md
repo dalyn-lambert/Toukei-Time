@@ -35,11 +35,10 @@ The 'Log' page funtions as the site's homepage. Here a user can log a study sess
 ## What's Next?
 
 I hope to continue to work on Toukei Time. Here are a few things I have planned.
-
-- Add loading indicators to assure the user that the site is processing their actions.
-- Add toast notifications to assure a user that a particular operation was completed.
-- Render a stacked bar graph that allows a user to compare study time between days or months.
+- Add loading indicators to assure user the site is processing their actions.
+- Add toast notifications to indicate status of database operations.
+- Allow user to compare study time via stacked bar chart.
 - Create a page for weekly study overviews.
 - Expand the site to better utilize the space of larger screens.
-- Investigate the Spotify and YouTube APIs to be used in creating study logs and resources.
 - Implement user registration.
+- Investigate use of Spotify and YouTube APIs.
