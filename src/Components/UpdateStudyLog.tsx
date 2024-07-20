@@ -52,7 +52,13 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
             </div>
             <div className='flex flex-row gap-1'>
               <label htmlFor='category'>Category:</label>
-              <select defaultValue={log.category} name='category' id='category' required={true} className='text-center'>
+              <select
+                defaultValue={log.category}
+                name='category'
+                id='category'
+                required={true}
+                className='text-center pl-1'
+              >
                 {categories.map((category) => (
                   <option key={category} value={category}>
                     {category}
@@ -73,7 +79,13 @@ function UpdateStudyLog({ log, resources }: { log: StudyLog; resources: Resource
                 <span className='shrink-0'>{arrowRightIcon}</span>
               </Link>
             </div>
-            <select defaultValue={currentResourceName} name='resource' id='resource' required={true} className='pl-1'>
+            <select
+              defaultValue={currentResourceName}
+              name='resource'
+              id='resource'
+              required={true}
+              className='text-center pl-1'
+            >
               {resources.map((resource) => (
                 <option key={resource.id} value={resource.name}>
                   {resource.name}

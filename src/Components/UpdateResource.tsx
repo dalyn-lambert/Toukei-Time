@@ -32,7 +32,7 @@ function UpdateResource(resource: Resource) {
           <div className='flex flex-row gap-2 justify-between'>
             <div className='flex flex-row gap-1'>
               <label htmlFor='status'>Status:</label>
-              <select name='status' id='status' required={true} className='text-center' defaultValue={resource.status}>
+              <select name='status' id='status' required={true} className='text-center pl-1' defaultValue={resource.status}>
                 {statuses.map((status) => (
                   <option key={status} value={status}>
                     {status}
@@ -47,7 +47,7 @@ function UpdateResource(resource: Resource) {
                 name='category'
                 id='category'
                 required={true}
-                className='text-center'
+                className='text-center pl-1'
                 defaultValue={resource.category}
               >
                 {categories.map((category) => (
