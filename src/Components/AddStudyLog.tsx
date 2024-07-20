@@ -37,7 +37,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
               id='category'
               required={true}
               onChange={handleCategoryFilter}
-              className='text-center'
+              className='text-center pl-1'
             >
               {categories.map((category) => (
                 <option key={category} value={category}>
@@ -53,7 +53,7 @@ function AddStudyLog({ resources }: { resources: Resource[] }) {
         </div>
         <div className='flex flex-col gap-0'>
           <label htmlFor='resource'>Resource:</label>
-          <select name='resource' id='resource' required={true} className='pl-1'>
+          <select name='resource' id='resource' required={true} className='text-center pl-1'>
             {filterdResources.map((resource) => (
               <option key={resource.id} value={resource.name}>
                 {resource.name}

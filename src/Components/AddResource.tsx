@@ -25,7 +25,7 @@ function AddResource() {
         <div className='flex flex-row gap-2 justify-between'>
           <div className='flex flex-row gap-1'>
             <label htmlFor='status'>Status:</label>
-            <select name='status' id='status' required={true} className='text-center'>
+            <select name='status' id='status' required={true} className='text-center pl-1'>
               {statuses.map((status) => (
                 <option key={status} value={status}>
                   {status}
@@ -36,7 +36,7 @@ function AddResource() {
 
           <div className='flex flex-row gap-1'>
             <label htmlFor='category'>Category:</label>
-            <select name='category' id='category' required={true} className='text-center'>
+            <select name='category' id='category' required={true} className='text-center pl-1'>
               {categories.map((category) => (
                 <option key={category} value={category}>
                   {category}
